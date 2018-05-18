@@ -21,6 +21,7 @@ namespace Kodkod.EntityFramework
             modelBuilder.Entity<ApplicationUser>().ToTable("User").HasData(
                 new ApplicationUser
                 {
+                    Id = Guid.NewGuid(),
                     UserName = "admin",
                     Email = "admin@mail.com",
                     EmailConfirmed = true,
@@ -30,6 +31,7 @@ namespace Kodkod.EntityFramework
                 },
                 new ApplicationUser
                 {
+                    Id = Guid.NewGuid(),
                     UserName = "testuser",
                     Email = "testuser@mail.com",
                     EmailConfirmed = true,
@@ -40,6 +42,7 @@ namespace Kodkod.EntityFramework
 
             modelBuilder.Entity<ApplicationRole>().ToTable("Role").HasData(new ApplicationRole
             {
+                Id = Guid.NewGuid(),
                 Name = "admin",
                 NormalizedName = "ADMIN"
             });

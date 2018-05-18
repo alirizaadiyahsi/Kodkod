@@ -1,0 +1,41 @@
+2018-05-18 23:53:21.990 +03:00 [INF] Starting web host
+2018-05-18 23:53:22.842 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-18 23:53:23.323 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-18 23:53:23.573 +03:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+2018-05-18 23:53:23.589 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-18 23:53:23.604 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.53960000000000008ms.
+2018-05-18 23:53:23.874 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-18 23:53:23.882 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-18 23:53:23.895 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) in 318.2628ms
+2018-05-18 23:53:23.903 +03:00 [INF] Request finished in 582.369ms 200 application/json; charset=utf-8
+2018-05-18 23:53:24.041 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-18 23:53:24.041 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-18 23:53:24.044 +03:00 [INF] Request finished in 3.1802ms 404 
+2018-05-18 23:53:24.044 +03:00 [INF] Request finished in 2.8357ms 404 
+2018-05-18 23:55:50.968 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:60320/api/account/login text/plain 41
+2018-05-18 23:55:50.986 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api)
+2018-05-18 23:55:51.004 +03:00 [INF] Executing HttpStatusCodeResult, setting HTTP status code 415
+2018-05-18 23:55:51.005 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) in 18.9527ms
+2018-05-18 23:55:51.005 +03:00 [INF] Request finished in 37.5925ms 415 
+2018-05-18 23:55:51.017 +03:00 [INF] Connection id "0HLDT05IIFNF2", Request id "0HLDT05IIFNF2:00000001": the application completed without reading the entire request body.
+2018-05-18 23:56:18.736 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:60320/api/account/login application/json 41
+2018-05-18 23:56:18.737 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api)
+2018-05-18 23:56:18.760 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) with arguments (["Kodkod.Web.Api.ViewModels.LoginViewModel"]) - Validation state: "Valid"
+2018-05-18 23:56:18.773 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-18 23:56:18.950 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2018-05-18 23:56:19.042 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2018-05-18 23:56:19.112 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@p14='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [User] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;
+2018-05-18 23:56:19.134 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 368.8016ms.
+2018-05-18 23:56:19.147 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2018-05-18 23:56:19.152 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) in 415.3387ms
+2018-05-18 23:56:19.162 +03:00 [INF] Request finished in 426.4368ms 200 application/json; charset=utf-8

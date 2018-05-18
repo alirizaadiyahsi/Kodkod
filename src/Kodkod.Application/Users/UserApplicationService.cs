@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Kodkod.Core;
 using Kodkod.Core.Entities;
 using Kodkod.EntityFramework;
 
