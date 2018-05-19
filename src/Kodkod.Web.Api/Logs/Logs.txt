@@ -39,3 +39,186 @@ SELECT @@ROWCOUNT;
 2018-05-18 23:56:19.147 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
 2018-05-18 23:56:19.152 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) in 415.3387ms
 2018-05-18 23:56:19.162 +03:00 [INF] Request finished in 426.4368ms 200 application/json; charset=utf-8
+2018-05-19 13:54:34.033 +03:00 [INF] Starting web host
+2018-05-19 13:54:34.890 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-19 13:54:35.228 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-19 13:54:35.478 +03:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+2018-05-19 13:54:35.492 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-19 13:54:35.502 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.2074ms.
+2018-05-19 13:54:35.791 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 13:54:35.800 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-19 13:54:35.814 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) in 331.1743ms
+2018-05-19 13:54:35.822 +03:00 [INF] Request finished in 594.7459ms 200 application/json; charset=utf-8
+2018-05-19 13:54:35.884 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-19 13:54:35.888 +03:00 [INF] Request finished in 4.1726ms 404 
+2018-05-19 13:54:48.852 +03:00 [INF] Starting web host
+2018-05-19 13:54:49.464 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-19 13:54:50.019 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-19 13:54:50.183 +03:00 [ERR] Request matched multiple actions resulting in ambiguity. Matching actions: Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+2018-05-19 13:54:50.187 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Microsoft.AspNetCore.Mvc.Internal.AmbiguousActionException: Multiple actions matched. The following actions matched route data and had all constraints satisfied:
+
+Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+   at Microsoft.AspNetCore.Mvc.Internal.ActionSelector.SelectBestCandidate(RouteContext context, IReadOnlyList`1 candidates)
+   at Microsoft.AspNetCore.Mvc.Internal.MvcAttributeRouteHandler.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.Tree.TreeRouter.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Routing.RouteCollection.RouteAsync(RouteContext context)
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIIndexMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-05-19 13:54:50.299 +03:00 [INF] Request finished in 282.0558ms 500 text/html; charset=utf-8
+2018-05-19 13:57:09.308 +03:00 [INF] Starting web host
+2018-05-19 13:57:09.863 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-19 13:57:10.291 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-19 13:57:10.522 +03:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+2018-05-19 13:57:10.535 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-19 13:57:10.547 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.2646ms.
+2018-05-19 13:57:10.763 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 13:57:10.775 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-19 13:57:10.786 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) in 260.161ms
+2018-05-19 13:57:10.794 +03:00 [INF] Request finished in 505.725ms 200 application/json; charset=utf-8
+2018-05-19 13:58:46.199 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard  
+2018-05-19 13:58:46.204 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 13:58:46.214 +03:00 [INF] Authorization failed.
+2018-05-19 13:58:46.221 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 13:58:46.227 +03:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2018-05-19 13:58:46.233 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2018-05-19 13:58:46.233 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 28.4507ms
+2018-05-19 13:58:46.235 +03:00 [INF] Request finished in 35.8392ms 401 
+2018-05-19 13:59:09.463 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard  
+2018-05-19 13:59:09.465 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 13:59:09.466 +03:00 [INF] Authorization failed.
+2018-05-19 13:59:09.466 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 13:59:09.466 +03:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2018-05-19 13:59:09.466 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2018-05-19 13:59:09.466 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 1.4048ms
+2018-05-19 13:59:09.467 +03:00 [INF] Request finished in 3.5069ms 401 
+2018-05-19 13:59:57.918 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard  
+2018-05-19 13:59:57.919 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 13:59:57.919 +03:00 [INF] Authorization failed.
+2018-05-19 13:59:57.920 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 13:59:57.920 +03:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2018-05-19 13:59:57.920 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2018-05-19 13:59:57.920 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 0.5459ms
+2018-05-19 13:59:57.920 +03:00 [INF] Request finished in 1.9954ms 401 
+2018-05-19 14:00:15.305 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard  
+2018-05-19 14:00:15.305 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:00:15.305 +03:00 [INF] Authorization failed.
+2018-05-19 14:00:15.306 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:00:15.306 +03:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2018-05-19 14:00:15.306 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2018-05-19 14:00:15.306 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 0.6222ms
+2018-05-19 14:00:15.306 +03:00 [INF] Request finished in 1.5209ms 401 
+2018-05-19 14:01:06.466 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard  
+2018-05-19 14:01:06.466 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:01:06.467 +03:00 [INF] Authorization failed.
+2018-05-19 14:01:06.467 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:01:06.467 +03:00 [INF] Executing ChallengeResult with authentication schemes ([]).
+2018-05-19 14:01:06.467 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2018-05-19 14:01:06.467 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 0.73630000000000007ms
+2018-05-19 14:01:06.468 +03:00 [INF] Request finished in 1.7627ms 401 
+2018-05-19 14:01:36.518 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:60320/api/account/login application/json 41
+2018-05-19 14:01:36.538 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api)
+2018-05-19 14:01:36.581 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) with arguments (["Kodkod.Web.Api.ViewModels.LoginViewModel"]) - Validation state: "Valid"
+2018-05-19 14:01:36.595 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 14:01:36.834 +03:00 [INF] Executed DbCommand (17ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2018-05-19 14:01:36.907 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 320.40250000000003ms.
+2018-05-19 14:01:36.942 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2018-05-19 14:01:36.947 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) in 409.0742ms
+2018-05-19 14:01:36.959 +03:00 [INF] Request finished in 441.1426ms 200 application/json; charset=utf-8
+2018-05-19 14:01:51.207 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard  
+2018-05-19 14:01:51.214 +03:00 [INF] Successfully validated the token.
+2018-05-19 14:01:51.215 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:01:51.216 +03:00 [INF] Authorization failed.
+2018-05-19 14:01:51.216 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:01:51.217 +03:00 [INF] Executing ForbidResult with authentication schemes ([]).
+2018-05-19 14:01:51.219 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2018-05-19 14:01:51.219 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 3.5638ms
+2018-05-19 14:01:51.219 +03:00 [INF] Request finished in 12.0083ms 403 
+2018-05-19 14:04:09.857 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard application/json 
+2018-05-19 14:04:09.858 +03:00 [INF] Successfully validated the token.
+2018-05-19 14:04:09.858 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:04:09.859 +03:00 [INF] Authorization failed.
+2018-05-19 14:04:09.859 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:04:09.859 +03:00 [INF] Executing ForbidResult with authentication schemes ([]).
+2018-05-19 14:04:09.859 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2018-05-19 14:04:09.859 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 0.6735ms
+2018-05-19 14:04:09.860 +03:00 [INF] Request finished in 2.5935ms 403 
+2018-05-19 14:05:05.460 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard application/json 
+2018-05-19 14:05:05.461 +03:00 [INF] Successfully validated the token.
+2018-05-19 14:05:05.462 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:05:05.462 +03:00 [INF] Authorization failed.
+2018-05-19 14:05:05.462 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:05:05.462 +03:00 [INF] Executing ForbidResult with authentication schemes ([]).
+2018-05-19 14:05:05.462 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2018-05-19 14:05:05.462 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 0.4365ms
+2018-05-19 14:05:05.462 +03:00 [INF] Request finished in 2.1191ms 403 
+2018-05-19 14:07:28.445 +03:00 [INF] Starting web host
+2018-05-19 14:07:29.095 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-19 14:07:29.666 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-19 14:07:29.914 +03:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+2018-05-19 14:07:29.926 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-19 14:07:29.939 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.19790000000000002ms.
+2018-05-19 14:07:30.186 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 14:07:30.195 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-19 14:07:30.209 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) in 289.6556ms
+2018-05-19 14:07:30.217 +03:00 [INF] Request finished in 552.8693ms 200 application/json; charset=utf-8
+2018-05-19 14:07:39.189 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard application/json 
+2018-05-19 14:07:39.199 +03:00 [INF] Successfully validated the token.
+2018-05-19 14:07:39.202 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:07:39.212 +03:00 [INF] Authorization failed.
+2018-05-19 14:07:39.216 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:07:39.221 +03:00 [INF] Executing ForbidResult with authentication schemes ([]).
+2018-05-19 14:07:39.225 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2018-05-19 14:07:39.225 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 23.302300000000002ms
+2018-05-19 14:07:39.226 +03:00 [INF] Request finished in 37.8252ms 403 
+2018-05-19 14:07:46.068 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:60320/api/account/login application/json 41
+2018-05-19 14:07:46.083 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api)
+2018-05-19 14:07:46.138 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) with arguments (["Kodkod.Web.Api.ViewModels.LoginViewModel"]) - Validation state: "Valid"
+2018-05-19 14:07:46.151 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 14:07:46.363 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2018-05-19 14:07:46.442 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 299.0751ms.
+2018-05-19 14:07:46.476 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2018-05-19 14:07:46.481 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) in 397.68100000000004ms
+2018-05-19 14:07:46.494 +03:00 [INF] Request finished in 425.109ms 200 application/json; charset=utf-8
+2018-05-19 14:07:59.063 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard application/json 
+2018-05-19 14:07:59.064 +03:00 [INF] Successfully validated the token.
+2018-05-19 14:07:59.065 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:07:59.065 +03:00 [INF] Authorization failed.
+2018-05-19 14:07:59.065 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-19 14:07:59.065 +03:00 [INF] Executing ForbidResult with authentication schemes ([]).
+2018-05-19 14:07:59.065 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2018-05-19 14:07:59.066 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 0.80470000000000008ms
+2018-05-19 14:07:59.066 +03:00 [INF] Request finished in 2.2763ms 403 
+2018-05-19 14:09:30.994 +03:00 [INF] Starting web host
+2018-05-19 14:09:31.565 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-19 14:09:31.984 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-19 14:09:32.210 +03:00 [INF] Route matched with {action = "Get", controller = "Values"}. Executing action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api)
+2018-05-19 14:09:32.225 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-19 14:09:32.239 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.3239ms.
+2018-05-19 14:09:32.501 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 14:09:32.510 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-19 14:09:32.523 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.ValuesController.Get (Kodkod.Web.Api) in 308.0351ms
+2018-05-19 14:09:32.531 +03:00 [INF] Request finished in 548.8377ms 200 application/json; charset=utf-8
+2018-05-19 14:09:36.529 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard application/json 
+2018-05-19 14:09:36.540 +03:00 [INF] Successfully validated the token.
+2018-05-19 14:09:36.544 +03:00 [INF] Route matched with {action = "Get", controller = "Dashboard"}. Executing action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api)
+2018-05-19 14:09:36.552 +03:00 [INF] Authorization was successful.
+2018-05-19 14:09:36.553 +03:00 [INF] Executing action method Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-19 14:09:36.553 +03:00 [INF] Executed action method Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.3705ms.
+2018-05-19 14:09:36.555 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-19 14:09:36.555 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-19 14:09:36.556 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 12.244900000000001ms
+2018-05-19 14:09:36.557 +03:00 [INF] Request finished in 28.1323ms 200 application/json; charset=utf-8

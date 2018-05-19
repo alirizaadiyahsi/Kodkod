@@ -43,7 +43,7 @@ namespace Kodkod.EntityFramework
             modelBuilder.Entity<ApplicationRole>().ToTable("Role").HasData(new ApplicationRole
             {
                 Id = Guid.NewGuid(),
-                Name = "admin",
+                Name = "Admin",
                 NormalizedName = "ADMIN"
             });
 

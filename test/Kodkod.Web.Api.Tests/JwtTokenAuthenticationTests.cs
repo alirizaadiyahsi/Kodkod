@@ -36,7 +36,7 @@ namespace Kodkod.Web.Api.Tests
         [Fact]
         public async Task UnAuthorizedAccess()
         {
-            var response = await _client.GetAsync("/api/values/5");
+            var response = await _client.GetAsync("/api/test/AuthorizedGet");
 
             Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
         }
@@ -63,7 +63,7 @@ namespace Kodkod.Web.Api.Tests
             var responseJson = JObject.Parse(responseString);
             var token = (string)responseJson["token"];
 
-            var requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/values/5");
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/test/AuthorizedGet/5");
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var getValueResponse = await _client.SendAsync(requestMessage);
 

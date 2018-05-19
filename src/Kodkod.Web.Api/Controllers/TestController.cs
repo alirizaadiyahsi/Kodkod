@@ -1,41 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Kodkod.Core.AppConsts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kodkod.Web.Api.Controllers
 {
-    [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TestController : BaseController
     {
-        // GET api/values
+        [HttpGet("[action]")]
+        [Authorize(Policy = KodkodPolicies.ApiUser)]
+        public IEnumerable<string> AuthorizedGet()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        [HttpGet("[action]/{id}")]
+        [Authorize(Policy = KodkodPolicies.ApiUser)]
+        public string AuthorizedGet(int id)
+        {
+            return "value";
+        }
+
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
         [HttpPost]
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

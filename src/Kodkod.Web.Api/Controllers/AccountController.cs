@@ -14,8 +14,7 @@ using Microsoft.Extensions.Options;
 
 namespace Kodkod.Web.Api.Controllers
 {
-    [Route("api/[controller]")]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly JwtTokenConfiguration _jwtTokenConfiguration;
