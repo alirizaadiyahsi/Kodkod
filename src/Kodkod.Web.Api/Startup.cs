@@ -71,11 +71,11 @@ namespace Kodkod.Web.Api
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy(KodkodPolicies.ApiUser,
-                    policy =>
-                    {
-                        policy.RequireClaim(KodkodClaimTypes.ApiUserRole, KodkodClaimValues.ApiAccess);
-                    });
+                foreach (var permission in KodkodPermissions.AllPermissions())
+                {
+                    options.AddPolicy(permission.Name,
+                        policy => policy.Requirements.Add(new PermissionRequirement(permission)));
+                }
             });
 
             services.AddMvc(options => options.Filters.Add<KodkodDbContextActionFilter>());

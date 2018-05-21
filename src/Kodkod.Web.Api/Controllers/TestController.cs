@@ -8,14 +8,14 @@ namespace Kodkod.Web.Api.Controllers
     public class TestController : BaseController
     {
         [HttpGet("[action]")]
-        [Authorize(Policy = KodkodPolicies.ApiUser)]
+        [Authorize(Policy = KodkodPermissions.ApiUser)]
         public IEnumerable<string> AuthorizedGet()
         {
             return new string[] { "value1", "value2" };
         }
 
         [HttpGet("[action]/{id}")]
-        [Authorize(Policy = KodkodPolicies.ApiUser)]
+        [Authorize(Policy = KodkodPermissions.ApiUser)]
         public string AuthorizedGet(int id)
         {
             return "value";

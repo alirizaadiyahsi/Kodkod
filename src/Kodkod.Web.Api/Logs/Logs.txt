@@ -222,3 +222,15 @@ WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
 2018-05-19 14:09:36.555 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
 2018-05-19 14:09:36.556 +03:00 [INF] Executed action Kodkod.Web.Api.Areas.Admin.Controllers.DashboardController.Get (Kodkod.Web.Api) in 12.244900000000001ms
 2018-05-19 14:09:36.557 +03:00 [INF] Request finished in 28.1323ms 200 application/json; charset=utf-8
+2018-05-21 23:12:34.230 +03:00 [INF] Starting web host
+2018-05-21 23:12:39.097 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-21 23:12:39.831 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:12:39.831 +03:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:60320/  0
+2018-05-21 23:12:39.880 +03:00 [INF] Request finished in 48.5671ms 200 
+2018-05-21 23:12:40.096 +03:00 [INF] Request finished in 267.2771ms 404 
+2018-05-21 23:12:40.140 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-21 23:12:40.141 +03:00 [INF] Request finished in 1.4231ms 404 
+2018-05-21 23:13:03.266 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:13:03.267 +03:00 [INF] Request finished in 0.6874ms 404 
+2018-05-21 23:13:43.724 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:13:43.725 +03:00 [INF] Request finished in 0.799ms 404 

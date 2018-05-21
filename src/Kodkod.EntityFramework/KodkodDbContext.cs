@@ -1,8 +1,8 @@
 ﻿using System;
-using Kodkod.Core;
 using Kodkod.Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Kodkod.EntityFramework
 {
@@ -14,40 +14,38 @@ namespace Kodkod.EntityFramework
 
         }
 
+        public DbSet<Permission> Permissions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ApplicationUser>().ToTable("User").HasData(
-                new ApplicationUser
-                {
-                    Id = Guid.NewGuid(),
-                    UserName = "admin",
-                    Email = "admin@mail.com",
-                    EmailConfirmed = true,
-                    NormalizedEmail = "ADMIN@MAIL.COM",
-                    NormalizedUserName = "ADMIN",
-                    PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
-                },
-                new ApplicationUser
-                {
-                    Id = Guid.NewGuid(),
-                    UserName = "testuser",
-                    Email = "testuser@mail.com",
-                    EmailConfirmed = true,
-                    NormalizedEmail = "TESTUSER@MAIL.COM",
-                    NormalizedUserName = "TESTUSER",
-                    PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
-                });
+            modelBuilder.Entity<Permission>()
+                .ToTable("Permission")
+                .HasData(SeedData.BuildPermissions());
 
-            modelBuilder.Entity<ApplicationRole>().ToTable("Role").HasData(new ApplicationRole
+            modelBuilder.Entity<RolePermission>((Action<EntityTypeBuilder<RolePermission>>)(b =>
             {
-                Id = Guid.NewGuid(),
-                Name = "Admin",
-                NormalizedName = "ADMIN"
-            });
+                b.ToTable("RolePermission");
+                b.HasKey(rp => new { rp.RoleId, rp.PermissionId });
+                b.HasOne(rp => rp.Role)
+                    .WithMany(r => r.RolePermissions)
+                    .HasForeignKey(pt => pt.RoleId);
+                b.HasOne(rp => rp.Permission)
+                    .WithMany(p => p.RolePermissions)
+                    .HasForeignKey(rp => rp.PermissionId);
+                b.HasData(SeedData.BuildRolePermissions());
+            }));
 
-            modelBuilder.Entity<ApplicationUserRole>().ToTable("UserRole");
+            modelBuilder.Entity<ApplicationUser>().ToTable("User")
+                .HasData(SeedData.BuildApplicationUsers());
+
+            modelBuilder.Entity<ApplicationRole>().ToTable("Role")
+                .HasData(SeedData.BuildApplicationRoles());
+
+            modelBuilder.Entity<ApplicationUserRole>().ToTable("UserRole")
+                .HasData(SeedData.BuildApplicationUserRoles());
+
             modelBuilder.Entity<ApplicationUserClaim>().ToTable("UserClaim");
             modelBuilder.Entity<ApplicationUserLogin>().ToTable("UserLogin");
             modelBuilder.Entity<ApplicationRoleClaim>().ToTable("RoleClaim");
