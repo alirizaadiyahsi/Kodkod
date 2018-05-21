@@ -234,3 +234,148 @@ WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
 2018-05-21 23:13:03.267 +03:00 [INF] Request finished in 0.6874ms 404 
 2018-05-21 23:13:43.724 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
 2018-05-21 23:13:43.725 +03:00 [INF] Request finished in 0.799ms 404 
+2018-05-21 23:32:57.424 +03:00 [INF] Starting web host
+2018-05-21 23:33:01.502 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-21 23:33:02.159 +03:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:60320/  0
+2018-05-21 23:33:02.159 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:33:02.179 +03:00 [INF] Request finished in 19.0327ms 200 
+2018-05-21 23:33:02.367 +03:00 [INF] Request finished in 210.2848ms 404 
+2018-05-21 23:33:02.409 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-21 23:33:02.409 +03:00 [INF] Request finished in 0.821ms 404 
+2018-05-21 23:34:02.275 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger  
+2018-05-21 23:34:02.276 +03:00 [INF] Request finished in 1.59ms 301 
+2018-05-21 23:34:02.316 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/  
+2018-05-21 23:34:02.338 +03:00 [INF] Request finished in 21.553ms 200 text/html
+2018-05-21 23:34:02.373 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/swagger-ui.css  
+2018-05-21 23:34:02.395 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/swagger-ui-bundle.js  
+2018-05-21 23:34:02.395 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/swagger-ui-standalone-preset.js  
+2018-05-21 23:34:02.467 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2018-05-21 23:34:02.467 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2018-05-21 23:34:02.481 +03:00 [INF] Request finished in 85.8842ms 200 application/javascript
+2018-05-21 23:34:02.481 +03:00 [INF] Request finished in 107.5223ms 200 text/css
+2018-05-21 23:34:02.500 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2018-05-21 23:34:02.500 +03:00 [INF] Request finished in 105.4445ms 200 application/javascript
+2018-05-21 23:34:02.969 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/favicon-32x32.png  
+2018-05-21 23:34:02.970 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2018-05-21 23:34:02.970 +03:00 [INF] Request finished in 0.8523ms 200 image/png
+2018-05-21 23:34:03.022 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/v1/swagger.json  
+2018-05-21 23:34:03.191 +03:00 [INF] Request finished in 168.2434ms 200 application/json
+2018-05-21 23:34:17.820 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/Test  
+2018-05-21 23:34:17.821 +03:00 [INF] Policy execution failed.
+2018-05-21 23:34:17.821 +03:00 [INF] Request origin http://localhost:60320 does not have permission to access the resource.
+2018-05-21 23:34:17.956 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-21 23:34:18.078 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-21 23:34:18.088 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.2335ms.
+2018-05-21 23:39:26.400 +03:00 [INF] Starting web host
+2018-05-21 23:39:26.987 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-21 23:39:27.510 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:39:27.672 +03:00 [INF] Request finished in 164.4286ms 404 
+2018-05-21 23:39:35.568 +03:00 [INF] Starting web host
+2018-05-21 23:39:39.114 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-21 23:39:39.719 +03:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:60320/  0
+2018-05-21 23:39:39.719 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:39:39.740 +03:00 [INF] Request finished in 20.0162ms 200 
+2018-05-21 23:39:39.944 +03:00 [INF] Request finished in 227.1991ms 404 
+2018-05-21 23:39:40.001 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-21 23:39:40.002 +03:00 [INF] Request finished in 1.2723ms 404 
+2018-05-21 23:39:53.862 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/  
+2018-05-21 23:39:53.871 +03:00 [INF] Request finished in 9.6533ms 200 text/html
+2018-05-21 23:39:53.919 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/swagger-ui.css  
+2018-05-21 23:39:53.984 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2018-05-21 23:39:53.991 +03:00 [INF] Request finished in 72.5432ms 200 text/css
+2018-05-21 23:39:54.276 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/swagger/v1/swagger.json  
+2018-05-21 23:39:54.473 +03:00 [INF] Request finished in 196.7645ms 200 application/json
+2018-05-21 23:40:03.270 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/Test  
+2018-05-21 23:40:03.271 +03:00 [INF] Policy execution failed.
+2018-05-21 23:40:03.271 +03:00 [INF] Request origin http://localhost:60320 does not have permission to access the resource.
+2018-05-21 23:40:03.426 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-21 23:40:03.534 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-21 23:40:03.544 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.2533ms.
+2018-05-21 23:40:58.385 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) in 54953.080500000004ms
+2018-05-21 23:40:58.403 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Reflection.TargetParameterCountException: Parameter count mismatch.
+   at System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimePropertyInfo.GetValue(Object obj, Object[] index)
+   at Microsoft.EntityFrameworkCore.Metadata.Internal.EntityType.GetData(Boolean providerValues)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.ValidateData(IModel model)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelValidator.Validate(IModel model)
+   at Microsoft.EntityFrameworkCore.Infrastructure.RelationalModelValidator.Validate(IModel model)
+   at Microsoft.EntityFrameworkCore.Internal.SqlServerModelValidator.Validate(IModel model)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.<>c__DisplayClass5_0.<GetModel>b__1()
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, IConventionSetBuilder conventionSetBuilder, IModelValidator validator)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel()
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__7_1(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitFactory(FactoryCallSite factoryCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitScoped(ScopedCallSite scopedCallSite, ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteVisitor`2.VisitCallSite(IServiceCallSite callSite, TArgument argument)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass1_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.GetService(Type serviceType, ServiceProviderEngineScope serviceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at Kodkod.Web.Api.ActionFilters.KodkodDbContextActionFilter.OnActionExecuted(ActionExecutedContext context) in D:\GitHub\Kodkod\src\Kodkod.Web.Api\ActionFilters\KodkodDbContextActionFilter.cs:line 22
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Builder.RouterMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIIndexMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2018-05-21 23:40:58.552 +03:00 [INF] Request finished in 55282.0667ms 500 text/html; charset=utf-8
+2018-05-21 23:41:09.678 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/Test  
+2018-05-21 23:41:09.678 +03:00 [INF] Policy execution failed.
+2018-05-21 23:41:09.678 +03:00 [INF] Request origin http://localhost:60320 does not have permission to access the resource.
+2018-05-21 23:41:09.680 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-21 23:41:09.707 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-21 23:41:09.707 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.022000000000000002ms.
+2018-05-21 23:41:19.516 +03:00 [INF] Starting web host
+2018-05-21 23:41:22.507 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-21 23:41:23.086 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:41:23.086 +03:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:60320/  0
+2018-05-21 23:41:23.104 +03:00 [INF] Request finished in 18.2583ms 200 
+2018-05-21 23:41:23.297 +03:00 [INF] Request finished in 213.3049ms 404 
+2018-05-21 23:41:23.368 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-21 23:41:23.398 +03:00 [INF] Request finished in 30.2979ms 404 
+2018-05-21 23:41:44.643 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test  
+2018-05-21 23:41:44.771 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-21 23:41:44.862 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-21 23:41:44.872 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.24910000000000002ms.
+2018-05-21 23:53:22.067 +03:00 [INF] Starting web host
+2018-05-21 23:53:26.120 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-21 23:53:26.879 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-21 23:53:26.879 +03:00 [INF] Request starting HTTP/1.1 DEBUG http://localhost:60320/  0
+2018-05-21 23:53:26.906 +03:00 [INF] Request finished in 16.0205ms 200 
+2018-05-21 23:53:27.118 +03:00 [INF] Request finished in 240.7914ms 404 
+2018-05-21 23:53:27.165 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-21 23:53:27.166 +03:00 [INF] Request finished in 1.5628ms 404 
+2018-05-21 23:53:35.874 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test  
+2018-05-21 23:53:35.997 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-21 23:53:36.111 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-21 23:53:36.125 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.4091ms.
+2018-05-21 23:53:41.150 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-21 23:53:41.163 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) in 5160.384ms
+2018-05-21 23:53:41.165 +03:00 [INF] Request finished in 5290.8714ms 200 application/json; charset=utf-8

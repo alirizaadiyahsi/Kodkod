@@ -24,7 +24,7 @@ namespace Kodkod.EntityFramework
                 .ToTable("Permission")
                 .HasData(SeedData.BuildPermissions());
 
-            modelBuilder.Entity<RolePermission>((Action<EntityTypeBuilder<RolePermission>>)(b =>
+            modelBuilder.Entity((Action<EntityTypeBuilder<RolePermission>>)(b =>
             {
                 b.ToTable("RolePermission");
                 b.HasKey(rp => new { rp.RoleId, rp.PermissionId });

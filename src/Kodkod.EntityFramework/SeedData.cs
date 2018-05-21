@@ -17,6 +17,7 @@ namespace Kodkod.EntityFramework
             EmailConfirmed = true,
             NormalizedEmail = "ADMIN@MAIL.COM",
             NormalizedUserName = "ADMIN",
+            AccessFailedCount = 5,
             PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
         };
 
@@ -28,6 +29,7 @@ namespace Kodkod.EntityFramework
             EmailConfirmed = true,
             NormalizedEmail = "TESTUSER@MAIL.COM",
             NormalizedUserName = "TESTUSER",
+            AccessFailedCount = 5,
             PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
         };
 
@@ -39,33 +41,48 @@ namespace Kodkod.EntityFramework
         };
         #endregion
 
-        public static List<ApplicationUser> BuildApplicationUsers() => new List<ApplicationUser>
+        public static List<ApplicationUser> BuildApplicationUsers()
         {
-            AdminUser,
-            TestUser
-        };
-
-        public static List<ApplicationRole> BuildApplicationRoles() => new List<ApplicationRole>
-        {
-            AdminRole
-        };
-
-        public static List<ApplicationUserRole> BuildApplicationUserRoles() => new List<ApplicationUserRole>
-        {
-            new ApplicationUserRole
+            return new List<ApplicationUser>
             {
-                RoleId = AdminRole.Id,
-                UserId = AdminUser.Id
-            }
-        };
+                AdminUser,
+                TestUser
+            };
+        }
 
-        public static List<Permission> BuildPermissions() => KodkodPermissions.AllPermissions();
-
-        public static List<RolePermission> BuildRolePermissions() => KodkodPermissions.AllPermissions().Select(p =>
-            new RolePermission
+        public static List<ApplicationRole> BuildApplicationRoles()
+        {
+            return new List<ApplicationRole>
             {
-                PermissionId = p.Id,
-                RoleId = AdminRole.Id
-            }).ToList();
+                AdminRole
+            };
+        }
+
+        public static List<ApplicationUserRole> BuildApplicationUserRoles()
+        {
+            return new List<ApplicationUserRole>
+            {
+                new ApplicationUserRole
+                {
+                    RoleId = AdminRole.Id,
+                    UserId = AdminUser.Id
+                }
+            };
+        }
+
+        public static List<Permission> BuildPermissions()
+        {
+            return KodkodPermissions.AllPermissions();
+        }
+
+        public static List<RolePermission> BuildRolePermissions()
+        {
+            return KodkodPermissions.AllPermissions().Select(p =>
+                new RolePermission
+                {
+                    PermissionId = p.Id,
+                    RoleId = AdminRole.Id
+                }).ToList();
+        }
     }
 }
