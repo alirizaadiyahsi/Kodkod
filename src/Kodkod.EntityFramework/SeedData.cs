@@ -41,26 +41,26 @@ namespace Kodkod.EntityFramework
         };
         #endregion
 
-        public static List<ApplicationUser> BuildApplicationUsers()
+        public static ApplicationUser[] BuildApplicationUsers()
         {
-            return new List<ApplicationUser>
+            return new[]
             {
                 AdminUser,
                 TestUser
             };
         }
 
-        public static List<ApplicationRole> BuildApplicationRoles()
+        public static ApplicationRole[] BuildApplicationRoles()
         {
-            return new List<ApplicationRole>
+            return new[]
             {
                 AdminRole
             };
         }
 
-        public static List<ApplicationUserRole> BuildApplicationUserRoles()
+        public static ApplicationUserRole[] BuildApplicationUserRoles()
         {
-            return new List<ApplicationUserRole>
+            return new[]
             {
                 new ApplicationUserRole
                 {
@@ -70,19 +70,19 @@ namespace Kodkod.EntityFramework
             };
         }
 
-        public static List<Permission> BuildPermissions()
+        public static Permission[] BuildPermissions()
         {
-            return KodkodPermissions.AllPermissions();
+            return KodkodPermissions.AllPermissions().ToArray();
         }
 
-        public static List<RolePermission> BuildRolePermissions()
+        public static RolePermission[] BuildRolePermissions()
         {
             return KodkodPermissions.AllPermissions().Select(p =>
                 new RolePermission
                 {
                     PermissionId = p.Id,
                     RoleId = AdminRole.Id
-                }).ToList();
+                }).ToArray();
         }
     }
 }

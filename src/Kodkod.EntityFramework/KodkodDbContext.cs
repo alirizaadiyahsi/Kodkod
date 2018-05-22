@@ -16,6 +16,8 @@ namespace Kodkod.EntityFramework
 
         public DbSet<Permission> Permissions { get; set; }
 
+        public DbSet<RolePermission> RolePermissions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
