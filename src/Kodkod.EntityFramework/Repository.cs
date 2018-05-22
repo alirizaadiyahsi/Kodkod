@@ -1,6 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace Kodkod.EntityFramework
 {
@@ -16,9 +20,42 @@ namespace Kodkod.EntityFramework
             DbSet = DbContext.Set<TEntity>();
         }
 
+        //todo: change this to paged list
         public async Task<List<TEntity>> GetAllAsync()
         {
             return await DbSet.ToListAsync();
         }
+
+        public async Task<TEntity> GetFirstOrDefaultAsync(
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true
+        )
+        {
+            IQueryable<TEntity> query = DbSet;
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            if (orderBy != null)
+            {
+                return await orderBy(query).FirstOrDefaultAsync();
+            }
+
+            return await query.FirstOrDefaultAsync();
+        }
+
     }
 }

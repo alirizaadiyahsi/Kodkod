@@ -8,6 +8,24 @@ namespace Kodkod.Application.Tests
 {
     public class TestBase
     {
+        public static readonly ApplicationUser AdminUser = new ApplicationUser
+        {
+            Id = Guid.NewGuid(),
+            UserName = "AdminUser"
+        };
+
+        public static readonly ApplicationRole AdminRole = new ApplicationRole
+        {
+            Id = Guid.NewGuid(),
+            Name = "Admin"
+        };
+
+        public static readonly Permission ApiUserPermission = new Permission
+        {
+            Id = Guid.NewGuid(),
+            Name = "ApiUser"
+        };
+
         public KodkodDbContext GetEmptyDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<KodkodDbContext>();
@@ -29,10 +47,14 @@ namespace Kodkod.Application.Tests
                 new ApplicationUser {UserName = "C"},
                 new ApplicationUser {UserName = "D"},
                 new ApplicationUser {UserName = "E"},
-                new ApplicationUser {UserName = "F"}
+                AdminUser
             };
 
+            inMemoryContext.AddRange(ApiUserPermission);
+            inMemoryContext.AddRange(AdminRole);
             inMemoryContext.AddRange(testUsers);
+            inMemoryContext.UserRoles.Add(new ApplicationUserRole { RoleId = AdminRole.Id, UserId = AdminUser.Id });
+            inMemoryContext.RolePermissions.Add(new RolePermission { PermissionId = ApiUserPermission.Id, RoleId = AdminRole.Id });
             inMemoryContext.SaveChanges();
 
             return inMemoryContext;

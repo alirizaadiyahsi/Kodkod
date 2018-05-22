@@ -20,7 +20,7 @@ namespace Kodkod.Web.Api.Authentication
                 context.Fail();
             }
 
-            bool hasPermission = _permissionApplication.CheckPermissionForUser(context.User, requirement.Permission);
+            var hasPermission = _permissionApplication.CheckPermissionForUser(context.User, requirement.Permission);
             if (hasPermission)
             {
                 context.Succeed(requirement);
