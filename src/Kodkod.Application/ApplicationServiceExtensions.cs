@@ -9,7 +9,7 @@ namespace Kodkod.Application
         public static IServiceCollection AddKodkodApplication(this IServiceCollection services)
         {
             services.AddAutoMapper();
-            services.AddTransient<IUserApplicationService, UserApplicationService>();
+            services.AddTransient<IUserAppService, UserAppService>();
 
             return services;
         }

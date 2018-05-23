@@ -5,12 +5,12 @@ using Kodkod.EntityFramework.Repositories;
 
 namespace Kodkod.Application.Permissions
 {
-    public class PermissionApplicationService : IPermissionApplicationService
+    public class PermissionAppService : IPermissionAppService
     {
         private readonly IRepository<Permission> _permissionRepository;
         private readonly IRepository<ApplicationUser> _userRepository;
 
-        public PermissionApplicationService(
+        public PermissionAppService(
             IRepository<Permission> permissionRepository, 
             IRepository<ApplicationUser> userRepository)
         {

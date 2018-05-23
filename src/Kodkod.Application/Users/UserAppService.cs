@@ -5,11 +5,11 @@ using Kodkod.EntityFramework.Repositories;
 
 namespace Kodkod.Application.Users
 {
-    public class UserApplicationService : IUserApplicationService
+    public class UserAppService : IUserAppService
     {
         private readonly IRepository<ApplicationUser> _userRepository;
 
-        public UserApplicationService(IRepository<ApplicationUser> userRepository)
+        public UserAppService(IRepository<ApplicationUser> userRepository)
         {
             _userRepository = userRepository;
         }

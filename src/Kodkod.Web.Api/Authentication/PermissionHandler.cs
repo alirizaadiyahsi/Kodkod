@@ -6,11 +6,11 @@ namespace Kodkod.Web.Api.Authentication
 {
     public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
-        private readonly IPermissionApplicationService _permissionApplication;
+        private readonly IPermissionAppService _permissionApp;
 
-        public PermissionHandler(IPermissionApplicationService permissionApplication)
+        public PermissionHandler(IPermissionAppService permissionApp)
         {
-            _permissionApplication = permissionApplication;
+            _permissionApp = permissionApp;
         }
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
@@ -20,7 +20,7 @@ namespace Kodkod.Web.Api.Authentication
                 context.Fail();
             }
 
-            var hasPermission = _permissionApplication.CheckPermissionForUser(context.User, requirement.Permission);
+            var hasPermission = _permissionApp.CheckPermissionForUser(context.User, requirement.Permission);
             if (hasPermission)
             {
                 context.Succeed(requirement);

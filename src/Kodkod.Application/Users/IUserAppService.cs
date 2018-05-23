@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Kodkod.Core;
 using Kodkod.Core.Entities;
 
 namespace Kodkod.Application.Users
 {
-    public interface IUserApplicationService
+    public interface IUserAppService
     {
         Task<List<ApplicationUser>> GetAllAsync();
     }

@@ -11,7 +11,7 @@ namespace Kodkod.Application.Tests
 {
     public class PermissionApplicationServiceTests : TestBase
     {
-        private readonly IPermissionApplicationService _permissionApplicationService;
+        private readonly IPermissionAppService _permissionAppService;
         private readonly ClaimsPrincipal _contextUser;
 
         public PermissionApplicationServiceTests()
@@ -19,7 +19,7 @@ namespace Kodkod.Application.Tests
             var permissionRepository = Substitute.For<IRepository<Permission>>();
             permissionRepository.GetAllAsync()
                 .Returns(GetInitializedDbContext().Permissions.ToListAsync());
-            _permissionApplicationService = new PermissionApplicationService(permissionRepository);
+            _permissionAppService = new PermissionAppService(permissionRepository);
             _contextUser = new ClaimsPrincipal(
                 new ClaimsIdentity(
                     new List<Claim>
@@ -33,7 +33,7 @@ namespace Kodkod.Application.Tests
         [Fact]
         public void TestCheckPermissionForUser()
         {
-            var isPermissionGranted = _permissionApplicationService.CheckPermissionForUser(_contextUser, ApiUserPermission);
+            var isPermissionGranted = _permissionAppService.CheckPermissionForUser(_contextUser, ApiUserPermission);
             Assert.True(isPermissionGranted);
         }
     }
