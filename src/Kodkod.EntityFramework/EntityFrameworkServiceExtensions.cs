@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Kodkod.EntityFramework.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kodkod.EntityFramework
 {

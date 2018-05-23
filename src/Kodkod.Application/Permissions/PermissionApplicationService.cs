@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using Kodkod.Core.Entities;
 using Kodkod.EntityFramework;
+using Kodkod.EntityFramework.Repositories;
 
 namespace Kodkod.Application.Permissions
 {

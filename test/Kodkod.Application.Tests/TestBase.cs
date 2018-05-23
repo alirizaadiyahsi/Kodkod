@@ -40,21 +40,23 @@ namespace Kodkod.Application.Tests
         {
             var inMemoryContext = GetEmptyDbContext();
 
-            var testUsers = new List<ApplicationUser>
+            var otherTestUsers = new List<ApplicationUser>
             {
                 new ApplicationUser {UserName = "A"},
                 new ApplicationUser {UserName = "B"},
                 new ApplicationUser {UserName = "C"},
                 new ApplicationUser {UserName = "D"},
-                new ApplicationUser {UserName = "E"},
-                AdminUser
+                new ApplicationUser {UserName = "E"}
             };
 
             inMemoryContext.AddRange(ApiUserPermission);
             inMemoryContext.AddRange(AdminRole);
-            inMemoryContext.AddRange(testUsers);
+            inMemoryContext.AddRange(AdminUser);
+            inMemoryContext.AddRange(otherTestUsers);
+
             inMemoryContext.UserRoles.Add(new ApplicationUserRole { RoleId = AdminRole.Id, UserId = AdminUser.Id });
             inMemoryContext.RolePermissions.Add(new RolePermission { PermissionId = ApiUserPermission.Id, RoleId = AdminRole.Id });
+
             inMemoryContext.SaveChanges();
 
             return inMemoryContext;

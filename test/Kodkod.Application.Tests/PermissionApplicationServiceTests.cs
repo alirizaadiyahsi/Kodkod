@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 using Kodkod.Application.Permissions;
-using Kodkod.Application.Users;
 using Kodkod.Core.Entities;
-using Kodkod.EntityFramework;
+using Kodkod.EntityFramework.Repositories;
 using Microsoft.EntityFrameworkCore;
 using NSubstitute;
 using Xunit;

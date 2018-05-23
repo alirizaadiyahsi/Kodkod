@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Query;
 
-namespace Kodkod.EntityFramework
+namespace Kodkod.EntityFramework.Repositories
 {
     public interface IRepository<TEntity> where TEntity : class
     {

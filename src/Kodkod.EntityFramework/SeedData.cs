@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Kodkod.Core.AppConsts;
 using Kodkod.Core.Entities;
@@ -41,6 +40,7 @@ namespace Kodkod.EntityFramework
         };
         #endregion
 
+        #region BuildData
         public static ApplicationUser[] BuildApplicationUsers()
         {
             return new[]
@@ -84,5 +84,6 @@ namespace Kodkod.EntityFramework
                     RoleId = AdminRole.Id
                 }).ToArray();
         }
+        #endregion
     }
 }

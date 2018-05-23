@@ -84,7 +84,7 @@ namespace Kodkod.Web.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Kodkod API", Version = "v1" });
             });
 
             services.AddTransient<KodkodDbContextActionFilter>();
@@ -101,7 +101,7 @@ namespace Kodkod.Web.Api
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Kodkod API V1");
             });
 
             app.UseCors(builder =>

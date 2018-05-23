@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Kodkod.Core.Entities;
-using Kodkod.EntityFramework;
+using Kodkod.EntityFramework.Repositories;
 
 namespace Kodkod.Application.Users
 {
