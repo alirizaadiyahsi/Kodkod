@@ -13,7 +13,7 @@ namespace Kodkod.Application.Tests
 
         public UserApplicationServiceTests()
         {
-            var userRepository = Substitute.For<IRepository<ApplicationUser>>();
+            var userRepository = Substitute.For<IRepository<User>>();
             userRepository.GetAllAsync()
                 .Returns(GetInitializedDbContext().Users.ToListAsync());
             _userAppService = new UserAppService(userRepository);

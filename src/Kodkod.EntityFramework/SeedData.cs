@@ -8,7 +8,7 @@ namespace Kodkod.EntityFramework
     public class SeedData
     {
         #region private fiels
-        private static readonly ApplicationUser AdminUser = new ApplicationUser
+        private static readonly User AdminUser = new User
         {
             Id = Guid.NewGuid(),
             UserName = "admin",
@@ -20,7 +20,7 @@ namespace Kodkod.EntityFramework
             PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
         };
 
-        private static readonly ApplicationUser TestUser = new ApplicationUser
+        private static readonly User TestUser = new User
         {
             Id = Guid.NewGuid(),
             UserName = "testuser",
@@ -32,7 +32,7 @@ namespace Kodkod.EntityFramework
             PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
         };
 
-        private static readonly ApplicationRole AdminRole = new ApplicationRole
+        private static readonly Role AdminRole = new Role
         {
             Id = Guid.NewGuid(),
             Name = "Admin",
@@ -41,7 +41,7 @@ namespace Kodkod.EntityFramework
         #endregion
 
         #region BuildData
-        public static ApplicationUser[] BuildApplicationUsers()
+        public static User[] BuildApplicationUsers()
         {
             return new[]
             {
@@ -50,7 +50,7 @@ namespace Kodkod.EntityFramework
             };
         }
 
-        public static ApplicationRole[] BuildApplicationRoles()
+        public static Role[] BuildApplicationRoles()
         {
             return new[]
             {
@@ -58,11 +58,11 @@ namespace Kodkod.EntityFramework
             };
         }
 
-        public static ApplicationUserRole[] BuildApplicationUserRoles()
+        public static UserRole[] BuildApplicationUserRoles()
         {
             return new[]
             {
-                new ApplicationUserRole
+                new UserRole
                 {
                     RoleId = AdminRole.Id,
                     UserId = AdminUser.Id

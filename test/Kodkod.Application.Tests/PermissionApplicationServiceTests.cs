@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
+using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
 using Kodkod.Core.Entities;
 using Kodkod.EntityFramework.Repositories;
@@ -16,10 +17,10 @@ namespace Kodkod.Application.Tests
 
         public PermissionApplicationServiceTests()
         {
-            var permissionRepository = Substitute.For<IRepository<Permission>>();
-            permissionRepository.GetAllAsync()
-                .Returns(GetInitializedDbContext().Permissions.ToListAsync());
-            _permissionAppService = new PermissionAppService(permissionRepository);
+            var userRepository = Substitute.For<IRepository<User>>();
+            userRepository.GetAllAsync()
+                .Returns(GetInitializedDbContext().Users.ToListAsync());
+            _permissionAppService = new PermissionAppService(userRepository);
             _contextUser = new ClaimsPrincipal(
                 new ClaimsIdentity(
                     new List<Claim>
@@ -31,9 +32,10 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public void TestCheckPermissionForUser()
+        public async Task TestCheckPermissionForUser()
         {
-            var isPermissionGranted = _permissionAppService.CheckPermissionForUser(_contextUser, ApiUserPermission);
+            var isPermissionGranted = await _permissionAppService.CheckPermissionForUserAsync(_contextUser, ApiUserPermission);
+
             Assert.True(isPermissionGranted);
         }
     }

@@ -16,11 +16,11 @@ namespace Kodkod.Web.Api.Controllers
 {
     public class AccountController : BaseController
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<User> _userManager;
         private readonly JwtTokenConfiguration _jwtTokenConfiguration;
 
         public AccountController(
-            UserManager<ApplicationUser> userManager,
+            UserManager<User> userManager,
             IOptions<JwtTokenConfiguration> jwtTokenConfiguration)
         {
             _userManager = userManager;
@@ -68,7 +68,7 @@ namespace Kodkod.Web.Api.Controllers
                 return new BadRequestObjectResult(ErrorHelper.AddErrorToModelState("EmailAlreadyExist", "This email already exists!", ModelState));
             }
 
-            var applicationUser = new ApplicationUser
+            var applicationUser = new User
             {
                 UserName = model.UserName,
                 Email = model.Email,

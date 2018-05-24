@@ -37,7 +37,7 @@ namespace Kodkod.Web.Api
             services.AddDbContext<KodkodDbContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<KodkodDbContext>()
                 .AddDefaultTokenProviders();
 

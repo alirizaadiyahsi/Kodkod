@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Kodkod.Core.Entities
 {
-    public class ApplicationRoleClaim : IdentityRoleClaim<Guid>
+    public class RoleClaim : IdentityRoleClaim<Guid>
     {
 
     }

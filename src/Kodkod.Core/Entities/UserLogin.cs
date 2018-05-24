@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Kodkod.Core.Entities
 {
-    public class ApplicationUserRole : IdentityUserRole<Guid>
+    public class UserLogin : IdentityUserLogin<Guid>
     {
     }
 }

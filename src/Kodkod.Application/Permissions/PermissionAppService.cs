@@ -1,28 +1,30 @@
-﻿using System.Security.Claims;
+﻿using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Kodkod.Core.Entities;
-using Kodkod.EntityFramework;
 using Kodkod.EntityFramework.Repositories;
 
 namespace Kodkod.Application.Permissions
 {
     public class PermissionAppService : IPermissionAppService
     {
-        private readonly IRepository<Permission> _permissionRepository;
-        private readonly IRepository<ApplicationUser> _userRepository;
+        private readonly IRepository<User> _userRepository;
 
-        public PermissionAppService(
-            IRepository<Permission> permissionRepository, 
-            IRepository<ApplicationUser> userRepository)
+        public PermissionAppService(IRepository<User> userRepository)
         {
-            _permissionRepository = permissionRepository;
             _userRepository = userRepository;
         }
 
-        public bool CheckPermissionForUser(ClaimsPrincipal contextUser, Permission requirementPermission)
+        public async Task<bool> CheckPermissionForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
         {
-            var user = _userRepository.GetFirstOrDefaultAsync(u => u.UserName == contextUser.Identity.Name);
-            //todo: check user has permission
-            return true;
+            var user = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == contextUser.Identity.Name);
+
+            //todo: enable lazy loading for work
+            var grantedRoles = user.UserRoles.Select(ur => ur.Role);
+            var grantedPermissions =
+                grantedRoles.Select(r => r.RolePermissions).Select(rp => rp.Select(p => p.Permission));
+
+            return grantedPermissions.Any(p => p.Contains(requirementPermission));
         }
     }
 }

@@ -7,14 +7,14 @@ namespace Kodkod.Application.Users
 {
     public class UserAppService : IUserAppService
     {
-        private readonly IRepository<ApplicationUser> _userRepository;
+        private readonly IRepository<User> _userRepository;
 
-        public UserAppService(IRepository<ApplicationUser> userRepository)
+        public UserAppService(IRepository<User> userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public async Task<List<ApplicationUser>> GetAllAsync()
+        public async Task<List<User>> GetAllAsync()
         {
             return await _userRepository.GetAllAsync();
         }

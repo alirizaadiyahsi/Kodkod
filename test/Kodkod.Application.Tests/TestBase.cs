@@ -8,13 +8,13 @@ namespace Kodkod.Application.Tests
 {
     public class TestBase
     {
-        public static readonly ApplicationUser AdminUser = new ApplicationUser
+        public static readonly User AdminUser = new User
         {
             Id = Guid.NewGuid(),
             UserName = "AdminUser"
         };
 
-        public static readonly ApplicationRole AdminRole = new ApplicationRole
+        public static readonly Role AdminRole = new Role
         {
             Id = Guid.NewGuid(),
             Name = "Admin"
@@ -40,13 +40,13 @@ namespace Kodkod.Application.Tests
         {
             var inMemoryContext = GetEmptyDbContext();
 
-            var otherTestUsers = new List<ApplicationUser>
+            var otherTestUsers = new List<User>
             {
-                new ApplicationUser {UserName = "A"},
-                new ApplicationUser {UserName = "B"},
-                new ApplicationUser {UserName = "C"},
-                new ApplicationUser {UserName = "D"},
-                new ApplicationUser {UserName = "E"}
+                new User {UserName = "A"},
+                new User {UserName = "B"},
+                new User {UserName = "C"},
+                new User {UserName = "D"},
+                new User {UserName = "E"}
             };
 
             inMemoryContext.AddRange(ApiUserPermission);
@@ -54,7 +54,7 @@ namespace Kodkod.Application.Tests
             inMemoryContext.AddRange(AdminUser);
             inMemoryContext.AddRange(otherTestUsers);
 
-            inMemoryContext.UserRoles.Add(new ApplicationUserRole { RoleId = AdminRole.Id, UserId = AdminUser.Id });
+            inMemoryContext.UserRoles.Add(new UserRole { RoleId = AdminRole.Id, UserId = AdminUser.Id });
             inMemoryContext.RolePermissions.Add(new RolePermission { PermissionId = ApiUserPermission.Id, RoleId = AdminRole.Id });
 
             inMemoryContext.SaveChanges();

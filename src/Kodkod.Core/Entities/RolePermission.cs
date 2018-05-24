@@ -6,7 +6,7 @@ namespace Kodkod.Core.Entities
     {
         public Guid RoleId { get; set; }
 
-        public ApplicationRole Role { get; set; }
+        public Role Role { get; set; }
 
         public Guid PermissionId { get; set; }
 
