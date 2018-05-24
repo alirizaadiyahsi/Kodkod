@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
 using Kodkod.Core.Entities;
 using Kodkod.EntityFramework.Repositories;
-using Microsoft.EntityFrameworkCore;
-using NSubstitute;
+using Kodkod.Tests.Shared;
 using Xunit;
 
 namespace Kodkod.Application.Tests
@@ -17,15 +16,13 @@ namespace Kodkod.Application.Tests
 
         public PermissionApplicationServiceTests()
         {
-            var userRepository = Substitute.For<IRepository<User>>();
-            userRepository.GetAllAsync()
-                .Returns(GetInitializedDbContext().Users.ToListAsync());
+            var userRepository = new Repository<User>(GetInitializedDbContext());
             _permissionAppService = new PermissionAppService(userRepository);
             _contextUser = new ClaimsPrincipal(
                 new ClaimsIdentity(
                     new List<Claim>
                     {
-                        new Claim(ClaimTypes.Name, AdminUser.UserName)
+                        new Claim(ClaimTypes.Name, TestUser.UserName)
                     }
                 )
             );

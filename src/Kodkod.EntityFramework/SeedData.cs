@@ -38,6 +38,13 @@ namespace Kodkod.EntityFramework
             Name = "Admin",
             NormalizedName = "ADMIN"
         };
+
+        private static readonly Role MemberRole = new Role
+        {
+            Id = Guid.NewGuid(),
+            Name = "Member",
+            NormalizedName = "MEMBER"
+        };
         #endregion
 
         #region BuildData
@@ -54,7 +61,8 @@ namespace Kodkod.EntityFramework
         {
             return new[]
             {
-                AdminRole
+                AdminRole,
+                MemberRole
             };
         }
 
@@ -66,6 +74,11 @@ namespace Kodkod.EntityFramework
                 {
                     RoleId = AdminRole.Id,
                     UserId = AdminUser.Id
+                },
+                new UserRole
+                {
+                    RoleId = MemberRole.Id,
+                    UserId=TestUser.Id
                 }
             };
         }
@@ -77,12 +90,26 @@ namespace Kodkod.EntityFramework
 
         public static RolePermission[] BuildRolePermissions()
         {
-            return KodkodPermissions.AllPermissions().Select(p =>
+            var rolePermissions = KodkodPermissions.AllPermissions().Select(p =>
                 new RolePermission
                 {
                     PermissionId = p.Id,
                     RoleId = AdminRole.Id
-                }).ToArray();
+                }).ToList();
+
+            var apiUserPermission = KodkodPermissions.AllPermissions()
+                .FirstOrDefault(p => p.Name == KodkodPermissions.ApiUser);
+
+            if (apiUserPermission != null)
+            {
+                rolePermissions.Add(new RolePermission
+                {
+                    PermissionId = apiUserPermission.Id,
+                    RoleId = MemberRole.Id
+                });
+            }
+
+            return rolePermissions.ToArray();
         }
         #endregion
     }

@@ -10,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Kodkod.Application\Kodkod.Application.csproj" />
     <ProjectReference Include="..\..\src\Kodkod.EntityFramework\Kodkod.EntityFramework.csproj" />
     <ProjectReference Include="..\Kodkod.Tests.Shared\Kodkod.Tests.Shared.csproj" />
   </ItemGroup>

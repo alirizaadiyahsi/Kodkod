@@ -8,6 +8,6 @@ namespace Kodkod.Core.Entities
 
         public string DisplayName { get; set; }
 
-        public ICollection<RolePermission> RolePermissions { get; set; }
+        public virtual ICollection<RolePermission> RolePermissions { get; set; }
     }
 }

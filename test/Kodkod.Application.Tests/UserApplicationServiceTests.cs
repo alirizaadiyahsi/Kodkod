@@ -1,8 +1,7 @@
 ﻿using Kodkod.Application.Users;
 using Kodkod.Core.Entities;
 using Kodkod.EntityFramework.Repositories;
-using Microsoft.EntityFrameworkCore;
-using NSubstitute;
+using Kodkod.Tests.Shared;
 using Xunit;
 
 namespace Kodkod.Application.Tests
@@ -13,9 +12,8 @@ namespace Kodkod.Application.Tests
 
         public UserApplicationServiceTests()
         {
-            var userRepository = Substitute.For<IRepository<User>>();
-            userRepository.GetAllAsync()
-                .Returns(GetInitializedDbContext().Users.ToListAsync());
+            var userRepository = new Repository<User>(GetInitializedDbContext());
+
             _userAppService = new UserAppService(userRepository);
         }
 

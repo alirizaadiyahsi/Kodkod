@@ -6,8 +6,8 @@ namespace Kodkod.Core.Entities
 {
     public class Role : IdentityRole<Guid>
     {
-        public ICollection<RolePermission> RolePermissions { get; set; }
+        public virtual ICollection<RolePermission> RolePermissions { get; set; }
 
-        public ICollection<UserRole> UserRoles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

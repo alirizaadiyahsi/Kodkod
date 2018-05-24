@@ -25,7 +25,7 @@ namespace Kodkod.EntityFramework.Repositories
             Expression<Func<TEntity, bool>> predicate = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-            bool disableTracking = true)
+            bool disableTracking = false)
         {
             IQueryable<TEntity> query = DbSet;
             if (disableTracking)
@@ -55,8 +55,7 @@ namespace Kodkod.EntityFramework.Repositories
             Expression<Func<TEntity, bool>> predicate = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-            bool disableTracking = true
-        )
+            bool disableTracking = false)
         {
             IQueryable<TEntity> query = DbSet;
             if (disableTracking)

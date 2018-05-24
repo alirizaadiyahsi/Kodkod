@@ -13,20 +13,18 @@ namespace Kodkod.Web.Api.Authentication
             _permissionApp = permissionApp;
         }
 
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
+        protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
         {
             if (context.User == null)
             {
                 context.Fail();
             }
 
-            var hasPermission = _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
+            var hasPermission =await _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
             if (hasPermission)
             {
                 context.Succeed(requirement);
             }
-
-            return Task.CompletedTask;
         }
     }
 }
