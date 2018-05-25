@@ -18,13 +18,10 @@ namespace Kodkod.Application.Permissions
         public async Task<bool> CheckPermissionForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
         {
             var user = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == contextUser.Identity.Name);
-
-            //todo: enable lazy loading for work
             var grantedRoles = user.UserRoles.Select(ur => ur.Role);
-            var grantedPermissions =
-                grantedRoles.Select(r => r.RolePermissions).Select(rp => rp.Select(p => p.Permission));
+            var grantedPermissions = grantedRoles.SelectMany(r => r.RolePermissions).Select(rp => rp.Permission);
 
-            return grantedPermissions.Any(p => p.Contains(requirementPermission));
+            return grantedPermissions.Any(p => p.Name == requirementPermission.Name);
         }
     }
 }

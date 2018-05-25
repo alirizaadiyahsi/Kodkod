@@ -7,6 +7,7 @@ using Kodkod.EntityFramework;
 using Kodkod.Web.Api.ActionFilters;
 using Kodkod.Web.Api.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -35,14 +36,12 @@ namespace Kodkod.Web.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<KodkodDbContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
+                    .UseLazyLoadingProxies());
 
             services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<KodkodDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddSphinxEntityFramework();
-            services.AddKodkodApplication();
 
             services.Configure<JwtTokenConfiguration>(options =>
             {
@@ -87,7 +86,10 @@ namespace Kodkod.Web.Api
                 c.SwaggerDoc("v1", new Info { Title = "Kodkod API", Version = "v1" });
             });
 
-            services.AddTransient<KodkodDbContextActionFilter>();
+            services.AddSphinxEntityFramework();
+            services.AddKodkodApplication();
+            services.AddScoped<IAuthorizationHandler, PermissionHandler>();
+            services.AddScoped<KodkodDbContextActionFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

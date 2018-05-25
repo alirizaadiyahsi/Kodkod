@@ -15,16 +15,27 @@ namespace Kodkod.Web.Api.Authentication
 
         protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context, PermissionRequirement requirement)
         {
-            if (context.User == null)
+            if (context.User == null || !context.User.Identity.IsAuthenticated)
             {
                 context.Fail();
             }
 
-            var hasPermission =await _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
-            if (hasPermission)
+            //todo: refactor following code. try-catch and if-block looks ugly
+            //think a global exception handler
+            try
             {
-                context.Succeed(requirement);
+                var hasPermission = await _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
+                if (!hasPermission)
+                {
+                    context.Fail();
+                }
             }
+            catch (System.Exception)
+            {
+                context.Fail();
+            }
+
+            context.Succeed(requirement);
         }
     }
 }

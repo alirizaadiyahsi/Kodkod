@@ -383,3 +383,76 @@ System.Reflection.TargetParameterCountException: Parameter count mismatch.
 2018-05-24 21:55:27.681 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
 2018-05-24 21:55:28.081 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
 2018-05-24 21:55:28.260 +03:00 [INF] Request finished in 180.6985ms 404 
+2018-05-25 11:52:29.737 +03:00 [INF] Starting web host
+2018-05-25 11:52:30.574 +03:00 [INF] User profile is available. Using 'C:\Users\aliriza\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2018-05-25 11:52:30.977 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/values  
+2018-05-25 11:52:31.145 +03:00 [INF] Request finished in 169.5519ms 404 
+2018-05-25 11:52:31.190 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/favicon.ico  
+2018-05-25 11:52:31.192 +03:00 [INF] Request finished in 1.7433ms 404 
+2018-05-25 11:52:56.197 +03:00 [INF] Request starting HTTP/1.1 POST http://localhost:60320/api/account/login application/json 41
+2018-05-25 11:52:56.329 +03:00 [INF] Route matched with {action = "Login", controller = "Account"}. Executing action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api)
+2018-05-25 11:52:56.400 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) with arguments (["Kodkod.Web.Api.ViewModels.LoginViewModel"]) - Validation state: "Valid"
+2018-05-25 11:52:56.740 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-25 11:52:56.981 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2018-05-25 11:52:57.069 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[ConcurrencyStamp], [u].[Email], [u].[EmailConfirmed], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [User] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0
+2018-05-25 11:52:57.156 +03:00 [INF] Executed DbCommand (13ms) [Parameters=[@p14='?' (DbType = Guid), @p0='?' (DbType = Int32), @p1='?' (Size = 4000), @p15='?' (Size = 4000), @p2='?' (Size = 256), @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTimeOffset), @p6='?' (Size = 256), @p7='?' (Size = 256), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [User] SET [AccessFailedCount] = @p0, [ConcurrencyStamp] = @p1, [Email] = @p2, [EmailConfirmed] = @p3, [LockoutEnabled] = @p4, [LockoutEnd] = @p5, [NormalizedEmail] = @p6, [NormalizedUserName] = @p7, [PasswordHash] = @p8, [PhoneNumber] = @p9, [PhoneNumberConfirmed] = @p10, [SecurityStamp] = @p11, [TwoFactorEnabled] = @p12, [UserName] = @p13
+WHERE [Id] = @p14 AND [ConcurrencyStamp] = @p15;
+SELECT @@ROWCOUNT;
+2018-05-25 11:52:57.186 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 770.3945ms.
+2018-05-25 11:52:57.208 +03:00 [INF] Executing ObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2018-05-25 11:52:57.223 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.AccountController.Login (Kodkod.Web.Api) in 889.12340000000006ms
+2018-05-25 11:52:57.236 +03:00 [INF] Request finished in 1038.8538ms 200 application/json; charset=utf-8
+2018-05-25 11:53:09.767 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/admin/dashboard application/json 
+2018-05-25 11:53:09.778 +03:00 [INF] Successfully validated the token.
+2018-05-25 11:53:09.780 +03:00 [INF] Request finished in 12.8623ms 404 
+2018-05-25 11:53:20.614 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test  
+2018-05-25 11:53:20.618 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-25 11:53:20.623 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-25 11:53:20.623 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.33340000000000003ms.
+2018-05-25 11:53:20.624 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-25 11:53:20.625 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-25 11:53:20.626 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) in 7.9565ms
+2018-05-25 11:53:20.626 +03:00 [INF] Request finished in 12.4343ms 200 application/json; charset=utf-8
+2018-05-25 11:53:28.072 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test application/json 
+2018-05-25 11:53:28.073 +03:00 [INF] Successfully validated the token.
+2018-05-25 11:53:28.074 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-25 11:53:28.074 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-25 11:53:28.074 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.048600000000000004ms.
+2018-05-25 11:53:28.075 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-25 11:53:28.075 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-25 11:53:28.075 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) in 1.6037000000000001ms
+2018-05-25 11:53:28.075 +03:00 [INF] Request finished in 3.5681ms 200 application/json; charset=utf-8
+2018-05-25 11:53:35.601 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test/5 application/json 
+2018-05-25 11:53:35.601 +03:00 [INF] Successfully validated the token.
+2018-05-25 11:53:35.605 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-25 11:53:35.606 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) with arguments (["5"]) - Validation state: "Valid"
+2018-05-25 11:53:35.607 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.42010000000000003ms.
+2018-05-25 11:53:35.608 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-25 11:53:35.608 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2018-05-25 11:53:35.609 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) in 3.0339ms
+2018-05-25 11:53:35.609 +03:00 [INF] Request finished in 7.8071ms 200 text/plain; charset=utf-8
+2018-05-25 11:54:11.663 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test/AuthorizedGet/5 application/json 
+2018-05-25 11:54:11.663 +03:00 [INF] Successfully validated the token.
+2018-05-25 11:54:11.666 +03:00 [INF] Route matched with {action = "AuthorizedGet", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.AuthorizedGet (Kodkod.Web.Api)
+2018-05-25 11:54:11.679 +03:00 [INF] Authorization failed.
+2018-05-25 11:54:11.681 +03:00 [INF] Authorization failed for the request at filter 'Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter'.
+2018-05-25 11:54:11.685 +03:00 [INF] Executing ForbidResult with authentication schemes ([]).
+2018-05-25 11:54:11.689 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2018-05-25 11:54:11.689 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.AuthorizedGet (Kodkod.Web.Api) in 22.8977ms
+2018-05-25 11:54:11.689 +03:00 [INF] Request finished in 26.5758ms 403 
+2018-05-25 11:55:30.528 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:60320/api/test  
+2018-05-25 11:55:30.528 +03:00 [INF] Route matched with {action = "Get", controller = "Test"}. Executing action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api)
+2018-05-25 11:55:30.529 +03:00 [INF] Executing action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) - Validation state: "Valid"
+2018-05-25 11:55:30.529 +03:00 [INF] Executed action method Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 0.0094ms.
+2018-05-25 11:55:30.529 +03:00 [INF] Entity Framework Core 2.1.0-rc1-32029 initialized 'KodkodDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2018-05-25 11:55:30.530 +03:00 [INF] Executing ObjectResult, writing value of type 'System.String[]'.
+2018-05-25 11:55:30.530 +03:00 [INF] Executed action Kodkod.Web.Api.Controllers.TestController.Get (Kodkod.Web.Api) in 1.5546ms
+2018-05-25 11:55:30.530 +03:00 [INF] Request finished in 2.4508ms 200 application/json; charset=utf-8
