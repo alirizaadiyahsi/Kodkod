@@ -3,10 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Kodkod.EntityFramework
 {
-    //todo: rename all these extensions
-    public static class EntityFrameworkServiceExtensions
+    public static class EntityFrameworkServiceCollectionExtensions
     {
-        public static IServiceCollection AddSphinxEntityFramework(this IServiceCollection services)
+        public static IServiceCollection AddKodkodEntityFramework(this IServiceCollection services)
         {
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<KodkodDbContext>();

@@ -86,7 +86,7 @@ namespace Kodkod.Web.Api
                 c.SwaggerDoc("v1", new Info { Title = "Kodkod API", Version = "v1" });
             });
 
-            services.AddSphinxEntityFramework();
+            services.AddKodkodEntityFramework();
             services.AddKodkodApplication();
             services.AddScoped<IAuthorizationHandler, PermissionHandler>();
             services.AddScoped<KodkodDbContextActionFilter>();

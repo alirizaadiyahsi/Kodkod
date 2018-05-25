@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Kodkod.Application
 {
-    public static class ApplicationServiceExtensions
+    public static class ApplicationServiceCollectionExtensions
     {
         public static IServiceCollection AddKodkodApplication(this IServiceCollection services)
         {
