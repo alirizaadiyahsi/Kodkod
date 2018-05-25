@@ -21,13 +21,13 @@ namespace Kodkod.Web.Api.Authentication
             }
 
             //todo: refactor following code. try-catch and if-block looks ugly
-            //think a global exception handler
+            //think a global place to handle exception
             try
             {
                 var hasPermission = await _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
-                if (!hasPermission)
+                if (hasPermission)
                 {
-                    context.Fail();
+                    context.Succeed(requirement);
                 }
             }
             catch (System.Exception)
@@ -35,7 +35,7 @@ namespace Kodkod.Web.Api.Authentication
                 context.Fail();
             }
 
-            context.Succeed(requirement);
+            context.Fail();
         }
     }
 }
