@@ -68,7 +68,6 @@ namespace Kodkod.EntityFramework
                 b.HasData(SeedData.BuildApplicationUserRoles());
             }));
 
-
             modelBuilder.Entity<UserClaim>().ToTable("UserClaim");
             modelBuilder.Entity<UserLogin>().ToTable("UserLogin");
             modelBuilder.Entity<RoleClaim>().ToTable("RoleClaim");

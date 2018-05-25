@@ -103,8 +103,7 @@ namespace Kodkod.Web.Api.Controllers
                 return new ClaimsIdentity(new GenericIdentity(userName, "Token"), new[]
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, userName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    new Claim(KodkodClaimTypes.ApiUserRole, KodkodClaimValues.ApiAccess)
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
                 });
             }
 

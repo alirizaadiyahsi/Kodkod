@@ -17,25 +17,14 @@ namespace Kodkod.Web.Api.Authentication
         {
             if (context.User == null || !context.User.Identity.IsAuthenticated)
             {
-                context.Fail();
+                return;
             }
 
-            //todo: refactor following code. try-catch and if-block looks ugly
-            //think a global place to handle exception
-            try
+            var hasPermission = await _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
+            if (hasPermission)
             {
-                var hasPermission = await _permissionApp.CheckPermissionForUserAsync(context.User, requirement.Permission);
-                if (hasPermission)
-                {
-                    context.Succeed(requirement);
-                }
+                context.Succeed(requirement);
             }
-            catch (System.Exception)
-            {
-                context.Fail();
-            }
-
-            context.Fail();
         }
     }
 }
