@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Kodkod.Core.AppConsts;
+using Kodkod.Core.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,14 +8,14 @@ namespace Kodkod.Web.Api.Controllers
     public class TestController : BaseController
     {
         [HttpGet("[action]")]
-        [Authorize(Policy = KodkodPermissions.ApiUser)]
+        [Authorize(Policy = PermissionsConsts.ApiUser)]
         public IEnumerable<string> AuthorizedGet()
         {
             return new string[] { "value1", "value2" };
         }
 
         [HttpGet("[action]/{id}")]
-        [Authorize(Policy = KodkodPermissions.ApiUser)]
+        [Authorize(Policy = PermissionsConsts.ApiUser)]
         public string AuthorizedGet(int id)
         {
             return "value";

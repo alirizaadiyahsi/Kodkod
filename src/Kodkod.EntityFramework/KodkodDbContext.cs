@@ -1,5 +1,7 @@
 ﻿using System;
 using Kodkod.Core.Entities;
+using Kodkod.Core.Roles;
+using Kodkod.Core.Users;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

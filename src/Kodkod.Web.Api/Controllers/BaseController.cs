@@ -1,4 +1,4 @@
-﻿using Kodkod.Core.AppConsts;
+﻿using Kodkod.Core.Permissions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +9,7 @@ namespace Kodkod.Web.Api.Controllers
     {
     }
 
-    [Authorize(Policy = KodkodPermissions.ApiUser)]
+    [Authorize(Policy = PermissionsConsts.ApiUser)]
     public class AuthorizedController : BaseController
     {
 

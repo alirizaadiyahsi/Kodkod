@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Kodkod.Core.Entities;
 
-namespace Kodkod.Core.AppConsts
+namespace Kodkod.Core.Permissions
 {
-    public class KodkodPermissions
+    public class PermissionsConsts
     {
         public const string ApiUser = "ApiUser";
 

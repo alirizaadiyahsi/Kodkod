@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Kodkod.Core.AppConsts;
 using Kodkod.Core.Entities;
+using Kodkod.Core.Permissions;
+using Kodkod.Core.Roles;
+using Kodkod.Core.Users;
 
 namespace Kodkod.EntityFramework
 {
@@ -85,20 +87,20 @@ namespace Kodkod.EntityFramework
 
         public static Permission[] BuildPermissions()
         {
-            return KodkodPermissions.AllPermissions().ToArray();
+            return PermissionsConsts.AllPermissions().ToArray();
         }
 
         public static RolePermission[] BuildRolePermissions()
         {
-            var rolePermissions = KodkodPermissions.AllPermissions().Select(p =>
+            var rolePermissions = PermissionsConsts.AllPermissions().Select(p =>
                 new RolePermission
                 {
                     PermissionId = p.Id,
                     RoleId = AdminRole.Id
                 }).ToList();
 
-            var apiUserPermission = KodkodPermissions.AllPermissions()
-                .FirstOrDefault(p => p.Name == KodkodPermissions.ApiUser);
+            var apiUserPermission = PermissionsConsts.AllPermissions()
+                .FirstOrDefault(p => p.Name == PermissionsConsts.ApiUser);
 
             if (apiUserPermission != null)
             {

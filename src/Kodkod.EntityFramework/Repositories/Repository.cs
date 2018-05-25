@@ -20,7 +20,6 @@ namespace Kodkod.EntityFramework.Repositories
             DbSet = DbContext.Set<TEntity>();
         }
 
-        //todo: change this to paged list
         public async Task<List<TEntity>> GetAllAsync(
             Expression<Func<TEntity, bool>> predicate = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,

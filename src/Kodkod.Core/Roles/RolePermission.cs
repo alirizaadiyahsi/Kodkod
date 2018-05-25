@@ -1,6 +1,7 @@
 ﻿using System;
+using Kodkod.Core.Entities;
 
-namespace Kodkod.Core.Entities
+namespace Kodkod.Core.Roles
 {
     public class RolePermission
     {

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Kodkod.Core.Entities;
 using Microsoft.AspNetCore.Identity;
 
-namespace Kodkod.Core.Entities
+namespace Kodkod.Core.Users
 {
     public class User : IdentityUser<Guid>
     {

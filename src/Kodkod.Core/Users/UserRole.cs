@@ -1,7 +1,8 @@
 ﻿using System;
+using Kodkod.Core.Roles;
 using Microsoft.AspNetCore.Identity;
 
-namespace Kodkod.Core.Entities
+namespace Kodkod.Core.Users
 {
     public class UserRole : IdentityUserRole<Guid>
     {

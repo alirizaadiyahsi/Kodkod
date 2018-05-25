@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Kodkod.Core.Entities;
+using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 
 namespace Kodkod.Application.Permissions

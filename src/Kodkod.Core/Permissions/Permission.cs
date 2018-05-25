@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Kodkod.Core.Roles;
 
 namespace Kodkod.Core.Entities
 {

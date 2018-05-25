@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Text;
 using Kodkod.Application;
-using Kodkod.Core.AppConsts;
 using Kodkod.Core.Entities;
+using Kodkod.Core.Permissions;
+using Kodkod.Core.Roles;
+using Kodkod.Core.Users;
 using Kodkod.EntityFramework;
 using Kodkod.Web.Api.ActionFilters;
 using Kodkod.Web.Api.Authentication;
@@ -70,7 +72,7 @@ namespace Kodkod.Web.Api
 
             services.AddAuthorization(options =>
             {
-                foreach (var permission in KodkodPermissions.AllPermissions())
+                foreach (var permission in PermissionsConsts.AllPermissions())
                 {
                     options.AddPolicy(permission.Name,
                         policy => policy.Requirements.Add(new PermissionRequirement(permission)));
