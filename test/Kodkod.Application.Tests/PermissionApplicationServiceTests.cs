@@ -17,11 +17,10 @@ namespace Kodkod.Application.Tests
     {
         private readonly IPermissionAppService _permissionAppService;
         private readonly ClaimsPrincipal _contextUser;
-        private readonly KodkodDbContext _kodkodDbContext;
+        private readonly KodkodDbContext _kodkodDbContext = GetInitializedDbContext();
 
         public PermissionApplicationServiceTests()
         {
-            _kodkodDbContext = GetInitializedDbContext();
             var userRepository = new Repository<User>(_kodkodDbContext);
             var permissionRepository = new Repository<Permission>(_kodkodDbContext);
 

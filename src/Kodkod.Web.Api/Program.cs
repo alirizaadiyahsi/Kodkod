@@ -37,7 +37,6 @@ namespace Kodkod.Web.Api
                 }
 
                 host.Run();
-
                 return 0;
             }
             catch (Exception ex)

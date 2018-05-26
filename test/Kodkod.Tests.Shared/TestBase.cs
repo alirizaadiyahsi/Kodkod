@@ -64,7 +64,7 @@ namespace Kodkod.Tests.Shared
             RoleId = MemberRole.Id
         };
 
-        public KodkodDbContext GetEmptyDbContext()
+        public static KodkodDbContext GetEmptyDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<KodkodDbContext>();
             optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
@@ -75,7 +75,7 @@ namespace Kodkod.Tests.Shared
             return inMemoryContext;
         }
 
-        public KodkodDbContext GetInitializedDbContext()
+        public static KodkodDbContext GetInitializedDbContext()
         {
             var inMemoryContext = GetEmptyDbContext();
 
