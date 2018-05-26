@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
@@ -78,6 +79,20 @@ namespace Kodkod.EntityFramework.Repositories
             }
 
             return await query.FirstOrDefaultAsync();
+        }
+
+        public Task InsertAsync(
+            IEnumerable<TEntity> entities, 
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return DbSet.AddRangeAsync(entities, cancellationToken);
+        }
+
+        public Task InsertAsync(
+            TEntity entity, 
+            CancellationToken cancellationToken = default(CancellationToken))
+        {
+            return DbSet.AddAsync(entity, cancellationToken);
         }
     }
 }

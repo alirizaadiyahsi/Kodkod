@@ -1,6 +1,9 @@
 ﻿using System;
+using Kodkod.Application.Permissions;
+using Kodkod.Core.Permissions;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 
@@ -26,7 +29,14 @@ namespace Kodkod.Web.Api
             try
             {
                 Log.Information("Starting web host");
-                BuildWebHost(args).Run();
+                var host = BuildWebHost(args);
+                using (var scope = host.Services.CreateScope())
+                {
+                    var permissionAppService = scope.ServiceProvider.GetRequiredService<IPermissionAppService>();
+                    permissionAppService.InitializePermissions(PermissionConsts.AllPermissions());
+                }
+
+                host.Run();
 
                 return 0;
             }

@@ -18,7 +18,7 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async void TestGetAll()
+        public async void TestGetAllAsync()
         {
             var users = await _userAppService.GetAllAsync();
             Assert.NotNull(users);

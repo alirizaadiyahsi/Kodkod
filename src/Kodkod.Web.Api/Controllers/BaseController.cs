@@ -9,7 +9,7 @@ namespace Kodkod.Web.Api.Controllers
     {
     }
 
-    [Authorize(Policy = PermissionsConsts.ApiUser)]
+    [Authorize(Policy = PermissionConsts.ApiUser)]
     public class AuthorizedController : BaseController
     {
 

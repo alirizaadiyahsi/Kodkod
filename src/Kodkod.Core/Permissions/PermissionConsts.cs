@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace Kodkod.Core.Permissions
 {
-    public class PermissionsConsts
+    //todo: code smell: write more generic
+    public class PermissionConsts
     {
         public const string ApiUser = "ApiUser";
 

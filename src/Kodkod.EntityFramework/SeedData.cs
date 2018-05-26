@@ -86,20 +86,20 @@ namespace Kodkod.EntityFramework
 
         public static Permission[] BuildPermissions()
         {
-            return PermissionsConsts.AllPermissions().ToArray();
+            return PermissionConsts.AllPermissions().ToArray();
         }
 
         public static RolePermission[] BuildRolePermissions()
         {
-            var rolePermissions = PermissionsConsts.AllPermissions().Select(p =>
+            var rolePermissions = PermissionConsts.AllPermissions().Select(p =>
                 new RolePermission
                 {
                     PermissionId = p.Id,
                     RoleId = AdminRole.Id
                 }).ToList();
 
-            var apiUserPermission = PermissionsConsts.AllPermissions()
-                .FirstOrDefault(p => p.Name == PermissionsConsts.ApiUser);
+            var apiUserPermission = PermissionConsts.AllPermissions()
+                .FirstOrDefault(p => p.Name == PermissionConsts.ApiUser);
 
             if (apiUserPermission != null)
             {

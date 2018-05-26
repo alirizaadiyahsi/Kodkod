@@ -71,7 +71,7 @@ namespace Kodkod.Web.Api
 
             services.AddAuthorization(options =>
             {
-                foreach (var permission in PermissionsConsts.AllPermissions())
+                foreach (var permission in PermissionConsts.AllPermissions())
                 {
                     options.AddPolicy(permission.Name,
                         policy => policy.Requirements.Add(new PermissionRequirement(permission)));
@@ -87,8 +87,6 @@ namespace Kodkod.Web.Api
                 c.SwaggerDoc("v1", new Info { Title = "Kodkod API", Version = "v1" });
             });
 
-            //todo: Create an extension for Core project and
-            //add a method to check new added permissions to add them to db
             services.AddKodkodEntityFramework();
             services.AddKodkodApplication();
             services.AddScoped<IAuthorizationHandler, PermissionHandler>();
