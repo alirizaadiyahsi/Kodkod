@@ -12,31 +12,31 @@ namespace Kodkod.Tests.Shared
     {
         public static readonly User AdminUser = new User
         {
-            Id = Guid.NewGuid(),
+            Id = new Guid("C41A7761-6645-4E2C-B99D-F9E767B9AC77"),
             UserName = "admin"
         };
 
         public static readonly User TestUser = new User
         {
-            Id = Guid.NewGuid(),
+            Id = new Guid("065E903E-6F7B-42B8-B807-0C4197F9D1BC"),
             UserName = "testuser"
         };
 
         public static readonly Role AdminRole = new Role
         {
-            Id = Guid.NewGuid(),
+            Id = new Guid("F22BCE18-06EC-474A-B9AF-A9DE2A7B8263"),
             Name = "Admin"
         };
 
         public static readonly Role MemberRole = new Role
         {
-            Id = Guid.NewGuid(),
+            Id = new Guid("11D14A89-3A93-4D39-A94F-82B823F0D4CE"),
             Name = "Member"
         };
 
         public static readonly Permission ApiUserPermission = new Permission
         {
-            Id = Guid.NewGuid(),
+            Id = new Guid("41F04B93-8C0E-4AC2-B6BA-63C052A2F02A"),
             Name = "ApiUser"
         };
 

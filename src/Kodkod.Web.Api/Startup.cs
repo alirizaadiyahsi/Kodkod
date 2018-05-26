@@ -87,6 +87,8 @@ namespace Kodkod.Web.Api
                 c.SwaggerDoc("v1", new Info { Title = "Kodkod API", Version = "v1" });
             });
 
+            //todo: Create an extension for Core project and
+            //add a method to check new added permissions to add them to db
             services.AddKodkodEntityFramework();
             services.AddKodkodApplication();
             services.AddScoped<IAuthorizationHandler, PermissionHandler>();

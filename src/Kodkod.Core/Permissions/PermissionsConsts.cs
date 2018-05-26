@@ -11,7 +11,7 @@ namespace Kodkod.Core.Permissions
         {
             DisplayName = "Api user",
             Name = ApiUser,
-            Id = Guid.NewGuid()
+            Id = new Guid("28126FFD-51C2-4201-939C-B64E3DF43B9D")
         };
 
         public static List<Permission> AllPermissions()
