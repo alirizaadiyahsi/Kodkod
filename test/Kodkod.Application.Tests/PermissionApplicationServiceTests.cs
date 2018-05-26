@@ -31,7 +31,7 @@ namespace Kodkod.Application.Tests
         [Fact]
         public async Task TestCheckPermissionForUser()
         {
-            var isPermissionGranted = await _permissionAppService.CheckPermissionForUserAsync(_contextUser, ApiUserPermission);
+            var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForUserAsync(_contextUser, ApiUserPermission);
 
             Assert.True(isPermissionGranted);
         }

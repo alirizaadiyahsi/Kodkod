@@ -6,6 +6,6 @@ namespace Kodkod.Application.Permissions
 {
     public interface IPermissionAppService
     {
-        Task<bool> CheckPermissionForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission);
+        Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission);
     }
 }

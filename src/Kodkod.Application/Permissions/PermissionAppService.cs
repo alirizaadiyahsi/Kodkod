@@ -16,7 +16,7 @@ namespace Kodkod.Application.Permissions
             _userRepository = userRepository;
         }
 
-        public async Task<bool> CheckPermissionForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
+        public async Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
         {
             var user = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == contextUser.Identity.Name);
             if (user==null)
