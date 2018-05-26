@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Kodkod.Core.Entities;
 using Kodkod.Core.Roles;
 
-namespace Kodkod.Core.Entities
+namespace Kodkod.Core.Permissions
 {
     public class Permission : BaseEntity
     {

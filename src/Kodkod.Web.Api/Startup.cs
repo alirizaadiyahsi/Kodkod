@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using Kodkod.Application;
-using Kodkod.Core.Entities;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
 using Kodkod.Core.Users;

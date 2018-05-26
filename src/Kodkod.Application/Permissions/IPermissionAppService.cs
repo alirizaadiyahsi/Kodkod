@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using System.Threading.Tasks;
-using Kodkod.Core.Entities;
+using Kodkod.Core.Permissions;
 
 namespace Kodkod.Application.Permissions
 {

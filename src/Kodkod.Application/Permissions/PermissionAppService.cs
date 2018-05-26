@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Kodkod.Core.Entities;
+using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 

@@ -3,7 +3,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using Kodkod.Core.Entities;
 using Kodkod.Core.Users;
 using Kodkod.Web.Api.Authentication;
 using Kodkod.Web.Api.Helpers;

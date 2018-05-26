@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Kodkod.Core.Entities;
 
 namespace Kodkod.Core.Permissions
 {

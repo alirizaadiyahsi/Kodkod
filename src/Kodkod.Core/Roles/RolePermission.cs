@@ -1,5 +1,5 @@
 ﻿using System;
-using Kodkod.Core.Entities;
+using Kodkod.Core.Permissions;
 
 namespace Kodkod.Core.Roles
 {

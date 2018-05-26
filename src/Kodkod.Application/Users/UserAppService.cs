@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Kodkod.Core.Entities;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 

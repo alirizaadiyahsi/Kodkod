@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Kodkod.Core.Entities;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
 using Kodkod.Core.Users;

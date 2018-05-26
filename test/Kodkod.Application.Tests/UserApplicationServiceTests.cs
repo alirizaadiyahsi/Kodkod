@@ -1,5 +1,4 @@
 ﻿using Kodkod.Application.Users;
-using Kodkod.Core.Entities;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 using Kodkod.Tests.Shared;

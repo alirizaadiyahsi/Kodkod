@@ -1,4 +1,4 @@
-﻿using Kodkod.Core.Entities;
+﻿using Kodkod.Core.Permissions;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Kodkod.Web.Api.Authentication
