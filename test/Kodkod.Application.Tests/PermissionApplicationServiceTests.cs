@@ -36,6 +36,14 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
+        public async void TestGetAllAsync()
+        {
+            var permissions = await _permissionAppService.GetAllAsync();
+            Assert.NotNull(permissions);
+            Assert.True(permissions.Count >= 0);
+        }
+
+        [Fact]
         public async Task TestIsPermissionGrantedForUserAsync()
         {
             var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForUserAsync(_contextUser, ApiUserPermission);
@@ -58,7 +66,7 @@ namespace Kodkod.Application.Tests
 
             await _permissionAppService.InitializePermissions(permissions);
             await _kodkodDbContext.SaveChangesAsync();
-            
+
             var latestPermissionsCount = (await _permissionAppService.GetAllAsync()).Count;
             Assert.Equal(latestPermissionsCount, PermissionConsts.AllPermissions().Count + 1);
         }
