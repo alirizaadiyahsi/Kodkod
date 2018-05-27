@@ -58,6 +58,7 @@ namespace Kodkod.Application.Tests
 
             await _permissionAppService.InitializePermissions(permissions);
             await _kodkodDbContext.SaveChangesAsync();
+            
             var latestPermissionsCount = (await _permissionAppService.GetAllAsync()).Count;
             Assert.Equal(latestPermissionsCount, PermissionConsts.AllPermissions().Count + 1);
         }
