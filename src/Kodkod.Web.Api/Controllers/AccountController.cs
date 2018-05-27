@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Kodkod.Core.Users;
 using Kodkod.Web.Api.ViewModels;
 using Kodkod.Web.Core.Authentication;
+using Kodkod.Web.Core.Controllers;
 using Kodkod.Web.Core.Helpers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

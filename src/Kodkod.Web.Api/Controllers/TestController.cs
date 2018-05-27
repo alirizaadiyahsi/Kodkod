@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Kodkod.Core.Permissions;
+using Kodkod.Web.Core.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
