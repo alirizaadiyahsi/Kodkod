@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Kodkod.Web.Api.Authentication
+namespace Kodkod.Web.Core.Authentication
 {
     public class JwtTokenConfiguration
     {

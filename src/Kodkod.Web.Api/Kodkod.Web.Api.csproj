@@ -25,6 +25,7 @@
     <ProjectReference Include="..\Kodkod.Application\Kodkod.Application.csproj" />
     <ProjectReference Include="..\Kodkod.Core\Kodkod.Core.csproj" />
     <ProjectReference Include="..\Kodkod.EntityFramework\Kodkod.EntityFramework.csproj" />
+    <ProjectReference Include="..\Kodkod.Web.Core\Kodkod.Web.Core.csproj" />
   </ItemGroup>
 
 </Project>

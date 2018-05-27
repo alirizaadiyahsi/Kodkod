@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kodkod.Core.Entities
+namespace Kodkod.Core
 {
     public abstract class BaseEntity
     {

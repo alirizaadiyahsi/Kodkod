@@ -11,7 +11,7 @@ namespace Kodkod.Web.Api.Controllers
         [Authorize(Policy = PermissionConsts.ApiUser)]
         public IEnumerable<string> AuthorizedGet()
         {
-            return new string[] { "value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         [HttpGet("[action]/{id}")]
@@ -24,7 +24,7 @@ namespace Kodkod.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         [HttpGet("{id}")]

@@ -2,7 +2,7 @@
 using Kodkod.Application.Permissions;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Kodkod.Web.Api.Authentication
+namespace Kodkod.Web.Core.Authentication
 {
     public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
     {

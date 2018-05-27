@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Kodkod.Core.Entities;
 using Kodkod.Core.Roles;
 
 namespace Kodkod.Core.Permissions

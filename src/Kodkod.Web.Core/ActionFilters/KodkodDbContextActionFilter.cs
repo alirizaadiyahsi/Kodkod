@@ -1,7 +1,7 @@
 ﻿using Kodkod.EntityFramework;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Kodkod.Web.Api.ActionFilters
+namespace Kodkod.Web.Core.ActionFilters
 {
     public class KodkodDbContextActionFilter : IActionFilter
     {

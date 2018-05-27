@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace Kodkod.Web.Api.Helpers
+namespace Kodkod.Web.Core.Helpers
 {
     public static class ErrorHelper
     {
