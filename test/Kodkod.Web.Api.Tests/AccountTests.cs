@@ -13,10 +13,10 @@ using Xunit;
 
 namespace Kodkod.Web.Api.Tests
 {
-    public class JwtTokenAuthenticationTests
+    public class AccountTests
     {
         private readonly HttpClient _client;
-        public JwtTokenAuthenticationTests()
+        public AccountTests()
 
         {
             ServiceCollectionExtensions.UseStaticRegistration = false;
@@ -34,7 +34,7 @@ namespace Kodkod.Web.Api.Tests
         }
 
         [Fact]
-        public async Task UnAuthorizedAccess()
+        public async Task TestUnAuthorizedAccess()
         {
             var response = await _client.GetAsync("/api/test/AuthorizedGet");
 
@@ -42,7 +42,7 @@ namespace Kodkod.Web.Api.Tests
         }
 
         [Fact]
-        public async Task GetToken()
+        public async Task TestGetToken()
         {
             const string bodyString = @"{username: ""testuser"", password: ""123qwe""}";
             var response = await _client.PostAsync("/api/account/login", new StringContent(bodyString, Encoding.UTF8, "application/json"));
@@ -55,7 +55,7 @@ namespace Kodkod.Web.Api.Tests
         }
 
         [Fact]
-        public async Task LoginAndGetItem()
+        public async Task TestAuthorizedAccess()
         {
             const string bodyString = @"{username: ""testuser"", password: ""123qwe""}";
             var response = await _client.PostAsync("/api/account/login", new StringContent(bodyString, Encoding.UTF8, "application/json"));
