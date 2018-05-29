@@ -23,7 +23,6 @@ namespace Kodkod.Application.Tests
         {
             var userRepository = new Repository<User>(_kodkodDbContext);
             var permissionRepository = new Repository<Permission>(_kodkodDbContext);
-
             _permissionAppService = new PermissionAppService(userRepository, permissionRepository);
             _contextUser = new ClaimsPrincipal(
                 new ClaimsIdentity(
@@ -47,12 +46,11 @@ namespace Kodkod.Application.Tests
         public async Task TestIsPermissionGrantedForUserAsync()
         {
             var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForUserAsync(_contextUser, ApiUserPermission);
-
             Assert.True(isPermissionGranted);
         }
 
         [Fact]
-        public async Task TestInitializePermissions()
+        public async Task TestInitializePermissionsAsync()
         {
             var testPermission = new Permission
             {

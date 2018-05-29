@@ -15,7 +15,6 @@ namespace Kodkod.Application.Tests
         public UserApplicationServiceTests()
         {
             var userRepository = new Repository<User>(_kodkodDbContext);
-
             _userAppService = new UserAppService(userRepository);
         }
 
