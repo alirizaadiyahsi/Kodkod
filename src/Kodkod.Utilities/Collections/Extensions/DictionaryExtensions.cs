@@ -7,7 +7,10 @@ namespace Kodkod.Utilities.Collections.Extensions
 {
     public static class DictionaryExtensions
     {
-        public static StringContent ToStringContent(this Dictionary<string, string> dictionary, Encoding encoding, string mediaType)
+        public static StringContent ToStringContent(
+            this Dictionary<string, string> dictionary,
+            Encoding encoding,
+            string mediaType)
         {
             var bodyString = JsonConvert.SerializeObject(dictionary);
 
