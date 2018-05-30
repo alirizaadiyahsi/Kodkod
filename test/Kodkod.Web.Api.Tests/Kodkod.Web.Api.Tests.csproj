@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Kodkod.Utilities\Kodkod.Utilities.csproj" />
     <ProjectReference Include="..\..\src\Kodkod.Web.Api\Kodkod.Web.Api.csproj" />
   </ItemGroup>
 
