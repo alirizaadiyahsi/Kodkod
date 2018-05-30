@@ -46,8 +46,8 @@ namespace Kodkod.Web.Api.Controllers
                 issuer: _jwtTokenConfiguration.Issuer,
                 audience: _jwtTokenConfiguration.Audience,
                 claims: userToVerify.Claims,
-                expires: DateTime.UtcNow.AddDays(60),
-                notBefore: DateTime.UtcNow,
+                expires:_jwtTokenConfiguration.EndDate ,
+                notBefore:_jwtTokenConfiguration.StartDate ,
                 signingCredentials: _jwtTokenConfiguration.SigningCredentials
             );
 

@@ -24,13 +24,24 @@ namespace Kodkod.Web.Api
     {
         private readonly IConfiguration _configuration;
         private readonly SymmetricSecurityKey _signingKey;
+        private readonly JwtTokenConfiguration _jwtTokenConfiguration;
 
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
+
             _signingKey =
                 new SymmetricSecurityKey(
                     Encoding.ASCII.GetBytes(_configuration["Authentication:JwtBearer:SecurityKey"]));
+
+            _jwtTokenConfiguration = new JwtTokenConfiguration
+            {
+                Issuer = _configuration["Authentication:JwtBearer:Issuer"],
+                Audience = _configuration["Authentication:JwtBearer:Audience"],
+                SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256),
+                StartDate = DateTime.UtcNow,
+                EndDate = DateTime.UtcNow.AddDays(60),
+            };
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -44,11 +55,13 @@ namespace Kodkod.Web.Api
                 .AddEntityFrameworkStores<KodkodDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.Configure<JwtTokenConfiguration>(options =>
+            services.Configure<JwtTokenConfiguration>(config =>
             {
-                options.Issuer = _configuration["Authentication:JwtBearer:Issuer"];
-                options.Audience = _configuration["Authentication:JwtBearer:Audience"];
-                options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
+                config.Audience = _jwtTokenConfiguration.Audience;
+                config.EndDate = _jwtTokenConfiguration.EndDate;
+                config.Issuer = _jwtTokenConfiguration.Issuer;
+                config.StartDate = _jwtTokenConfiguration.StartDate;
+                config.SigningCredentials = _jwtTokenConfiguration.SigningCredentials;
             });
 
             services.AddAuthentication(options =>
@@ -63,8 +76,8 @@ namespace Kodkod.Web.Api
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = _configuration["Authentication:JwtBearer:Issuer"],
-                    ValidAudience = _configuration["Authentication:JwtBearer:Audience"],
+                    ValidIssuer = _jwtTokenConfiguration.Issuer,
+                    ValidAudience = _jwtTokenConfiguration.Audience,
                     IssuerSigningKey = _signingKey
                 };
             });
