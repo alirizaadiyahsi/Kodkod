@@ -1,5 +1,4 @@
-﻿using Kodkod.Application.Permissions.Dto;
-using Kodkod.Application.Users;
+﻿using Kodkod.Application.Users;
 using Kodkod.Application.Users.Dto;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework;
