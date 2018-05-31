@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
+using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework;
@@ -37,7 +38,8 @@ namespace Kodkod.Application.Tests
         [Fact]
         public async void TestGetAllAsync()
         {
-            var permissions = await _permissionAppService.GetAllAsync();
+            //todo: fill FilterPermissionsInput object
+            var permissions = await _permissionAppService.GetAllAsync(new FilterPermissionsInput());
             Assert.NotNull(permissions);
             Assert.True(permissions.Count >= 0);
         }
@@ -65,7 +67,8 @@ namespace Kodkod.Application.Tests
             await _permissionAppService.InitializePermissions(permissions);
             await _kodkodDbContext.SaveChangesAsync();
 
-            var latestPermissionsCount = (await _permissionAppService.GetAllAsync()).Count;
+            //todo: fill FilterPermissionsInput object
+            var latestPermissionsCount = (await _permissionAppService.GetAllAsync(new FilterPermissionsInput())).Count;
             Assert.Equal(latestPermissionsCount, PermissionConsts.AllPermissions().Count + 1);
         }
     }

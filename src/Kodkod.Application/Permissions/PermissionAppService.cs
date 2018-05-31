@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
@@ -21,7 +22,8 @@ namespace Kodkod.Application.Permissions
             _permissionRepository = permissionRepository;
         }
 
-        public Task<List<Permission>> GetAllAsync()
+        //todo: return paged result
+        public Task<List<Permission>> GetAllAsync(FilterPermissionsInput input)
         {
             return _permissionRepository.GetAllAsync();
         }

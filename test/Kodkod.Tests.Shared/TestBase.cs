@@ -64,6 +64,16 @@ namespace Kodkod.Tests.Shared
             RoleId = MemberRole.Id
         };
 
+        public static readonly List<User> AllTestUsers = new List<User>
+        {
+            new User {UserName = "A"},
+            new User {UserName = "B"},
+            new User {UserName = "C"},
+            new User {UserName = "D"},
+            AdminUser,
+            TestUser
+        };
+
         public static KodkodDbContext GetEmptyDbContext()
         {
             var optionsBuilder = new DbContextOptionsBuilder<KodkodDbContext>();
@@ -79,18 +89,9 @@ namespace Kodkod.Tests.Shared
         {
             var inMemoryContext = GetEmptyDbContext();
 
-            var otherTestUsers = new List<User>
-            {
-                new User {UserName = "A"},
-                new User {UserName = "B"},
-                new User {UserName = "C"},
-                new User {UserName = "D"}
-            };
-
             inMemoryContext.AddRange(ApiUserPermission);
             inMemoryContext.AddRange(AdminRole, MemberRole);
-            inMemoryContext.AddRange(AdminUser, TestUser);
-            inMemoryContext.AddRange(otherTestUsers);
+            inMemoryContext.AddRange(AllTestUsers);
             inMemoryContext.AddRange(AdminUserRole, TestUserRole);
             inMemoryContext.AddRange(AdminRolePermission, MemberRolePermission);
 
