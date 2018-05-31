@@ -11,19 +11,21 @@ using Microsoft.Extensions.Configuration;
 
 namespace Kodkod.Web.Api.Tests
 {
-   public class ApiTestBase
+    public class ApiTestBase
     {
         protected readonly HttpClient Client;
 
-        private static readonly Dictionary<string, string> TestUserFormData = new Dictionary<string, string>
-        {
-            {"email", "testuser@mail.com"},
-            {"username", "testuser"},
-            {"password", "123qwe"}
-        };
+        private static Dictionary<string, string> _testUserFormData;
 
         public ApiTestBase()
         {
+            _testUserFormData = new Dictionary<string, string>
+            {
+                {"email", "testuser@mail.com"},
+                {"username", "testuser"},
+                {"password", "123qwe"}
+            };
+
             ServiceCollectionExtensions.UseStaticRegistration = false;
             var server = new TestServer(
                 new WebHostBuilder()
@@ -41,7 +43,7 @@ namespace Kodkod.Web.Api.Tests
         protected async Task<HttpResponseMessage> LoginAsTestUserAsync()
         {
             return await Client.PostAsync("/api/account/login",
-                TestUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
+                _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
         }
     }
 }

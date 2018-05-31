@@ -28,7 +28,7 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Login([FromBody]LoginViewModel loginViewModel)
+        public async Task<ActionResult<OkObjectResult>> Login([FromBody]LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
+        public async Task<ActionResult<OkObjectResult>> Register([FromBody]RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {

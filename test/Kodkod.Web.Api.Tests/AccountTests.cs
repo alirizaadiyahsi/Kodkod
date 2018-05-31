@@ -2,6 +2,8 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Kodkod.Core.Users;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
@@ -12,40 +14,42 @@ namespace Kodkod.Web.Api.Tests
         [Fact]
         public async Task TestUnAuthorizedAccessAsync()
         {
-            var response = await Client.GetAsync("/api/test/AuthorizedGet");
-            Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+            var responseGetUsers = await Client.GetAsync("/api/test/GetUsers");
+            Assert.Equal(HttpStatusCode.Unauthorized, responseGetUsers.StatusCode);
         }
 
         [Fact]
         public async Task TestLoginAsync()
         {
-            var response = await LoginAsTestUserAsync();
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var responseLogin = await LoginAsTestUserAsync();
+            Assert.Equal(HttpStatusCode.OK, responseLogin.StatusCode);
         }
 
         [Fact]
         public async Task TestGetTokenAsync()
         {
-            var response = await LoginAsTestUserAsync();
-            var responseString = await response.Content.ReadAsStringAsync();
-            var responseJson = JObject.Parse(responseString);
-            Assert.NotNull((string)responseJson["token"]);
+            var responseLogin = await LoginAsTestUserAsync();
+            var okObjectResult = await responseLogin.Content.ReadAsAsync<OkObjectResult>();
+            var jsonObject = JObject.Parse(okObjectResult.Value.ToString());
+            Assert.NotNull((string)jsonObject["token"]);
         }
 
         [Fact]
         public async Task TestAuthorizedAccessAsync()
         {
-            var response = await LoginAsTestUserAsync();
-            var responseJson = JObject.Parse(await response.Content.ReadAsStringAsync());
+            var responseLogin = await LoginAsTestUserAsync();
+            var responseContent = await responseLogin.Content.ReadAsAsync<OkObjectResult>();
+            var responseJson = JObject.Parse(responseContent.Value.ToString());
             var token = (string)responseJson["token"];
 
-            var requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/test/AuthorizedGet/5");
+            var userName = "testuser";
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, "/api/test/GetUser/" + userName);
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var getValueResponse = await Client.SendAsync(requestMessage);
-            Assert.Equal(HttpStatusCode.OK, getValueResponse.StatusCode);
+            var responseGetUser = await Client.SendAsync(requestMessage);
+            Assert.Equal(HttpStatusCode.OK, responseGetUser.StatusCode);
 
-            var getValueResponseString = await getValueResponse.Content.ReadAsStringAsync();
-            Assert.True(getValueResponseString == "value");
+            var user = await responseGetUser.Content.ReadAsAsync<User>();
+            Assert.True(user.UserName == userName);
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Kodkod.Core.Permissions;
+using Kodkod.Core.Users;
 using Kodkod.Web.Core.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,43 +12,34 @@ namespace Kodkod.Web.Api.Controllers
     {
         [HttpGet("[action]")]
         [Authorize(Policy = PermissionConsts.ApiUser)]
-        public IEnumerable<string> AuthorizedGet()
+        public ActionResult<List<User>> GetUsers()
         {
-            return new[] { "value1", "value2" };
+            var userList = new List<User>
+            {
+                new User
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = "test_user_1"
+                },
+                new User
+                {
+                    Id = Guid.NewGuid(),
+                    UserName = "test_user_2"
+                }
+            };
+
+            return userList;
         }
 
-        [HttpGet("[action]/{id}")]
+        [HttpGet("[action]/{username}")]
         [Authorize(Policy = PermissionConsts.ApiUser)]
-        public string AuthorizedGet(int id)
+        public ActionResult<User> GetUser(string userName)
         {
-            return "value";
-        }
-
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new[] { "value1", "value2" };
-        }
-
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = userName
+            };
         }
     }
 }
