@@ -17,11 +17,16 @@ namespace Kodkod.Web.Api.Tests
         }
 
         [Fact]
-        public async Task TestGetTokenAsync()
+        public async Task TestLoginAsync()
         {
             var response = await LoginAsTestUserAsync();
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
 
+        [Fact]
+        public async Task TestGetTokenAsync()
+        {
+            var response = await LoginAsTestUserAsync();
             var responseString = await response.Content.ReadAsStringAsync();
             var responseJson = JObject.Parse(responseString);
             Assert.NotNull((string)responseJson["token"]);
