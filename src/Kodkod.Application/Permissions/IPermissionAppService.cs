@@ -8,7 +8,7 @@ namespace Kodkod.Application.Permissions
 {
     public interface IPermissionAppService
     {
-        Task<List<Permission>> GetAllAsync(FilterPermissionsInput input);
+        Task<List<Permission>> GetPermissionsAsync(FilterPermissionsInput input);
 
         Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission);
         

@@ -6,6 +6,7 @@ using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
+using Kodkod.Utilities.Collections.PagedList;
 
 namespace Kodkod.Application.Permissions
 {
@@ -23,7 +24,7 @@ namespace Kodkod.Application.Permissions
         }
 
         //todo: return paged result and write test for it
-        public Task<List<Permission>> GetAllAsync(FilterPermissionsInput input)
+        public Task<List<Permission>> GetPermissionsAsync(FilterPermissionsInput input)
         {
             return _permissionRepository.GetAllAsync();
         }

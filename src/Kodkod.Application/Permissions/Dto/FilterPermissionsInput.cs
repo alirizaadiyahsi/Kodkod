@@ -1,6 +1,8 @@
-﻿namespace Kodkod.Application.Permissions.Dto
+﻿using Kodkod.Application.Shared.Dto;
+
+namespace Kodkod.Application.Permissions.Dto
 {
-    public class FilterPermissionsInput
+    public class FilterPermissionsInput : PagedListInput
     {
     }
 }

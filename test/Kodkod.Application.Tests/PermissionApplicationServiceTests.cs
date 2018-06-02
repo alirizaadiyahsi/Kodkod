@@ -38,7 +38,7 @@ namespace Kodkod.Application.Tests
         public async void TestGetAllAsync()
         {
             //todo: fill FilterPermissionsInput object
-            var permissions = await _permissionAppService.GetAllAsync(new FilterPermissionsInput());
+            var permissions = await _permissionAppService.GetPermissionsAsync(new FilterPermissionsInput());
             Assert.NotNull(permissions);
             Assert.True(permissions.Count >= 0);
         }
@@ -67,7 +67,7 @@ namespace Kodkod.Application.Tests
             await _kodkodInMemoryContext.SaveChangesAsync();
 
             //todo: fill FilterPermissionsInput object
-            var latestPermissionsCount = (await _permissionAppService.GetAllAsync(new FilterPermissionsInput())).Count;
+            var latestPermissionsCount = (await _permissionAppService.GetPermissionsAsync(new FilterPermissionsInput())).Count;
             Assert.Equal(latestPermissionsCount, PermissionConsts.AllPermissions().Count + 1);
         }
     }

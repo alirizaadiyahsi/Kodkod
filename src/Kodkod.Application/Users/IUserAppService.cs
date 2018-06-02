@@ -7,6 +7,6 @@ namespace Kodkod.Application.Users
 {
     public interface IUserAppService
     {
-        Task<List<User>> GetAllAsync(FilterUsersInput input);
+        Task<List<User>> GetUsersAsync(FilterUsersInput input);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kodkod.Application
+namespace Kodkod.Application.Shared.Dto
 {
     public class EntityDto
     {

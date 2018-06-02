@@ -16,7 +16,7 @@ namespace Kodkod.Application.Users
         }
 
         //todo: return paged result and write test for it
-        public async Task<List<User>> GetAllAsync(FilterUsersInput input)
+        public async Task<List<User>> GetUsersAsync(FilterUsersInput input)
         {
             return await _userRepository.GetAllAsync();
         }

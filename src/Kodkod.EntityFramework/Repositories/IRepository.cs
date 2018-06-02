@@ -17,14 +17,14 @@ namespace Kodkod.EntityFramework.Repositories
             Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
             bool disableTracking = false);
 
-        Task<IPagedList<TEntity>> GetPagedListAsync(
-            Expression<Func<TEntity, bool>> predicate = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-            int pageIndex = 0,
-            int pageSize = 20,
-            bool disableTracking = false,
-            CancellationToken cancellationToken = default(CancellationToken));
+        //Task<IPagedList<TEntity>> GetPagedListAsync(
+        //    Expression<Func<TEntity, bool>> predicate = null,
+        //    Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+        //    Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+        //    int pageIndex = 0,
+        //    int pageSize = 20,
+        //    bool disableTracking = false,
+        //    CancellationToken cancellationToken = default(CancellationToken));
 
         Task<TEntity> GetFirstOrDefaultAsync(
             Expression<Func<TEntity, bool>> predicate = null,

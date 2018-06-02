@@ -23,7 +23,7 @@ namespace Kodkod.Application.Tests
         public async void TestGetAllAsync()
         {
             //todo: fill FilterUsersInput object
-            var users = await _userAppService.GetAllAsync(new FilterUsersInput());
+            var users = await _userAppService.GetUsersAsync(new FilterUsersInput());
             Assert.NotNull(users);
             Assert.True(users.Count >= 0);
         }
