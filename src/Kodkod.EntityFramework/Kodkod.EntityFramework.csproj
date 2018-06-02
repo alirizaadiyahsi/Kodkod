@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kodkod.Core\Kodkod.Core.csproj" />
+    <ProjectReference Include="..\Kodkod.Utilities\Kodkod.Utilities.csproj" />
   </ItemGroup>
 
 </Project>
