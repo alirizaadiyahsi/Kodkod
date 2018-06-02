@@ -29,9 +29,9 @@ namespace Kodkod.EntityFramework.Tests.Repository
         [Fact]
         public async void TestGetPagedListAsync()
         {
-            var pagedList = await _userRepository.GetPagedListAsync(pageIndex: 1, pageSize: 2);
-            Assert.Equal(2, pagedList.Items.Count);
-            Assert.Equal(1, pagedList.PageIndex);
+            var pagedUserList = await _userRepository.GetPagedListAsync(pageIndex: 1, pageSize: 2);
+            Assert.Equal(2, pagedUserList.Items.Count);
+            Assert.Equal(1, pagedUserList.PageIndex);
         }
 
         [Fact]

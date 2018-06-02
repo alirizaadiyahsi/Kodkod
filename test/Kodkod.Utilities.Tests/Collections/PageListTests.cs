@@ -20,14 +20,14 @@ namespace Kodkod.Utilities.Tests.Collections
             Assert.NotNull(pagedList);
             Assert.Equal(totalUserCount, pagedList.TotalCount);
             Assert.Equal(2, pagedList.Items.Count);
-            Assert.Equal("C", pagedList.Items[0].UserName);
+            Assert.Equal(1, pagedList.PageIndex);
 
-            pagedList = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(0, 2);
+            pagedList = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(0, 3);
 
             Assert.NotNull(pagedList);
             Assert.Equal(totalUserCount, pagedList.TotalCount);
-            Assert.Equal(2, pagedList.Items.Count);
-            Assert.Equal("A", pagedList.Items[0].UserName);
+            Assert.Equal(3, pagedList.Items.Count);
+            Assert.Equal(0, pagedList.PageIndex);
         }
     }
 }
