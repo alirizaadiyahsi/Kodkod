@@ -1,4 +1,5 @@
-﻿using Kodkod.Application.Users;
+﻿using System.Threading.Tasks;
+using Kodkod.Application.Users;
 using Kodkod.Application.Users.Dto;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework;
@@ -20,12 +21,11 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async void TestGetAllAsync()
+        public async Task TestGetAllAsync()
         {
-            //todo: fill FilterUsersInput object
-            var users = await _userAppService.GetUsersAsync(new FilterUsersInput());
-            Assert.NotNull(users);
-            Assert.True(users.Count >= 0);
+            var getUsersInput = new GetUsersInput();
+            var usersList = await _userAppService.GetUsersAsync(getUsersInput);
+            Assert.True(usersList.Items.Count >= 0);
         }
     }
 }

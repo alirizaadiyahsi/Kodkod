@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kodkod.Utilities.Collections.PagedList
+namespace Kodkod.Utilities.PagedList
 {
     public interface IPagedList<T>
     {

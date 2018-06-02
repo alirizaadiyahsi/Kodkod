@@ -20,20 +20,11 @@ namespace Kodkod.EntityFramework.Tests.Repository
         }
 
         [Fact]
-        public async void TestGetAllAsync()
+        public void TestGetAllAsync()
         {
-            var userList = await _userRepository.GetAllAsync();
-            Assert.Equal(_userCount, userList.Count);
+            var userList = _userRepository.GetAll();
+            Assert.Equal(_userCount, userList.Count());
         }
-
-        //todo: remove these line after imlementaion of paged list on appservices
-        //[Fact]
-        //public async void TestGetPagedListAsync()
-        //{
-        //    var pagedUserList = await _userRepository.GetPagedListAsync(pageIndex: 1, pageSize: 2);
-        //    Assert.Equal(2, pagedUserList.Items.Count);
-        //    Assert.Equal(1, pagedUserList.PageIndex);
-        //}
 
         [Fact]
         public async void TestGetFirstOrDefaultAsync()

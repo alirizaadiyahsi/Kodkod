@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kodkod.Utilities.Collections.PagedList.Extensions
+namespace Kodkod.Utilities.PagedList.Extensions
 {
     public static class PagedListExtensions
     {
@@ -13,8 +13,7 @@ namespace Kodkod.Utilities.Collections.PagedList.Extensions
             int pageIndex,
             int pageSize,
             int indexFrom = 0,
-            CancellationToken cancellationToken = default(CancellationToken)
-        )
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (indexFrom > pageIndex)
             {

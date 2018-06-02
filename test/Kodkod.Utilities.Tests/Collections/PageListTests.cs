@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Kodkod.EntityFramework;
 using Kodkod.Tests.Shared;
-using Kodkod.Utilities.Collections.PagedList.Extensions;
+using Kodkod.Utilities.PagedList.Extensions;
 using Xunit;
 
 namespace Kodkod.Utilities.Tests.Collections

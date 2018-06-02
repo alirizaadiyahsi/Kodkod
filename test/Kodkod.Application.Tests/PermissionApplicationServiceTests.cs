@@ -35,12 +35,15 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async void TestGetAllAsync()
+        public async void TestGetPermissionsAsync()
         {
-            //todo: fill FilterPermissionsInput object
-            var permissions = await _permissionAppService.GetPermissionsAsync(new FilterPermissionsInput());
-            Assert.NotNull(permissions);
-            Assert.True(permissions.Count >= 0);
+            var getPermissionsInput = new GetPermissionsInput();
+            var permissionsList = await _permissionAppService.GetPermissionsAsync(getPermissionsInput);
+            Assert.True(permissionsList.Items.Count >= 0);
+
+            getPermissionsInput.Filter = "qwerty";
+            var permissionsListEmpty = await _permissionAppService.GetPermissionsAsync(getPermissionsInput);
+            Assert.True(permissionsListEmpty.Items.Count == 0);
         }
 
         [Fact]
@@ -66,9 +69,8 @@ namespace Kodkod.Application.Tests
             await _permissionAppService.InitializePermissions(permissions);
             await _kodkodInMemoryContext.SaveChangesAsync();
 
-            //todo: fill FilterPermissionsInput object
-            var latestPermissionsCount = (await _permissionAppService.GetPermissionsAsync(new FilterPermissionsInput())).Count;
-            Assert.Equal(latestPermissionsCount, PermissionConsts.AllPermissions().Count + 1);
+            var initializedPermission = _permissionAppService.GetFirstOrDefaultAsync(testPermission.Id);
+            Assert.NotNull(initializedPermission);
         }
     }
 }

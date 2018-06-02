@@ -1,8 +1,11 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Kodkod.Application.Users.Dto;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
+using System.Linq.Dynamic.Core;
+using System.Threading.Tasks;
+using Kodkod.Utilities.PagedList;
+using Kodkod.Utilities.PagedList.Extensions;
+using Kodkod.Utilities.Extensions;
 
 namespace Kodkod.Application.Users
 {
@@ -15,10 +18,15 @@ namespace Kodkod.Application.Users
             _userRepository = userRepository;
         }
 
-        //todo: return paged result and write test for it
-        public async Task<List<User>> GetUsersAsync(FilterUsersInput input)
+        public async Task<IPagedList<User>> GetUsersAsync(GetUsersInput input)
         {
-            return await _userRepository.GetAllAsync();
+            var query = _userRepository.GetAll(
+                    !input.Filter.IsNullOrEmpty(),
+                    predicate => predicate.UserName.Contains(input.Filter) ||
+                                 predicate.Email.Contains(input.Filter))
+                .OrderBy(input.Sorting);
+
+            return await query.ToPagedListAsync(input.PageIndex, input.PageSize);
         }
     }
 }
