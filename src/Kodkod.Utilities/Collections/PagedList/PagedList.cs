@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Kodkod.Utilities.Collections
+namespace Kodkod.Utilities.Collections.PagedList
 {
     public class PagedList<T> : IPagedList<T>
     {

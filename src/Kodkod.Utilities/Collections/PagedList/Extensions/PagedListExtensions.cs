@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Kodkod.Utilities.Collections.Extensions
+namespace Kodkod.Utilities.Collections.PagedList.Extensions
 {
     public static class PagedListExtensions
     {
