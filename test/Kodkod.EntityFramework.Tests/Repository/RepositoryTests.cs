@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 using Kodkod.Tests.Shared;
@@ -10,17 +11,27 @@ namespace Kodkod.EntityFramework.Tests.Repository
     {
         private readonly IRepository<User> _userRepository;
         private readonly KodkodDbContext _kodkodDbContext = GetInitializedDbContext();
+        private readonly int _userCount;
 
         public RepositoryTests()
         {
+            _userCount = _kodkodDbContext.Users.Count();
             _userRepository = new Repository<User>(_kodkodDbContext);
         }
 
         [Fact]
         public async void TestGetAllAsync()
         {
-            var user = await _userRepository.GetAllAsync();
-            Assert.Equal(6, user.Count);
+            var userList = await _userRepository.GetAllAsync();
+            Assert.Equal(_userCount, userList.Count);
+        }
+
+        [Fact]
+        public async void TestGetPagedListAsync()
+        {
+            var pagedList = await _userRepository.GetPagedListAsync(pageIndex: 1, pageSize: 2);
+            Assert.Equal(2, pagedList.Items.Count);
+            Assert.Equal(1, pagedList.PageIndex);
         }
 
         [Fact]

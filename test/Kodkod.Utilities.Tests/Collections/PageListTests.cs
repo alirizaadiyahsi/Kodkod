@@ -14,20 +14,20 @@ namespace Kodkod.Utilities.Tests.Collections
         [Fact]
         public async Task ToPagedListAsyncTest()
         {
-            var page = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(1, 2);
+            var pagedList = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(1, 2);
             var totalUserCount = _kodkodDbContext.Users.Count();
 
-            Assert.NotNull(page);
-            Assert.Equal(totalUserCount, page.TotalCount);
-            Assert.Equal(2, page.Items.Count);
-            Assert.Equal("C", page.Items[0].UserName);
+            Assert.NotNull(pagedList);
+            Assert.Equal(totalUserCount, pagedList.TotalCount);
+            Assert.Equal(2, pagedList.Items.Count);
+            Assert.Equal("C", pagedList.Items[0].UserName);
 
-            page = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(0, 2);
+            pagedList = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(0, 2);
 
-            Assert.NotNull(page);
-            Assert.Equal(totalUserCount, page.TotalCount);
-            Assert.Equal(2, page.Items.Count);
-            Assert.Equal("A", page.Items[0].UserName);
+            Assert.NotNull(pagedList);
+            Assert.Equal(totalUserCount, pagedList.TotalCount);
+            Assert.Equal(2, pagedList.Items.Count);
+            Assert.Equal("A", pagedList.Items[0].UserName);
         }
     }
 }
