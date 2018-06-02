@@ -22,7 +22,7 @@ namespace Kodkod.Application.Permissions
             _permissionRepository = permissionRepository;
         }
 
-        //todo: return paged result
+        //todo: return paged result and write test for it
         public Task<List<Permission>> GetAllAsync(FilterPermissionsInput input)
         {
             return _permissionRepository.GetAllAsync();

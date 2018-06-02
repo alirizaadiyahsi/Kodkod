@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Kodkod.Web.Core.Authentication
 {
+    //todo: write test for class
     public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
         private readonly IPermissionAppService _permissionApp;

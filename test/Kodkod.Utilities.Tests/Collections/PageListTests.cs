@@ -9,20 +9,20 @@ namespace Kodkod.Utilities.Tests.Collections
 {
     public class PageListTests : TestBase
     {
-        private readonly KodkodDbContext _kodkodDbContext = GetInitializedDbContext();
+        private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
 
         [Fact]
         public async Task ToPagedListAsyncTest()
         {
-            var pagedUserList = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(1, 2);
-            var totalUserCount = _kodkodDbContext.Users.Count();
+            var pagedUserList = await _kodkodInMemoryContext.Users.Where(u => u.UserName != null).ToPagedListAsync(1, 2);
+            var totalUserCount = _kodkodInMemoryContext.Users.Count();
 
             Assert.NotNull(pagedUserList);
             Assert.Equal(totalUserCount, pagedUserList.TotalCount);
             Assert.Equal(2, pagedUserList.Items.Count);
             Assert.Equal(1, pagedUserList.PageIndex);
 
-            pagedUserList = await _kodkodDbContext.Users.Where(u => u.UserName != null).ToPagedListAsync(0, 3);
+            pagedUserList = await _kodkodInMemoryContext.Users.Where(u => u.UserName != null).ToPagedListAsync(0, 3);
 
             Assert.NotNull(pagedUserList);
             Assert.Equal(totalUserCount, pagedUserList.TotalCount);

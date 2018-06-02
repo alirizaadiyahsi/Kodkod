@@ -11,11 +11,11 @@ namespace Kodkod.Application.Tests
     public class UserApplicationServiceTests : TestBase
     {
         private readonly IUserAppService _userAppService;
-        private readonly KodkodDbContext _kodkodDbContext = GetInitializedDbContext();
+        private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
 
         public UserApplicationServiceTests()
         {
-            var userRepository = new Repository<User>(_kodkodDbContext);
+            var userRepository = new Repository<User>(_kodkodInMemoryContext);
             _userAppService = new UserAppService(userRepository);
         }
 

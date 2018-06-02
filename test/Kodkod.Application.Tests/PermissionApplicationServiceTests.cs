@@ -17,12 +17,12 @@ namespace Kodkod.Application.Tests
     {
         private readonly IPermissionAppService _permissionAppService;
         private readonly ClaimsPrincipal _contextUser;
-        private readonly KodkodDbContext _kodkodDbContext = GetInitializedDbContext();
+        private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
 
         public PermissionApplicationServiceTests()
         {
-            var userRepository = new Repository<User>(_kodkodDbContext);
-            var permissionRepository = new Repository<Permission>(_kodkodDbContext);
+            var userRepository = new Repository<User>(_kodkodInMemoryContext);
+            var permissionRepository = new Repository<Permission>(_kodkodInMemoryContext);
             _permissionAppService = new PermissionAppService(userRepository, permissionRepository);
             _contextUser = new ClaimsPrincipal(
                 new ClaimsIdentity(
@@ -64,7 +64,7 @@ namespace Kodkod.Application.Tests
             permissions.Add(testPermission);
 
             await _permissionAppService.InitializePermissions(permissions);
-            await _kodkodDbContext.SaveChangesAsync();
+            await _kodkodInMemoryContext.SaveChangesAsync();
 
             //todo: fill FilterPermissionsInput object
             var latestPermissionsCount = (await _permissionAppService.GetAllAsync(new FilterPermissionsInput())).Count;

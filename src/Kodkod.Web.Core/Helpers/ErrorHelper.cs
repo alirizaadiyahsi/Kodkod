@@ -18,6 +18,7 @@ namespace Kodkod.Web.Core.Helpers
         public static ModelStateDictionary AddErrorToModelState(string key, string description, ModelStateDictionary modelState)
         {
             modelState.TryAddModelError(key, description);
+
             return modelState;
         }
     }

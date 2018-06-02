@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Kodkod.Web.Core.ActionFilters
 {
+    //todo: write test for class
     public class KodkodDbContextActionFilter : IActionFilter
     {
         private readonly KodkodDbContext _context;
