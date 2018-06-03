@@ -17,13 +17,13 @@ namespace Kodkod.Web.Api.Tests
         public void TestKodkodDbContextActionFilter()
         {
             var kodkodDbContextActionFilter = new KodkodDbContextActionFilter(KodkodInMemoryContext);
-            var actionContext = new ActionContext(new DefaultHttpContext(),new RouteData(), new ActionDescriptor() );
+            var actionContext = new ActionContext(new DefaultHttpContext(), new RouteData(), new ActionDescriptor());
             var actionExecutedContext = new ActionExecutedContext(actionContext,new List<IFilterMetadata>(), null);
             var testRole = new Role { Name = "test_role", Id = Guid.NewGuid() };
 
             KodkodInMemoryContext.Roles.Add(testRole);
             kodkodDbContextActionFilter.OnActionExecuted(actionExecutedContext);
-
+            
             var insertedTestRole = KodkodInMemoryContext.Roles.Find(testRole.Id);
             Assert.Equal(testRole.Name, insertedTestRole.Name);
         }

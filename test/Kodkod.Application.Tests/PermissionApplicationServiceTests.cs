@@ -58,8 +58,6 @@ namespace Kodkod.Application.Tests
 
             var initializedPermission = _permissionAppService.GetFirstOrDefaultAsync(testPermission.Id);
             Assert.NotNull(initializedPermission);
-
-            //todo: check if permissions are dublicated?
         }
     }
 }
