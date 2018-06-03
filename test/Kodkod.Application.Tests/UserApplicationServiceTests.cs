@@ -2,21 +2,18 @@
 using Kodkod.Application.Users;
 using Kodkod.Application.Users.Dto;
 using Kodkod.Core.Users;
-using Kodkod.EntityFramework;
 using Kodkod.EntityFramework.Repositories;
-using Kodkod.Tests.Shared;
 using Xunit;
 
 namespace Kodkod.Application.Tests
 {
-    public class UserApplicationServiceTests : TestBase
+    public class UserApplicationServiceTests : ApplicationTestBase
     {
         private readonly IUserAppService _userAppService;
-        private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
 
         public UserApplicationServiceTests()
         {
-            var userRepository = new Repository<User>(_kodkodInMemoryContext);
+            var userRepository = new Repository<User>(KodkodInMemoryContext);
             _userAppService = new UserAppService(userRepository);
         }
 

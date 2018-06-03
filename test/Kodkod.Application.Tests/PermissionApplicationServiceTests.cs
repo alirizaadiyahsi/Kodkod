@@ -1,37 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
 using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
-using Kodkod.EntityFramework;
 using Kodkod.EntityFramework.Repositories;
-using Kodkod.Tests.Shared;
 using Xunit;
 
 namespace Kodkod.Application.Tests
 {
-    public class PermissionApplicationServiceTests : TestBase
+    public class PermissionApplicationServiceTests : ApplicationTestBase
     {
         private readonly IPermissionAppService _permissionAppService;
-        private readonly ClaimsPrincipal _contextUser;
-        private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
 
         public PermissionApplicationServiceTests()
         {
-            var userRepository = new Repository<User>(_kodkodInMemoryContext);
-            var permissionRepository = new Repository<Permission>(_kodkodInMemoryContext);
+            var userRepository = new Repository<User>(KodkodInMemoryContext);
+            var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
             _permissionAppService = new PermissionAppService(userRepository, permissionRepository);
-            _contextUser = new ClaimsPrincipal(
-                new ClaimsIdentity(
-                    new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, TestUser.UserName)
-                    }
-                )
-            );
         }
 
         [Fact]
@@ -49,7 +35,8 @@ namespace Kodkod.Application.Tests
         [Fact]
         public async Task TestIsPermissionGrantedForUserAsync()
         {
-            var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForUserAsync(_contextUser, ApiUserPermission);
+            var isPermissionGranted =
+                await _permissionAppService.IsPermissionGrantedForUserAsync(ContextUser, ApiUserPermission);
             Assert.True(isPermissionGranted);
         }
 
@@ -67,10 +54,12 @@ namespace Kodkod.Application.Tests
             permissions.Add(testPermission);
 
             await _permissionAppService.InitializePermissions(permissions);
-            await _kodkodInMemoryContext.SaveChangesAsync();
+            await KodkodInMemoryContext.SaveChangesAsync();
 
             var initializedPermission = _permissionAppService.GetFirstOrDefaultAsync(testPermission.Id);
             Assert.NotNull(initializedPermission);
+
+            //todo: check if permissions are dublicated?
         }
     }
 }
