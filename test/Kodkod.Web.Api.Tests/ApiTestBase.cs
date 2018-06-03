@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Kodkod.EntityFramework;
+using Kodkod.Tests.Shared;
 using Kodkod.Utilities.Collections.Dictionary.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -11,10 +13,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace Kodkod.Web.Api.Tests
 {
-    public class ApiTestBase
+    public class ApiTestBase : TestBase
     {
         protected readonly HttpClient Client;
-
+        protected readonly KodkodDbContext KodkodInMemoryContext = GetInitializedDbContext();
         private static Dictionary<string, string> _testUserFormData;
 
         public ApiTestBase()
@@ -26,7 +28,20 @@ namespace Kodkod.Web.Api.Tests
                 {"password", "123qwe"}
             };
 
+            //if this is true, Automapper is throwing exception
             ServiceCollectionExtensions.UseStaticRegistration = false;
+
+            Client = GetTestServer();
+        }
+
+        protected async Task<HttpResponseMessage> LoginAsTestUserAsync()
+        {
+            return await Client.PostAsync("/api/account/login",
+                _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
+        }
+
+        private static HttpClient GetTestServer()
+        {
             var server = new TestServer(
                 new WebHostBuilder()
                     .UseStartup<Startup>()
@@ -37,13 +52,7 @@ namespace Kodkod.Web.Api.Tests
                     })
             );
 
-            Client = server.CreateClient();
-        }
-
-        protected async Task<HttpResponseMessage> LoginAsTestUserAsync()
-        {
-            return await Client.PostAsync("/api/account/login",
-                _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
+            return server.CreateClient();
         }
     }
 }

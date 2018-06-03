@@ -59,7 +59,7 @@ namespace Kodkod.Application.Permissions
             return grantedPermissions.Any(p => p.Name == requirementPermission.Name);
         }
 
-        //todo: add this to application startup
+        //todo: use this method in application startup
         public async Task InitializePermissions(List<Permission> permissions)
         {
             foreach (var permission in permissions)
