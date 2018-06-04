@@ -9,13 +9,12 @@ namespace Kodkod.EntityFramework.Tests.Repository
     public class RepositoryTests : EntityFrameworkTestBase
     {
         private readonly IRepository<User> _userRepository;
-        private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
         private readonly int _userCount;
 
         public RepositoryTests()
         {
-            _userCount = _kodkodInMemoryContext.Users.Count();
-            _userRepository = new Repository<User>(_kodkodInMemoryContext);
+            _userCount = KodkodInMemoryContext.Users.Count();
+            _userRepository = new Repository<User>(KodkodInMemoryContext);
         }
 
         [Fact]
@@ -43,7 +42,7 @@ namespace Kodkod.EntityFramework.Tests.Repository
             };
 
             await _userRepository.InsertAsync(user);
-            await _kodkodInMemoryContext.SaveChangesAsync();
+            await KodkodInMemoryContext.SaveChangesAsync();
 
             var insertedUser = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == user.UserName);
             Assert.NotNull(insertedUser);
@@ -66,7 +65,7 @@ namespace Kodkod.EntityFramework.Tests.Repository
             };
 
             await _userRepository.InsertAsync(new[] { user1, user2 });
-            await _kodkodInMemoryContext.SaveChangesAsync();
+            await KodkodInMemoryContext.SaveChangesAsync();
 
             var insertedUser1 = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == user1.UserName);
             Assert.NotNull(insertedUser1);
