@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodkod.Web.Core", "src\Kodk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodkod.Utilities", "src\Kodkod.Utilities\Kodkod.Utilities.csproj", "{5CDFAEB1-F41C-485B-9100-6E3FC0B969A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kodkod.Utilities.Tests", "test\Kodkod.Utilities.Tests\Kodkod.Utilities.Tests.csproj", "{8C819B72-72C2-4F48-B3DF-069AADBCAA1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodkod.Utilities.Tests", "test\Kodkod.Utilities.Tests\Kodkod.Utilities.Tests.csproj", "{8C819B72-72C2-4F48-B3DF-069AADBCAA1A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

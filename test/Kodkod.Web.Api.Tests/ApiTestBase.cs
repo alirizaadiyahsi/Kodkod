@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -18,6 +19,15 @@ namespace Kodkod.Web.Api.Tests
         protected readonly HttpClient Client;
         protected readonly KodkodDbContext KodkodInMemoryContext = GetInitializedDbContext();
         private static Dictionary<string, string> _testUserFormData;
+        protected readonly ClaimsPrincipal ContextUser = new ClaimsPrincipal(
+            new ClaimsIdentity(
+                new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, TestUser.UserName)
+                },
+                "TestAuthenticationType"
+            )
+        );
 
         public ApiTestBase()
         {
