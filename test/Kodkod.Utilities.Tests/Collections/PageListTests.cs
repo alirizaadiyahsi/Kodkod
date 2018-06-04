@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Kodkod.EntityFramework;
-using Kodkod.Tests.Shared;
 using Kodkod.Utilities.PagedList.Extensions;
 using Xunit;
 
 namespace Kodkod.Utilities.Tests.Collections
 {
-    public class PageListTests : TestBase
+    public class PageListTests : UtilitiesTestBase
     {
         private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();
 

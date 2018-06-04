@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Kodkod.EntityFramework;
 using Kodkod.Tests.Shared;
 using Kodkod.Utilities.Collections.Dictionary.Extensions;
 using Microsoft.AspNetCore.Hosting;
@@ -17,18 +15,9 @@ namespace Kodkod.Web.Api.Tests
     public class ApiTestBase : TestBase
     {
         protected readonly HttpClient Client;
-        protected readonly KodkodDbContext KodkodInMemoryContext = GetInitializedDbContext();
+        
         private static Dictionary<string, string> _testUserFormData;
-        protected readonly ClaimsPrincipal ContextUser = new ClaimsPrincipal(
-            new ClaimsIdentity(
-                new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, TestUser.UserName)
-                },
-                "TestAuthenticationType"
-            )
-        );
-
+        
         public ApiTestBase()
         {
             _testUserFormData = new Dictionary<string, string>

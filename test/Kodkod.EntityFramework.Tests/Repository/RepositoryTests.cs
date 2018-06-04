@@ -2,12 +2,11 @@
 using System.Linq;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
-using Kodkod.Tests.Shared;
 using Xunit;
 
 namespace Kodkod.EntityFramework.Tests.Repository
 {
-    public class RepositoryTests : TestBase
+    public class RepositoryTests : EntityFrameworkTestBase
     {
         private readonly IRepository<User> _userRepository;
         private readonly KodkodDbContext _kodkodInMemoryContext = GetInitializedDbContext();

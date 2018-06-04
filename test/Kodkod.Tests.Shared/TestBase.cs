@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
@@ -10,6 +11,16 @@ namespace Kodkod.Tests.Shared
 {
     public class TestBase
     {
+        protected readonly KodkodDbContext KodkodInMemoryContext;
+
+        protected readonly ClaimsPrincipal ContextUser;
+
+        public TestBase()
+        {
+            KodkodInMemoryContext = GetInitializedDbContext();
+            ContextUser = GetContextUser();
+        }
+
         public static readonly User AdminUser = new User
         {
             Id = new Guid("C41A7761-6645-4E2C-B99D-F9E767B9AC77"),
@@ -98,6 +109,19 @@ namespace Kodkod.Tests.Shared
             inMemoryContext.SaveChanges();
 
             return inMemoryContext;
+        }
+
+        public static ClaimsPrincipal GetContextUser()
+        {
+            return new ClaimsPrincipal(
+                  new ClaimsIdentity(
+                      new List<Claim>
+                      {
+                        new Claim(ClaimTypes.Name, TestUser.UserName)
+                      },
+                      "TestAuthenticationType"
+                  )
+              );
         }
     }
 }
