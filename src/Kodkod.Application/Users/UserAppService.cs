@@ -9,6 +9,7 @@ using AutoMapper;
 using Kodkod.Utilities.PagedList;
 using Kodkod.Utilities.PagedList.Extensions;
 using Kodkod.Utilities.Extensions;
+using Kodkod.Utilities.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kodkod.Application.Users
