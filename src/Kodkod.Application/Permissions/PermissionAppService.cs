@@ -41,7 +41,7 @@ namespace Kodkod.Application.Permissions
             var permissions = query.PagedBy(input.PageSize, input.PageIndex).ToList();
             var permissionListDtos = Mapper.Map<List<PermissionListDto>>(permissions);
 
-            return permissionListDtos.ToPagedList(permissionsCount, input.PageIndex, input.PageSize);
+            return permissionListDtos.ToPagedList(permissionsCount);
         }
 
         public async Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)

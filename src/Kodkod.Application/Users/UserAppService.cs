@@ -35,7 +35,7 @@ namespace Kodkod.Application.Users
             var users = query.PagedBy(input.PageIndex, input.PageSize).ToList();
             var userListDtos = Mapper.Map<List<UserListDto>>(users);
 
-            return userListDtos.ToPagedList(usersCount, input.PageIndex, input.PageSize);
+            return userListDtos.ToPagedList(usersCount);
         }
     }
 }

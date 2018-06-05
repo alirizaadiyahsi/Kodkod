@@ -13,19 +13,17 @@ namespace Kodkod.Utilities.Tests.Collections
         {
             var users = KodkodInMemoryContext.Users;
             var usersCount = await users.CountAsync();
-            var pagedUserList = users.PagedBy(1, 2).ToPagedList(usersCount, 1, 2);
+            var pagedUserList = users.PagedBy(1, 2).ToPagedList(usersCount);
 
             Assert.NotNull(pagedUserList);
             Assert.Equal(usersCount, pagedUserList.TotalCount);
             Assert.Equal(2, pagedUserList.Items.Count);
-            Assert.Equal(1, pagedUserList.PageIndex);
 
-            pagedUserList = users.PagedBy(0, 3).ToPagedList(usersCount, 0, 3);
+            pagedUserList = users.PagedBy(0, 3).ToPagedList(usersCount);
 
             Assert.NotNull(pagedUserList);
             Assert.Equal(usersCount, pagedUserList.TotalCount);
             Assert.Equal(3, pagedUserList.Items.Count);
-            Assert.Equal(0, pagedUserList.PageIndex);
         }
     }
 }
