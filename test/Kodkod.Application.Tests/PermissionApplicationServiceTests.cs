@@ -12,12 +12,13 @@ namespace Kodkod.Application.Tests
     public class PermissionApplicationServiceTests : ApplicationTestBase
     {
         private readonly IPermissionAppService _permissionAppService;
+        private readonly IRepository<Permission> _permissionRepository;
 
         public PermissionApplicationServiceTests()
         {
             var userRepository = new Repository<User>(KodkodInMemoryContext);
-            var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
-            _permissionAppService = new PermissionAppService(userRepository, permissionRepository);
+            _permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
+            _permissionAppService = new PermissionAppService(userRepository, _permissionRepository);
         }
 
         [Fact]
@@ -56,7 +57,7 @@ namespace Kodkod.Application.Tests
             await _permissionAppService.InitializePermissions(permissions);
             await KodkodInMemoryContext.SaveChangesAsync();
 
-            var initializedPermission = _permissionAppService.GetFirstOrDefaultAsync(testPermission.Id);
+            var initializedPermission = _permissionRepository.GetFirstOrDefaultAsync(p => p.Id == testPermission.Id);
             Assert.NotNull(initializedPermission);
         }
     }

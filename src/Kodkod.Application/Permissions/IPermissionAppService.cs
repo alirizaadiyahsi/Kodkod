@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Kodkod.Application.Permissions.Dto;
@@ -11,8 +10,6 @@ namespace Kodkod.Application.Permissions
     public interface IPermissionAppService
     {
         Task<IPagedList<Permission>> GetPermissionsAsync(GetPermissionsInput input);
-
-        Task<Permission> GetFirstOrDefaultAsync(Guid id);
 
         Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission);
 

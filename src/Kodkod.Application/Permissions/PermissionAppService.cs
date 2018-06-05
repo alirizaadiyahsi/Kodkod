@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Security.Claims;
@@ -37,11 +36,6 @@ namespace Kodkod.Application.Permissions
 
             return query.ToPagedListAsync(input.PageIndex, input.PageSize);
         }
-        
-        public async Task<Permission> GetFirstOrDefaultAsync(Guid id)
-        {
-            return await _permissionRepository.GetFirstOrDefaultAsync(p => p.Id == id);
-        }
 
         public async Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
         {
@@ -59,7 +53,6 @@ namespace Kodkod.Application.Permissions
             return grantedPermissions.Any(p => p.Name == requirementPermission.Name);
         }
 
-        //todo: use this method in application startup
         public async Task InitializePermissions(List<Permission> permissions)
         {
             foreach (var permission in permissions)
