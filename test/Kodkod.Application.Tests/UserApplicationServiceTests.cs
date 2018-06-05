@@ -21,8 +21,12 @@ namespace Kodkod.Application.Tests
         public async Task TestGetAllAsync()
         {
             var getUsersInput = new GetUsersInput();
-            var usersList = await _userAppService.GetUsersAsync(getUsersInput);
+            var usersList = await _userAppService.GetUsersAsync(new GetUsersInput());
             Assert.True(usersList.Items.Count >= 0);
+
+            getUsersInput.Filter = "qwerty";
+            var usersListEmpty = await _userAppService.GetUsersAsync(getUsersInput);
+            Assert.True(usersListEmpty.Items.Count == 0);
         }
     }
 }

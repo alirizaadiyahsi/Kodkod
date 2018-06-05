@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Kodkod.Application.Users;
 using Kodkod.Application.Users.Dto;

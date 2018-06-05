@@ -12,7 +12,7 @@ namespace Kodkod.Application
         {
             CreateMap<User, UserListDto>();
             CreateMap<Permission, PermissionListDto>();
-            //todo: add auto mapper mapping configurations here
+            // add auto mapper mapping configurations here
         }
     }
 }
