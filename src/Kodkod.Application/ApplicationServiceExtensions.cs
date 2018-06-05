@@ -10,6 +10,8 @@ namespace Kodkod.Application
         public static IServiceCollection AddKodkodApplication(this IServiceCollection services)
         {
             services.AddAutoMapper();
+
+            //todo: add conventional registrar
             services.AddTransient<IUserAppService, UserAppService>();
             services.AddTransient<IPermissionAppService, PermissionAppService>();
 

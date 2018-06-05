@@ -9,7 +9,7 @@ namespace Kodkod.Application.Permissions
 {
     public interface IPermissionAppService
     {
-        Task<IPagedList<Permission>> GetPermissionsAsync(GetPermissionsInput input);
+        Task<IPagedList<PermissionListDto>> GetPermissionsAsync(GetPermissionsInput input);
 
         Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission);
 

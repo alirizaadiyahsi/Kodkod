@@ -4,20 +4,20 @@ namespace Kodkod.Utilities.PagedList
 {
     public interface IPagedList<T>
     {
-        int IndexFrom { get; }
+        int IndexFrom { get; set; }
 
-        int PageIndex { get; }
+        int PageIndex { get; set; }
 
-        int PageSize { get; }
+        int PageSize { get; set; }
 
-        int TotalCount { get; }
+        int TotalCount { get; set; }
 
-        int TotalPages { get; }
+        int TotalPages { get; set; }
 
-        IList<T> Items { get; }
+        IList<T> Items { get; set; }
 
         bool HasPreviousPage { get; }
 
-        bool HasNextPage { get; }
+        bool HasNextPage { get;  }
     }
 }

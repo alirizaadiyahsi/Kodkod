@@ -3,6 +3,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoMapper;
 using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
@@ -10,6 +11,7 @@ using Kodkod.EntityFramework.Repositories;
 using Kodkod.Utilities.PagedList;
 using Kodkod.Utilities.PagedList.Extensions;
 using Kodkod.Utilities.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace Kodkod.Application.Permissions
 {
@@ -26,7 +28,7 @@ namespace Kodkod.Application.Permissions
             _permissionRepository = permissionRepository;
         }
 
-        public Task<IPagedList<Permission>> GetPermissionsAsync(GetPermissionsInput input)
+        public async Task<IPagedList<PermissionListDto>> GetPermissionsAsync(GetPermissionsInput input)
         {
             var query = _permissionRepository.GetAll(
                     !input.Filter.IsNullOrEmpty(),
@@ -34,7 +36,11 @@ namespace Kodkod.Application.Permissions
                                  predicate.Name.Contains(input.Filter))
                 .OrderBy(input.Sorting);
 
-            return query.ToPagedListAsync(input.PageIndex, input.PageSize);
+            var permissionsCount = await query.CountAsync();
+            var permissions = query.PagedBy(input.PageSize, input.PageIndex).ToList();
+            var permissionListDtos = Mapper.Map<List<PermissionListDto>>(permissions);
+
+            return permissionListDtos.ToPagedList(permissionsCount, input.PageIndex, input.PageSize);
         }
 
         public async Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
