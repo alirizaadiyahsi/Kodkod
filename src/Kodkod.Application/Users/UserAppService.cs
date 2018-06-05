@@ -31,7 +31,7 @@ namespace Kodkod.Application.Users
                 .OrderBy(input.Sorting);
 
             var usersCount = await query.CountAsync();
-            var users = query.PagedBy(input.PageSize, input.PageIndex).ToList();
+            var users = query.PagedBy(input.PageIndex, input.PageSize).ToList();
             var userListDtos = Mapper.Map<List<UserListDto>>(users);
 
             return userListDtos.ToPagedList(usersCount, input.PageIndex, input.PageSize);

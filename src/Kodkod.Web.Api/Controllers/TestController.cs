@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Kodkod.Application.Users;
+using Kodkod.Application.Users.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
+using Kodkod.Utilities.PagedList;
 using Kodkod.Web.Core.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,25 +14,18 @@ namespace Kodkod.Web.Api.Controllers
 {
     public class TestController : BaseController
     {
+        private readonly IUserAppService _userAppService;
+
+        public TestController(IUserAppService userAppService)
+        {
+            _userAppService = userAppService;
+        }
+
         [HttpGet("[action]")]
         [Authorize(Policy = PermissionConsts.ApiUser)]
-        public ActionResult<List<User>> GetUsers()
+        public async Task<IPagedList<UserListDto>> GetUsers()
         {
-            var userList = new List<User>
-            {
-                new User
-                {
-                    Id = Guid.NewGuid(),
-                    UserName = "test_user_1"
-                },
-                new User
-                {
-                    Id = Guid.NewGuid(),
-                    UserName = "test_user_2"
-                }
-            };
-
-            return userList;
+            return await _userAppService.GetUsersAsync(new GetUsersInput());
         }
 
         [HttpGet("[action]/{username}")]

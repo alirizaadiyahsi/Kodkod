@@ -33,6 +33,7 @@ namespace Kodkod.Utilities.PagedList.Extensions
             return pagedList;
         }
 
+        //todo: move this to linq.extensions
         public static IQueryable<T> PagedBy<T>(
             this IQueryable<T> source,
             int pageIndex,
