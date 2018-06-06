@@ -1,6 +1,8 @@
 # Kodkod
 Web API startup template
 
+<img src="_images/swagger-ui.png" alt="Swagger UI" class="img-thumbnail" />
+
 ### Tags
 
 - ASP.NET Core Web API
