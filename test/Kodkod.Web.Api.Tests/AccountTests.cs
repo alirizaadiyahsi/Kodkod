@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Kodkod.Application.Users.Dto;
-using Kodkod.Core.Users;
 using Kodkod.Utilities.PagedList;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
