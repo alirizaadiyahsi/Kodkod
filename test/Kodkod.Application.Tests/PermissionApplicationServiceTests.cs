@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
 using Kodkod.Application.Permissions.Dto;
@@ -12,13 +13,12 @@ namespace Kodkod.Application.Tests
     public class PermissionApplicationServiceTests : ApplicationTestBase
     {
         private readonly IPermissionAppService _permissionAppService;
-        private readonly IRepository<Permission> _permissionRepository;
 
         public PermissionApplicationServiceTests()
         {
             var userRepository = new Repository<User>(KodkodInMemoryContext);
-            _permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
-            _permissionAppService = new PermissionAppService(userRepository, _permissionRepository);
+            var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
+            _permissionAppService = new PermissionAppService(userRepository, permissionRepository);
         }
 
         [Fact]
@@ -57,7 +57,7 @@ namespace Kodkod.Application.Tests
             await _permissionAppService.InitializePermissions(permissions);
             await KodkodInMemoryContext.SaveChangesAsync();
 
-            var initializedPermission = _permissionRepository.GetFirstOrDefaultAsync(p => p.Id == testPermission.Id);
+            var initializedPermission = KodkodInMemoryContext.Permissions.FirstOrDefault(p => p.Id == testPermission.Id);
             Assert.NotNull(initializedPermission);
         }
     }

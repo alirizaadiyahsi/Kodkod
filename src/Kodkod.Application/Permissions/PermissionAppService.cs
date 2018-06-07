@@ -34,7 +34,7 @@ namespace Kodkod.Application.Permissions
             var query = _permissionRepository.GetAll(
                     !input.Filter.IsNullOrEmpty(),
                     predicate => predicate.Name.Contains(input.Filter) ||
-                                 predicate.Name.Contains(input.Filter))
+                                 predicate.DisplayName.Contains(input.Filter))
                 .OrderBy(input.Sorting);
 
             var permissionsCount = await query.CountAsync();

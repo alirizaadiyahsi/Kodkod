@@ -1,24 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
 using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework;
+using Kodkod.Utilities.Collections.Dictionary.Extensions;
+using Kodkod.Web.Api;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Kodkod.Tests.Shared
 {
     public class TestBase
     {
-        protected readonly KodkodDbContext KodkodInMemoryContext;
+        private static readonly object ThisLock = new object();
+        private static Dictionary<string, string> _testUserFormData;
 
+        protected readonly KodkodDbContext KodkodInMemoryContext;
         protected readonly ClaimsPrincipal ContextUser;
+        protected readonly HttpClient Client;
+        protected async Task<HttpResponseMessage> LoginAsTestUserAsync()
+        {
+            return await Client.PostAsync("/api/account/login",
+                _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
+        }
 
         public TestBase()
         {
+            _testUserFormData = new Dictionary<string, string>
+            {
+                {"email", "testuser@mail.com"},
+                {"username", "testuser"},
+                {"password", "123qwe"}
+            };
+
             KodkodInMemoryContext = GetInitializedDbContext();
             ContextUser = GetContextUser();
+
+            //if this is true, Automapper is throwing exception
+            //ServiceCollectionExtensions.UseStaticRegistration = false;
+
+            lock (ThisLock)
+            {
+                Mapper.Reset();
+                Client = GetTestServer();
+            }
         }
 
         public static readonly User AdminUser = new User
@@ -122,6 +156,22 @@ namespace Kodkod.Tests.Shared
                       "TestAuthenticationType"
                   )
               );
+        }
+
+        private static HttpClient GetTestServer()
+        {
+            var server = new TestServer(
+                new WebHostBuilder()
+                    .UseStartup<Startup>()
+                    .ConfigureAppConfiguration(config =>
+                    {
+                        config.SetBasePath(Path.GetFullPath(@"../../.."));
+                        //todo:remove all appsettins.json from test projects and use from shared test project
+                        config.AddJsonFile("appsettings.json", false);
+                    })
+            );
+
+            return server.CreateClient();
         }
     }
 }

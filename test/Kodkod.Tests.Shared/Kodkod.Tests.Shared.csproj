@@ -5,12 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="2.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Kodkod.EntityFramework\Kodkod.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\src\Kodkod.Web.Api\Kodkod.Web.Api.csproj" />
   </ItemGroup>
 
 </Project>
