@@ -58,13 +58,15 @@ namespace Kodkod.Tests.Shared
         public static readonly User AdminUser = new User
         {
             Id = new Guid("C41A7761-6645-4E2C-B99D-F9E767B9AC77"),
-            UserName = "admin"
+            UserName = "admin",
+            Email = "admin@mail.com"
         };
 
         public static readonly User TestUser = new User
         {
             Id = new Guid("065E903E-6F7B-42B8-B807-0C4197F9D1BC"),
-            UserName = "testuser"
+            UserName = "testuser",
+            Email = "testuser@mail.com"
         };
 
         public static readonly Role AdminRole = new Role
@@ -82,7 +84,8 @@ namespace Kodkod.Tests.Shared
         public static readonly Permission ApiUserPermission = new Permission
         {
             Id = new Guid("41F04B93-8C0E-4AC2-B6BA-63C052A2F02A"),
-            Name = "ApiUser"
+            Name = "ApiUser",
+            DisplayName = "Api user"
         };
 
         public static readonly UserRole AdminUserRole = new UserRole
@@ -111,10 +114,10 @@ namespace Kodkod.Tests.Shared
 
         public static readonly List<User> AllTestUsers = new List<User>
         {
-            new User {UserName = "A"},
-            new User {UserName = "B"},
-            new User {UserName = "C"},
-            new User {UserName = "D"},
+            new User {UserName = "A",Email="a@mail.com"},
+            new User {UserName = "B",Email="b@mail.com"},
+            new User {UserName = "C",Email="c@mail.com"},
+            new User {UserName = "D",Email="d@mail.com"},
             AdminUser,
             TestUser
         };
