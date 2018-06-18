@@ -168,8 +168,7 @@ namespace Kodkod.Tests.Shared
                     .UseStartup<Startup>()
                     .ConfigureAppConfiguration(config =>
                     {
-                        config.SetBasePath(Path.GetFullPath(@"../../.."));
-                        //todo:remove all appsettins.json from test projects and use from shared test project
+                        config.SetBasePath(Path.Combine(Path.GetFullPath(@"../../../.."), "Kodkod.Tests.Shared"));
                         config.AddJsonFile("appsettings.json", false);
                     })
             );
