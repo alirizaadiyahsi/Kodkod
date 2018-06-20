@@ -13,21 +13,21 @@ namespace Kodkod.Web.Api.Tests
     public class AccountTests : ApiTestBase
     {
         [Fact]
-        public async Task TestUnAuthorizedAccessAsync()
+        public async Task TestUnAuthorizedAccess()
         {
             var responseGetUsers = await Client.GetAsync("/api/test/GetUsers");
             Assert.Equal(HttpStatusCode.Unauthorized, responseGetUsers.StatusCode);
         }
 
         [Fact]
-        public async Task TestLoginAsync()
+        public async Task TestLogin()
         {
             var responseLogin = await LoginAsTestUserAsync();
             Assert.Equal(HttpStatusCode.OK, responseLogin.StatusCode);
         }
 
         [Fact]
-        public async Task TestGetTokenAsync()
+        public async Task TestGetToken()
         {
             var responseLogin = await LoginAsTestUserAsync();
             var okObjectResult = await responseLogin.Content.ReadAsAsync<OkObjectResult>();
@@ -36,7 +36,7 @@ namespace Kodkod.Web.Api.Tests
         }
 
         [Fact]
-        public async Task TestAuthorizedAccessAsync()
+        public async Task TestAuthorizedAccess()
         {
             var responseLogin = await LoginAsTestUserAsync();
             var responseContent = await responseLogin.Content.ReadAsAsync<OkObjectResult>();

@@ -7,7 +7,7 @@ namespace Kodkod.Utilities.Tests.Linq
     public class QueryableTests : UtilitiesTestBase
     {
         [Fact]
-        public void ToPagedListAsyncTest()
+        public void TestPagedBy()
         {
             var users = KodkodInMemoryContext.Users;
             var pagedUserList = users.PagedBy(0, 2);

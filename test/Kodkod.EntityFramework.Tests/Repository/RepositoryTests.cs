@@ -18,14 +18,14 @@ namespace Kodkod.EntityFramework.Tests.Repository
         }
 
         [Fact]
-        public void TestGetAllAsync()
+        public void TestGetAll()
         {
             var userList = _userRepository.GetAll();
             Assert.Equal(_userCount, userList.Count());
         }
 
         [Fact]
-        public async void TestGetFirstOrDefaultAsync()
+        public async void TestGetFirstOrDefault()
         {
             var user = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == "A");
             Assert.NotNull(user);
@@ -33,7 +33,7 @@ namespace Kodkod.EntityFramework.Tests.Repository
         }
 
         [Fact]
-        public async void TestInsertAsync()
+        public async void TestInsert()
         {
             var user = new User
             {
@@ -50,7 +50,7 @@ namespace Kodkod.EntityFramework.Tests.Repository
         }
 
         [Fact]
-        public async void TestBatchInsertAsync()
+        public async void TestBatchInsert()
         {
             var user1 = new User
             {

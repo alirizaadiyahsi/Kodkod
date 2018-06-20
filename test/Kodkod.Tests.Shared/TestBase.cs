@@ -33,8 +33,19 @@ namespace Kodkod.Tests.Shared
                 _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
         }
 
+        //todo: change all method names by async postfix if they are async method
         public TestBase()
         {
+            //if this is true, Automapper is throwing exception
+            //ServiceCollectionExtensions.UseStaticRegistration = false;
+
+            //todo: these lines aren't working
+            lock (ThisLock)
+            {
+                Mapper.Reset();
+                Client = GetTestServer();
+            }
+
             _testUserFormData = new Dictionary<string, string>
             {
                 {"email", "testuser@mail.com"},
@@ -44,15 +55,6 @@ namespace Kodkod.Tests.Shared
 
             KodkodInMemoryContext = GetInitializedDbContext();
             ContextUser = GetContextUser();
-
-            //if this is true, Automapper is throwing exception
-            //ServiceCollectionExtensions.UseStaticRegistration = false;
-
-            lock (ThisLock)
-            {
-                Mapper.Reset();
-                Client = GetTestServer();
-            }
         }
 
         public static readonly User AdminUser = new User

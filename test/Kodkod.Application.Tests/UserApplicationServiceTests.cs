@@ -18,7 +18,7 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async Task TestGetAllAsync()
+        public async Task TestGetUsers()
         {
             var getUsersInput = new GetUsersInput();
             var usersList = await _userAppService.GetUsersAsync(getUsersInput);

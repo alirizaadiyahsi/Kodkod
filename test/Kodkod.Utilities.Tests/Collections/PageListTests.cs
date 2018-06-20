@@ -8,7 +8,7 @@ namespace Kodkod.Utilities.Tests.Collections
     public class PageListTests : UtilitiesTestBase
     {
         [Fact]
-        public async Task ToPagedListTest()
+        public async Task TestToPagedList()
         {
             var users = KodkodInMemoryContext.Users;
             var usersCount = await users.CountAsync();

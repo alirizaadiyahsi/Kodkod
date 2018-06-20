@@ -22,7 +22,7 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async void TestGetPermissionsAsync()
+        public async void TestGetPermissions()
         {
             var getPermissionsInput = new GetPermissionsInput();
             var permissionsList = await _permissionAppService.GetPermissionsAsync(getPermissionsInput);
@@ -34,7 +34,7 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async Task TestIsPermissionGrantedForUserAsync()
+        public async Task TestIsPermissionGrantedForUser()
         {
             var isPermissionGranted =
                 await _permissionAppService.IsPermissionGrantedForUserAsync(ContextUser, ApiUserPermission);
@@ -42,7 +42,7 @@ namespace Kodkod.Application.Tests
         }
 
         [Fact]
-        public async Task TestInitializePermissionsAsync()
+        public async Task TestInitializePermissions()
         {
             var testPermission = new Permission
             {
