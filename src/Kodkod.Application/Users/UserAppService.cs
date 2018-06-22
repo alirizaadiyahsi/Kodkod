@@ -17,10 +17,12 @@ namespace Kodkod.Application.Users
     public class UserAppService : IUserAppService
     {
         private readonly IRepository<User> _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserAppService(IRepository<User> userRepository)
+        public UserAppService(IRepository<User> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public async Task<IPagedList<UserListDto>> GetUsersAsync(GetUsersInput input)
@@ -33,7 +35,7 @@ namespace Kodkod.Application.Users
 
             var usersCount = await query.CountAsync();
             var users = query.PagedBy(input.PageIndex, input.PageSize).ToList();
-            var userListDtos = Mapper.Map<List<UserListDto>>(users);
+            var userListDtos = _mapper.Map<List<UserListDto>>(users);
 
             return userListDtos.ToPagedList(usersCount);
         }

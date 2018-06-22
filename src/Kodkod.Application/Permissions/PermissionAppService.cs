@@ -20,13 +20,15 @@ namespace Kodkod.Application.Permissions
     {
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<Permission> _permissionRepository;
+        private readonly IMapper _mapper;
 
         public PermissionAppService(
             IRepository<User> userRepository,
-            IRepository<Permission> permissionRepository)
+            IRepository<Permission> permissionRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _permissionRepository = permissionRepository;
+            _mapper = mapper;
         }
 
         public async Task<IPagedList<PermissionListDto>> GetPermissionsAsync(GetPermissionsInput input)
@@ -39,7 +41,7 @@ namespace Kodkod.Application.Permissions
 
             var permissionsCount = await query.CountAsync();
             var permissions = query.PagedBy(input.PageSize, input.PageIndex).ToList();
-            var permissionListDtos = Mapper.Map<List<PermissionListDto>>(permissions);
+            var permissionListDtos = _mapper.Map<List<PermissionListDto>>(permissions);
 
             return permissionListDtos.ToPagedList(permissionsCount);
         }

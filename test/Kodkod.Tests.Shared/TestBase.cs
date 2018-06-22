@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Kodkod.Application;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
@@ -21,9 +22,9 @@ namespace Kodkod.Tests.Shared
 {
     public class TestBase
     {
-        private static readonly object ThisLock = new object();
         private static Dictionary<string, string> _testUserFormData;
 
+        protected readonly IMapper Mapper;
         protected readonly KodkodDbContext KodkodInMemoryContext;
         protected readonly ClaimsPrincipal ContextUser;
         protected readonly HttpClient Client;
@@ -33,18 +34,17 @@ namespace Kodkod.Tests.Shared
                 _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
         }
 
-        //todo: change all method names by async postfix if they are async method
         public TestBase()
         {
-            //if this is true, Automapper is throwing exception
-            //ServiceCollectionExtensions.UseStaticRegistration = false;
+            //disable automapper static registration
+            ServiceCollectionExtensions.UseStaticRegistration = false;
 
-            //todo: these lines aren't working
-            lock (ThisLock)
-            {
-                Mapper.Reset();
-                Client = GetTestServer();
-            }
+            Mapper = new Mapper(
+                new MapperConfiguration(
+                    configure => { configure.AddProfile<ApplicationMappingProfile>(); }
+                )
+            );
+            Client = GetTestServer();
 
             _testUserFormData = new Dictionary<string, string>
             {

@@ -18,7 +18,7 @@ namespace Kodkod.Application.Tests
         {
             var userRepository = new Repository<User>(KodkodInMemoryContext);
             var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
-            _permissionAppService = new PermissionAppService(userRepository, permissionRepository);
+            _permissionAppService = new PermissionAppService(userRepository, permissionRepository, Mapper);
         }
 
         [Fact]

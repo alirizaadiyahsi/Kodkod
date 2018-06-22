@@ -17,7 +17,7 @@ namespace Kodkod.Web.Api.Tests
         {
             var userRepository = new Repository<User>(KodkodInMemoryContext);
             var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
-            var permissionAppService = new PermissionAppService(userRepository, permissionRepository);
+            var permissionAppService = new PermissionAppService(userRepository, permissionRepository, Mapper);
 
             var requirements = new List<PermissionRequirement>
             {
