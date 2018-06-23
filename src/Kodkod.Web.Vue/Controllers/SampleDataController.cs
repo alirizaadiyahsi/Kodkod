@@ -1,45 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Kodkod.Application.Users;
-using Kodkod.Application.Users.Dto;
-using Kodkod.Core.Permissions;
-using Kodkod.Core.Users;
-using Kodkod.Utilities.PagedList;
-using Kodkod.Web.Core.Controllers;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Kodkod.Web.Api.Controllers
+namespace Kodkod.Web.Vue.Controllers
 {
-    public class TestController : BaseController
+    [Route("api/[controller]")]
+    public class SampleDataController : Controller
     {
-        private readonly IUserAppService _userAppService;
-
-        public TestController(IUserAppService userAppService)
-        {
-            _userAppService = userAppService;
-        }
-
-        [HttpGet("[action]")]
-        [Authorize(Policy = PermissionConsts.ApiUser)]
-        public async Task<IPagedList<UserListDto>> GetUsers()
-        {
-            return await _userAppService.GetUsersAsync(new GetUsersInput());
-        }
-
-        [HttpGet("[action]/{username}")]
-        [Authorize(Policy = PermissionConsts.ApiUser)]
-        public ActionResult<User> GetUser(string userName)
-        {
-            return new User
-            {
-                Id = Guid.NewGuid(),
-                UserName = userName
-            };
-        }
-
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
