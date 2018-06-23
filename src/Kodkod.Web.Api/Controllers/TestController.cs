@@ -7,6 +7,7 @@ using Kodkod.Application.Users.Dto;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Users;
 using Kodkod.Utilities.PagedList;
+using Kodkod.Web.Api.ViewModels;
 using Kodkod.Web.Core.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,9 @@ namespace Kodkod.Web.Api.Controllers
     public class TestController : BaseController
     {
         private readonly IUserAppService _userAppService;
+        private static readonly string[] Summaries = {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
 
         public TestController(IUserAppService userAppService)
         {
@@ -40,11 +44,6 @@ namespace Kodkod.Web.Api.Controllers
             };
         }
 
-        private static string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
@@ -55,21 +54,6 @@ namespace Kodkod.Web.Api.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
-        }
-
-        public class WeatherForecast
-        {
-            public string DateFormatted { get; set; }
-            public int TemperatureC { get; set; }
-            public string Summary { get; set; }
-
-            public int TemperatureF
-            {
-                get
-                {
-                    return 32 + (int)(TemperatureC / 0.5556);
-                }
-            }
-        }
+        }       
     }
 }

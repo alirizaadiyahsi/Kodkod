@@ -1,4 +1,4 @@
-﻿interface WeatherForecast {
+﻿class WeatherForecast {
     dateFormatted: string;
     temperatureC: number;
     temperatureF: number;
