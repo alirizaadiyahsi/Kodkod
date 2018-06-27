@@ -31,8 +31,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodkod.Utilities", "src\Kod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodkod.Utilities.Tests", "test\Kodkod.Utilities.Tests\Kodkod.Utilities.Tests.csproj", "{8C819B72-72C2-4F48-B3DF-069AADBCAA1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodkod.Web.Vue", "src\Kodkod.Web.Vue\Kodkod.Web.Vue.csproj", "{A76E2DD9-B498-4477-B11C-18B2CC187756}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,10 +81,6 @@ Global
 		{8C819B72-72C2-4F48-B3DF-069AADBCAA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C819B72-72C2-4F48-B3DF-069AADBCAA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C819B72-72C2-4F48-B3DF-069AADBCAA1A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A76E2DD9-B498-4477-B11C-18B2CC187756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A76E2DD9-B498-4477-B11C-18B2CC187756}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A76E2DD9-B498-4477-B11C-18B2CC187756}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A76E2DD9-B498-4477-B11C-18B2CC187756}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,7 +97,6 @@ Global
 		{7F8BB2A0-D24D-4565-9A62-885AA5F98914} = {D74635EF-B154-4DD5-93F2-9469D12B11C6}
 		{5CDFAEB1-F41C-485B-9100-6E3FC0B969A9} = {D74635EF-B154-4DD5-93F2-9469D12B11C6}
 		{8C819B72-72C2-4F48-B3DF-069AADBCAA1A} = {A650A254-7810-4E93-8C3C-FDE8FE2B7F61}
-		{A76E2DD9-B498-4477-B11C-18B2CC187756} = {D74635EF-B154-4DD5-93F2-9469D12B11C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ED5D8E46-A175-454F-9BB3-1429C9844F75}
