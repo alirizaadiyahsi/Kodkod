@@ -6,15 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kodkod.Web.Api.Controllers
 {
-    [ApiVersion("1.0")]
-   // [Route("api/v{version:apiVersion}/[controller]")]
-    [Route("api/v{version:apiVersion}/test")]
-
     public class TestController : BaseController
     {
-
-        
-
         [HttpGet("[action]")]
         [Authorize(Policy = PermissionConsts.ApiUser)]
         public IEnumerable<string> AuthorizedGet()
@@ -32,7 +25,7 @@ namespace Kodkod.Web.Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new[] { "version v1  value1", "value2" };
+            return new[] { "value1", "value2" };
         }
 
         [HttpGet("{id}")]
