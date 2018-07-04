@@ -64,6 +64,7 @@ namespace Kodkod.Application.Permissions
 
         public async Task InitializePermissions(List<Permission> permissions)
         {
+            //todo: assign all permissions to admin role
             foreach (var permission in permissions)
             {
                 var existingPermission = await _permissionRepository.GetFirstOrDefaultAsync(p => p.Name == permission.Name);
