@@ -22,7 +22,7 @@ Web API startup template with a Vue Client demo.
 
 <img src="_images/swagger-ui.png" alt="Swagger UI" class="img-thumbnail" />
 
-### Tags
+### Tags & Technologies
 
 - ASP.NET Core Web API
 - Entity Framework Core
@@ -36,3 +36,6 @@ Web API startup template with a Vue Client demo.
 - In-memory Entity Framework Core
 - Authorization & Authentication
 - Exception Handling & Logging
+- Vue
+- Vue Router
+- Bootstrap
