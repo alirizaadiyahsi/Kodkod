@@ -3,6 +3,6 @@
     public class RoleConsts
     {
         public const string AdminRoleName = "Admin";
-        public static string MemberRoleName = "Member";
+        public static string ApiUserRoleName = "ApiUserRole";
     }
 }

@@ -15,7 +15,7 @@ namespace Kodkod.EntityFramework.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.0-rc1-32029")
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -61,8 +61,8 @@ namespace Kodkod.EntityFramework.Migrations
                     b.ToTable("Role");
 
                     b.HasData(
-                        new { Id = new Guid("28a2dd12-16b2-4278-9c09-6f989d9dffcc"), ConcurrencyStamp = "c56d0083-23ed-4c30-a4a2-7520d97e99a1", Name = "Admin", NormalizedName = "ADMIN" },
-                        new { Id = new Guid("9ea1e4b6-8523-4f52-8f88-282c0d1c10ee"), ConcurrencyStamp = "765b3f1e-487d-44be-ab68-225ad0df7197", Name = "Member", NormalizedName = "MEMBER" }
+                        new { Id = new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a"), ConcurrencyStamp = "256b525e-8270-43b2-8c91-198525c7c570", Name = "Admin", NormalizedName = "ADMIN" },
+                        new { Id = new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba"), ConcurrencyStamp = "4930fe25-5a59-4d0c-80f2-0794b394482a", Name = "ApiUserRole", NormalizedName = "APIUSERROLE" }
                     );
                 });
 
@@ -98,8 +98,8 @@ namespace Kodkod.EntityFramework.Migrations
                     b.ToTable("RolePermission");
 
                     b.HasData(
-                        new { RoleId = new Guid("28a2dd12-16b2-4278-9c09-6f989d9dffcc"), PermissionId = new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") },
-                        new { RoleId = new Guid("9ea1e4b6-8523-4f52-8f88-282c0d1c10ee"), PermissionId = new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") }
+                        new { RoleId = new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a"), PermissionId = new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") },
+                        new { RoleId = new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba"), PermissionId = new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") }
                     );
                 });
 
@@ -154,8 +154,8 @@ namespace Kodkod.EntityFramework.Migrations
                     b.ToTable("User");
 
                     b.HasData(
-                        new { Id = new Guid("063775e4-e297-4d09-88ba-fcfb6602cc6f"), AccessFailedCount = 5, ConcurrencyStamp = "aaa5283b-5408-4a7c-acd0-25271ca7cd09", Email = "admin@mail.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "ADMIN@MAIL.COM", NormalizedUserName = "ADMIN", PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", PhoneNumberConfirmed = false, TwoFactorEnabled = false, UserName = "admin" },
-                        new { Id = new Guid("f48113dd-b61c-4a01-bfb4-1dd31eba85ed"), AccessFailedCount = 5, ConcurrencyStamp = "fc6134f5-11dd-4c2e-ae99-4a56ff1f9332", Email = "testuser@mail.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "TESTUSER@MAIL.COM", NormalizedUserName = "TESTUSER", PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", PhoneNumberConfirmed = false, TwoFactorEnabled = false, UserName = "testuser" }
+                        new { Id = new Guid("dcb3c3ef-3f50-408b-a102-b11247d1ac46"), AccessFailedCount = 5, ConcurrencyStamp = "df51880c-f05b-41fa-bc5f-3ea42c82734b", Email = "admin@mail.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "ADMIN@MAIL.COM", NormalizedUserName = "ADMIN", PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", PhoneNumberConfirmed = false, TwoFactorEnabled = false, UserName = "admin" },
+                        new { Id = new Guid("35d57db6-8073-4102-bef8-bfe53cc71617"), AccessFailedCount = 5, ConcurrencyStamp = "15ec2e38-dc40-4caf-84e2-e863e71b41b7", Email = "apiuser@mail.com", EmailConfirmed = true, LockoutEnabled = false, NormalizedEmail = "APIUSER@MAIL.COM", NormalizedUserName = "APIUSER", PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", PhoneNumberConfirmed = false, TwoFactorEnabled = false, UserName = "apiuser" }
                     );
                 });
 
@@ -208,8 +208,8 @@ namespace Kodkod.EntityFramework.Migrations
                     b.ToTable("UserRole");
 
                     b.HasData(
-                        new { UserId = new Guid("063775e4-e297-4d09-88ba-fcfb6602cc6f"), RoleId = new Guid("28a2dd12-16b2-4278-9c09-6f989d9dffcc") },
-                        new { UserId = new Guid("f48113dd-b61c-4a01-bfb4-1dd31eba85ed"), RoleId = new Guid("9ea1e4b6-8523-4f52-8f88-282c0d1c10ee") }
+                        new { UserId = new Guid("dcb3c3ef-3f50-408b-a102-b11247d1ac46"), RoleId = new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a") },
+                        new { UserId = new Guid("35d57db6-8073-4102-bef8-bfe53cc71617"), RoleId = new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba") }
                     );
                 });
 

@@ -22,14 +22,14 @@ namespace Kodkod.Web.Api.Tests
         [Fact]
         public async Task TestLogin()
         {
-            var responseLogin = await LoginAsTestUserAsync();
+            var responseLogin = await LoginAsApiUserAsync();
             Assert.Equal(HttpStatusCode.OK, responseLogin.StatusCode);
         }
 
         [Fact]
         public async Task TestGetToken()
         {
-            var responseLogin = await LoginAsTestUserAsync();
+            var responseLogin = await LoginAsApiUserAsync();
             var okObjectResult = await responseLogin.Content.ReadAsAsync<OkObjectResult>();
             var jsonObject = JObject.Parse(okObjectResult.Value.ToString());
             Assert.NotNull((string)jsonObject["token"]);
@@ -38,7 +38,7 @@ namespace Kodkod.Web.Api.Tests
         [Fact]
         public async Task TestAuthorizedAccess()
         {
-            var responseLogin = await LoginAsTestUserAsync();
+            var responseLogin = await LoginAsApiUserAsync();
             var responseContent = await responseLogin.Content.ReadAsAsync<OkObjectResult>();
             var responseJson = JObject.Parse(responseContent.Value.ToString());
             var token = (string)responseJson["token"];

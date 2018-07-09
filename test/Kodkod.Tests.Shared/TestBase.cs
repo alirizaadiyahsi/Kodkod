@@ -22,16 +22,16 @@ namespace Kodkod.Tests.Shared
 {
     public class TestBase
     {
-        private static Dictionary<string, string> _testUserFormData;
+        private static Dictionary<string, string> _apiUserFormData;
 
         protected readonly IMapper Mapper;
         protected readonly KodkodDbContext KodkodInMemoryContext;
         protected readonly ClaimsPrincipal ContextUser;
         protected readonly HttpClient Client;
-        protected async Task<HttpResponseMessage> LoginAsTestUserAsync()
+        protected async Task<HttpResponseMessage> LoginAsApiUserAsync()
         {
             return await Client.PostAsync("/api/account/login",
-                _testUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
+                _apiUserFormData.ToStringContent(Encoding.UTF8, "application/json"));
         }
 
         public TestBase()
@@ -46,10 +46,10 @@ namespace Kodkod.Tests.Shared
             );
             Client = GetTestServer();
 
-            _testUserFormData = new Dictionary<string, string>
+            _apiUserFormData = new Dictionary<string, string>
             {
-                {"email", "testuser@mail.com"},
-                {"username", "testuser"},
+                {"email", "apiuser@mail.com"},
+                {"username", "apiuser"},
                 {"password", "123qwe"}
             };
 
@@ -77,10 +77,10 @@ namespace Kodkod.Tests.Shared
             Name = "Admin"
         };
 
-        public static readonly Role MemberRole = new Role
+        public static readonly Role ApiUserRole = new Role
         {
             Id = new Guid("11D14A89-3A93-4D39-A94F-82B823F0D4CE"),
-            Name = "Member"
+            Name = "ApiUser"
         };
 
         public static readonly Permission ApiUserPermission = new Permission
@@ -98,7 +98,7 @@ namespace Kodkod.Tests.Shared
 
         public static readonly UserRole TestUserRole = new UserRole
         {
-            RoleId = MemberRole.Id,
+            RoleId = ApiUserRole.Id,
             UserId = TestUser.Id
         };
 
@@ -108,10 +108,10 @@ namespace Kodkod.Tests.Shared
             RoleId = AdminRole.Id
         };
 
-        public static readonly RolePermission MemberRolePermission = new RolePermission
+        public static readonly RolePermission ApiUserRolePermission = new RolePermission
         {
             PermissionId = ApiUserPermission.Id,
-            RoleId = MemberRole.Id
+            RoleId = ApiUserRole.Id
         };
 
         public static readonly List<User> AllTestUsers = new List<User>
@@ -140,10 +140,10 @@ namespace Kodkod.Tests.Shared
             var inMemoryContext = GetEmptyDbContext();
 
             inMemoryContext.AddRange(ApiUserPermission);
-            inMemoryContext.AddRange(AdminRole, MemberRole);
+            inMemoryContext.AddRange(AdminRole, ApiUserRole);
             inMemoryContext.AddRange(AllTestUsers);
             inMemoryContext.AddRange(AdminUserRole, TestUserRole);
-            inMemoryContext.AddRange(AdminRolePermission, MemberRolePermission);
+            inMemoryContext.AddRange(AdminRolePermission, ApiUserRolePermission);
 
             inMemoryContext.SaveChanges();
 

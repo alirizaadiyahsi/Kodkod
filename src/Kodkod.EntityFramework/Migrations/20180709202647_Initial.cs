@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kodkod.EntityFramework.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,21 +39,21 @@ namespace Kodkod.EntityFramework.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
                     Id = table.Column<Guid>(nullable: false),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true)
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -200,8 +200,8 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("28a2dd12-16b2-4278-9c09-6f989d9dffcc"), "c56d0083-23ed-4c30-a4a2-7520d97e99a1", "Admin", "ADMIN" },
-                    { new Guid("9ea1e4b6-8523-4f52-8f88-282c0d1c10ee"), "765b3f1e-487d-44be-ab68-225ad0df7197", "Member", "MEMBER" }
+                    { new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a"), "256b525e-8270-43b2-8c91-198525c7c570", "Admin", "ADMIN" },
+                    { new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba"), "4930fe25-5a59-4d0c-80f2-0794b394482a", "ApiUserRole", "APIUSERROLE" }
                 });
 
             migrationBuilder.InsertData(
@@ -209,8 +209,8 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("063775e4-e297-4d09-88ba-fcfb6602cc6f"), 5, "aaa5283b-5408-4a7c-acd0-25271ca7cd09", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "admin" },
-                    { new Guid("f48113dd-b61c-4a01-bfb4-1dd31eba85ed"), 5, "fc6134f5-11dd-4c2e-ae99-4a56ff1f9332", "testuser@mail.com", true, false, null, "TESTUSER@MAIL.COM", "TESTUSER", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "testuser" }
+                    { new Guid("dcb3c3ef-3f50-408b-a102-b11247d1ac46"), 5, "df51880c-f05b-41fa-bc5f-3ea42c82734b", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "admin" },
+                    { new Guid("35d57db6-8073-4102-bef8-bfe53cc71617"), 5, "15ec2e38-dc40-4caf-84e2-e863e71b41b7", "apiuser@mail.com", true, false, null, "APIUSER@MAIL.COM", "APIUSER", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "apiuser" }
                 });
 
             migrationBuilder.InsertData(
@@ -218,8 +218,8 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "RoleId", "PermissionId" },
                 values: new object[,]
                 {
-                    { new Guid("28a2dd12-16b2-4278-9c09-6f989d9dffcc"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") },
-                    { new Guid("9ea1e4b6-8523-4f52-8f88-282c0d1c10ee"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") }
+                    { new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") },
+                    { new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") }
                 });
 
             migrationBuilder.InsertData(
@@ -227,8 +227,8 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "UserId", "RoleId" },
                 values: new object[,]
                 {
-                    { new Guid("063775e4-e297-4d09-88ba-fcfb6602cc6f"), new Guid("28a2dd12-16b2-4278-9c09-6f989d9dffcc") },
-                    { new Guid("f48113dd-b61c-4a01-bfb4-1dd31eba85ed"), new Guid("9ea1e4b6-8523-4f52-8f88-282c0d1c10ee") }
+                    { new Guid("dcb3c3ef-3f50-408b-a102-b11247d1ac46"), new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a") },
+                    { new Guid("35d57db6-8073-4102-bef8-bfe53cc71617"), new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba") }
                 });
 
             migrationBuilder.CreateIndex(

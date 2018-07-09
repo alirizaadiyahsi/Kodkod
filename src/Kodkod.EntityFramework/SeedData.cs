@@ -9,31 +9,29 @@ namespace Kodkod.EntityFramework
 {
     public class SeedData
     {
-        //todo: define a const for all static strings
         #region private fiels
         private static readonly User AdminUser = new User
         {
             Id = Guid.NewGuid(),
-            UserName = "admin",
-            Email = "admin@mail.com",
+            UserName = UserConsts.AdminUserName,
+            Email = UserConsts.AdminEmail,
             EmailConfirmed = true,
-            NormalizedEmail = "ADMIN@MAIL.COM",
-            NormalizedUserName = "ADMIN",
+            NormalizedEmail = UserConsts.AdminEmail.ToUpper(CultureInfo.InvariantCulture),
+            NormalizedUserName = UserConsts.AdminUserName.ToUpper(CultureInfo.InvariantCulture),
             AccessFailedCount = 5,
-            PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
+            PasswordHash = UserConsts.PasswordHashFor123Qwe
         };
 
-        //todo: rename, test user to api user
-        private static readonly User TestUser = new User
+        private static readonly User ApiUser = new User
         {
             Id = Guid.NewGuid(),
-            UserName = "testuser",
-            Email = "testuser@mail.com",
+            UserName = UserConsts.ApiUserName,
+            Email = UserConsts.ApiEmail,
             EmailConfirmed = true,
-            NormalizedEmail = "TESTUSER@MAIL.COM",
-            NormalizedUserName = "TESTUSER",
+            NormalizedEmail = UserConsts.ApiEmail.ToUpper(CultureInfo.InvariantCulture),
+            NormalizedUserName =UserConsts.ApiUserName.ToUpper(CultureInfo.InvariantCulture),
             AccessFailedCount = 5,
-            PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
+            PasswordHash = UserConsts.PasswordHashFor123Qwe
         };
 
         private static readonly Role AdminRole = new Role
@@ -43,12 +41,11 @@ namespace Kodkod.EntityFramework
             NormalizedName = RoleConsts.AdminRoleName.ToUpper(CultureInfo.InvariantCulture)
         };
 
-        //todo: find a better name, i.e. api role or test role
-        private static readonly Role MemberRole = new Role
+        private static readonly Role ApiUserRole = new Role
         {
             Id = Guid.NewGuid(),
-            Name = RoleConsts.MemberRoleName,
-            NormalizedName = RoleConsts.MemberRoleName.ToUpper(CultureInfo.InvariantCulture)
+            Name = RoleConsts.ApiUserRoleName,
+            NormalizedName = RoleConsts.ApiUserRoleName.ToUpper(CultureInfo.InvariantCulture)
         };
         #endregion
 
@@ -58,7 +55,7 @@ namespace Kodkod.EntityFramework
             return new[]
             {
                 AdminUser,
-                TestUser
+                ApiUser
             };
         }
 
@@ -67,7 +64,7 @@ namespace Kodkod.EntityFramework
             return new[]
             {
                 AdminRole,
-                MemberRole
+                ApiUserRole
             };
         }
 
@@ -82,8 +79,8 @@ namespace Kodkod.EntityFramework
                 },
                 new UserRole
                 {
-                    RoleId = MemberRole.Id,
-                    UserId = TestUser.Id
+                    RoleId = ApiUserRole.Id,
+                    UserId = ApiUser.Id
                 }
             };
         }
@@ -110,7 +107,7 @@ namespace Kodkod.EntityFramework
                 rolePermissions.Add(new RolePermission
                 {
                     PermissionId = apiUserPermission.Id,
-                    RoleId = MemberRole.Id
+                    RoleId = ApiUserRole.Id
                 });
             }
 
