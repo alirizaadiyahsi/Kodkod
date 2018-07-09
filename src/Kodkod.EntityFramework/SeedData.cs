@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
@@ -8,6 +9,7 @@ namespace Kodkod.EntityFramework
 {
     public class SeedData
     {
+        //todo: define a const for all static strings
         #region private fiels
         private static readonly User AdminUser = new User
         {
@@ -21,6 +23,7 @@ namespace Kodkod.EntityFramework
             PasswordHash = "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==" //123qwe
         };
 
+        //todo: rename, test user to api user
         private static readonly User TestUser = new User
         {
             Id = Guid.NewGuid(),
@@ -36,15 +39,16 @@ namespace Kodkod.EntityFramework
         private static readonly Role AdminRole = new Role
         {
             Id = Guid.NewGuid(),
-            Name = "Admin",
-            NormalizedName = "ADMIN"
+            Name = RoleConsts.AdminRoleName,
+            NormalizedName = RoleConsts.AdminRoleName.ToUpper(CultureInfo.InvariantCulture)
         };
 
+        //todo: find a better name, i.e. api role or test role
         private static readonly Role MemberRole = new Role
         {
             Id = Guid.NewGuid(),
-            Name = "Member",
-            NormalizedName = "MEMBER"
+            Name = RoleConsts.MemberRoleName,
+            NormalizedName = RoleConsts.MemberRoleName.ToUpper(CultureInfo.InvariantCulture)
         };
         #endregion
 
@@ -79,7 +83,7 @@ namespace Kodkod.EntityFramework
                 new UserRole
                 {
                     RoleId = MemberRole.Id,
-                    UserId=TestUser.Id
+                    UserId = TestUser.Id
                 }
             };
         }
@@ -99,7 +103,7 @@ namespace Kodkod.EntityFramework
                 }).ToList();
 
             var apiUserPermission = PermissionConsts.AllPermissions()
-                .FirstOrDefault(p => p.Name == PermissionConsts.ApiUser);
+                .FirstOrDefault(p => p.Name == PermissionConsts.ApiUserPermissionName);
 
             if (apiUserPermission != null)
             {

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
 using Kodkod.Core.Permissions;
+using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 using Kodkod.Web.Core.Authentication;
@@ -17,7 +18,9 @@ namespace Kodkod.Web.Api.Tests
         {
             var userRepository = new Repository<User>(KodkodInMemoryContext);
             var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
-            var permissionAppService = new PermissionAppService(userRepository, permissionRepository, Mapper);
+            var roleRepository = new Repository<Role>(KodkodInMemoryContext);
+            var rolePermissionRepository = new Repository<RolePermission>(KodkodInMemoryContext);
+            var permissionAppService = new PermissionAppService(userRepository, permissionRepository, roleRepository, rolePermissionRepository, Mapper);
 
             var requirements = new List<PermissionRequirement>
             {

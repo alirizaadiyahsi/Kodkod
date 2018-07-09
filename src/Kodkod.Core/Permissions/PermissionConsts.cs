@@ -5,12 +5,12 @@ namespace Kodkod.Core.Permissions
 {
     public class PermissionConsts
     {
-        public const string ApiUser = "ApiUser";
+        public const string ApiUserPermissionName = "ApiUser";
 
         private static readonly Permission ApiUserPermission = new Permission
         {
             DisplayName = "Api user",
-            Name = ApiUser,
+            Name = ApiUserPermissionName,
             Id = new Guid("28126FFD-51C2-4201-939C-B64E3DF43B9D")
         };
 

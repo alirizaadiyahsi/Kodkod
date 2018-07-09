@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
+using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 using Kodkod.Utilities.PagedList;
@@ -20,14 +21,21 @@ namespace Kodkod.Application.Permissions
     {
         private readonly IRepository<User> _userRepository;
         private readonly IRepository<Permission> _permissionRepository;
+        private readonly IRepository<Role> _roleRepository;
+        private readonly IRepository<RolePermission> _rolePermissionRepository;
         private readonly IMapper _mapper;
 
         public PermissionAppService(
             IRepository<User> userRepository,
-            IRepository<Permission> permissionRepository, IMapper mapper)
+            IRepository<Permission> permissionRepository,
+            IRepository<Role> roleRepository,
+            IRepository<RolePermission> rolePermissionRepository,
+            IMapper mapper)
         {
             _userRepository = userRepository;
             _permissionRepository = permissionRepository;
+            _roleRepository = roleRepository;
+            _rolePermissionRepository = rolePermissionRepository;
             _mapper = mapper;
         }
 
@@ -62,17 +70,40 @@ namespace Kodkod.Application.Permissions
             return grantedPermissions.Any(p => p.Name == requirementPermission.Name);
         }
 
+        public async Task<bool> IsPermissionGrantedForRoleAsync(Role role, Permission requirePermission)
+        {
+            var existingRole = await _roleRepository.GetFirstOrDefaultAsync(r => r.Id == role.Id);
+            if (existingRole == null)
+            {
+                return false;
+            }
+
+            var grantedPermissions = existingRole.RolePermissions
+                .Select(rp => rp.Permission);
+
+            return grantedPermissions.Any(p => p.Name == requirePermission.Name);
+        }
+
         public async Task InitializePermissions(List<Permission> permissions)
         {
-            //todo: assign all permissions to admin role
             foreach (var permission in permissions)
             {
                 var existingPermission = await _permissionRepository.GetFirstOrDefaultAsync(p => p.Name == permission.Name);
 
-                if (existingPermission == null)
+                if (existingPermission != null)
                 {
-                    await _permissionRepository.InsertAsync(permission);
+                    continue;
                 }
+
+                await _permissionRepository.InsertAsync(permission);
+
+                var role = await _roleRepository.GetFirstOrDefaultAsync(r => r.Name == RoleConsts.AdminRoleName);
+                var rolePermission = new RolePermission
+                {
+                    RoleId = role.Id,
+                    PermissionId = permission.Id
+                };
+                await _rolePermissionRepository.InsertAsync(rolePermission);
             }
         }
     }

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Kodkod.Application.Permissions;
 using Kodkod.Application.Permissions.Dto;
 using Kodkod.Core.Permissions;
+using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
 using Kodkod.EntityFramework.Repositories;
 using Xunit;
@@ -18,7 +19,9 @@ namespace Kodkod.Application.Tests
         {
             var userRepository = new Repository<User>(KodkodInMemoryContext);
             var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
-            _permissionAppService = new PermissionAppService(userRepository, permissionRepository, Mapper);
+            var roleRepository = new Repository<Role>(KodkodInMemoryContext);
+            var rolePermissionRepository = new Repository<RolePermission>(KodkodInMemoryContext);
+            _permissionAppService = new PermissionAppService(userRepository, permissionRepository, roleRepository, rolePermissionRepository, Mapper);
         }
 
         [Fact]
@@ -59,6 +62,9 @@ namespace Kodkod.Application.Tests
 
             var initializedPermission = KodkodInMemoryContext.Permissions.FirstOrDefault(p => p.Id == testPermission.Id);
             Assert.NotNull(initializedPermission);
+
+            var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForRoleAsync(AdminRole, testPermission);
+            Assert.True(isPermissionGranted);
         }
     }
 }
