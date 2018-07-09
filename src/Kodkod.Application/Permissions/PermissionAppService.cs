@@ -54,7 +54,7 @@ namespace Kodkod.Application.Permissions
             return permissionListDtos.ToPagedList(permissionsCount);
         }
 
-        public async Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission requirementPermission)
+        public async Task<bool> IsPermissionGrantedForUserAsync(ClaimsPrincipal contextUser, Permission permission)
         {
             var user = await _userRepository.GetFirstOrDefaultAsync(u => u.UserName == contextUser.Identity.Name);
             if (user == null)
@@ -67,10 +67,10 @@ namespace Kodkod.Application.Permissions
                 .SelectMany(r => r.RolePermissions)
                 .Select(rp => rp.Permission);
 
-            return grantedPermissions.Any(p => p.Name == requirementPermission.Name);
+            return grantedPermissions.Any(p => p.Name == permission.Name);
         }
 
-        public async Task<bool> IsPermissionGrantedForRoleAsync(Role role, Permission requirePermission)
+        public async Task<bool> IsPermissionGrantedForRoleAsync(Role role, Permission permission)
         {
             var existingRole = await _roleRepository.GetFirstOrDefaultAsync(r => r.Id == role.Id);
             if (existingRole == null)
@@ -81,7 +81,7 @@ namespace Kodkod.Application.Permissions
             var grantedPermissions = existingRole.RolePermissions
                 .Select(rp => rp.Permission);
 
-            return grantedPermissions.Any(p => p.Name == requirePermission.Name);
+            return grantedPermissions.Any(p => p.Name == permission.Name);
         }
 
         public async Task InitializePermissions(List<Permission> permissions)
