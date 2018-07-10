@@ -39,3 +39,4 @@ Web API startup template with a Vue Client demo.
 - Vue
 - Vue Router
 - Bootstrap
+- Microsoft.CodeCoverage
