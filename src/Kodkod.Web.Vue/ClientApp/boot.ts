@@ -10,7 +10,7 @@ const routes = [
     { path: '/fetchdata', component: require('./views/fetchdata/fetchdata.vue.html') }
 ];
 
-new Vue({
+let vue = new Vue({
     el: '#app-root',
     router: new VueRouter({ mode: 'history', routes: routes }),
     render: h => h(require('./components/app/app.vue.html'))
