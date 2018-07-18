@@ -1,10 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env) => {
     const isDevBuild = !(env && env.prod);
-    const extractCSS = new ExtractTextPlugin('vendor.css');
+    const extractCss = new MiniCssExtractPlugin('vendor.css');
 
     return [{
         stats: { modules: false },
@@ -18,11 +18,18 @@ module.exports = (env) => {
                 'jquery',
                 'vue',
                 'vue-router'
-            ],
+            ]
         },
         module: {
             rules: [
-                { test: /\.css(\?|$)/, use: extractCSS.extract({ use: isDevBuild ? 'css-loader' : 'css-loader?minimize' }) },
+                {
+                    test: /\.(sa|sc|c)ss$/,
+                    use: [
+                        isDevBuild ? 'style-loader' : extractCss.loader,
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                },
                 { test: /\.(png|woff|woff2|eot|ttf|svg)(\?|$)/, use: 'url-loader?limit=100000' }
             ]
         },
@@ -33,7 +40,7 @@ module.exports = (env) => {
             library: '[name]_[hash]'
         },
         plugins: [
-            extractCSS,
+            extractCss,
             new webpack.ProvidePlugin({ $: 'jquery', jQuery: 'jquery' }), // Maps these identifiers to the jQuery package (because Bootstrap expects it to be a global variable)
             new webpack.DefinePlugin({
                 'process.env.NODE_ENV': isDevBuild ? '"development"' : '"production"'
