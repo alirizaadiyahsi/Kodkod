@@ -1,13 +1,13 @@
-import './assets/sass/site.css';
+import './css/site.css';
 import 'bootstrap';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 const routes = [
-    { path: '/', component: require('./views/home/home.vue.html').default },
-    { path: '/counter', component: require('./views/counter/counter.vue.html').default },
-    { path: '/fetchdata', component: require('./views/fetchdata/fetchdata.vue.html').default }
+    { path: '/', component: require('./components/home/home.vue.html').default },
+    { path: '/counter', component: require('./components/counter/counter.vue.html').default },
+    { path: '/fetchdata', component: require('./components/fetchdata/fetchdata.vue.html').default }
 ];
 
 let vue = new Vue({
