@@ -36,9 +36,6 @@ namespace Kodkod.Tests.Shared
 
         public TestBase()
         {
-            //disable automapper static registration
-            ServiceCollectionExtensions.UseStaticRegistration = false;
-
             Mapper = new Mapper(
                 new MapperConfiguration(
                     configure => { configure.AddProfile<ApplicationMappingProfile>(); }

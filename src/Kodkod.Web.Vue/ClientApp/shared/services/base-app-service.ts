@@ -1,6 +1,7 @@
 ﻿import AuthStore from '../stores/auth-store';
 
 export default class BaseAppService {
+    //todo: get this from a config file
     static baseApiUrl = "http://localhost:60320";
 
     get<T>(url: string): Promise<IRestResponse<T>> {
@@ -19,8 +20,8 @@ export default class BaseAppService {
         return BaseAppService.request<T>('POST', url, data);
     }
 
+    //todo: refactor following lines
     private static request<T>(method: string, url: string, data: Object | string = ""): Promise<IRestResponse<T>> {
-
         let isJsonResponse: boolean = false;
         let isBadRequest = false;
         let body = data === "" ? null : data;
