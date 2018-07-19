@@ -35,7 +35,7 @@ namespace Kodkod.Web.Api.Controllers
 
         [HttpGet("[action]/{username}")]
         [Authorize(Policy = PermissionConsts.ApiUserPermissionName)]
-        public ActionResult<User> GetUser(string userName)
+        public User GetUser(string userName)
         {
             return new User
             {
