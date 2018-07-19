@@ -122,7 +122,9 @@ namespace Kodkod.Web.Api
 
             app.UseCors(builder =>
                 builder.WithOrigins(_configuration["App:CorsOrigins"]
-                    .Split(",", StringSplitOptions.RemoveEmptyEntries)));
+                    .Split(",", StringSplitOptions.RemoveEmptyEntries))
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
 
             app.UseAuthentication();
 
