@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\shared\models\fetchdata\weather-forecast.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
   </ItemGroup>
 
@@ -17,8 +21,11 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\account\" />
-    <Folder Include="ClientApp\shared\models\" />
     <Folder Include="ClientApp\shared\services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\shared\models\fetchdata\weather-forecast.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
