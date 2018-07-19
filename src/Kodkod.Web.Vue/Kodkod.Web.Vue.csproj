@@ -9,6 +9,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\shared\models\fetchdata\weather-forecast.ts" />
+    <None Remove="ClientApp\shared\services\base-app-service.ts" />
+    <None Remove="ClientApp\shared\services\IErrorContent.ts" />
+    <None Remove="ClientApp\shared\services\IRestResponse.ts" />
+    <None Remove="ClientApp\shared\services\test-app-service.ts" />
+    <None Remove="ClientApp\shared\stores\auth-store.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,11 +26,15 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\account\" />
-    <Folder Include="ClientApp\shared\services\" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\shared\models\fetchdata\weather-forecast.ts" />
+    <TypeScriptCompile Include="ClientApp\shared\services\base-app-service.ts" />
+    <TypeScriptCompile Include="ClientApp\shared\models\error-content.ts" />
+    <TypeScriptCompile Include="ClientApp\shared\models\rest-response.ts" />
+    <TypeScriptCompile Include="ClientApp\shared\services\test-app-service.ts" />
+    <TypeScriptCompile Include="ClientApp\shared\stores\auth-store.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
