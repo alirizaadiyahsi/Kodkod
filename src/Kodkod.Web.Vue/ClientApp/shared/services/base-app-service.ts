@@ -20,7 +20,6 @@ export default class BaseAppService {
         return BaseAppService.request<T>('POST', url, data);
     }
 
-    //todo: refactor following lines
     private static request<T>(method: string, url: string, data: Object | string = ""): Promise<IRestResponse<T>> {
         let isJsonResponse: boolean = false;
         let isBadRequest = false;
