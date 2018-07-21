@@ -2,9 +2,9 @@ using Kodkod.Application.Dto;
 
 namespace Kodkod.Application.Users.Dto
 {
-    public class GetUsersInput : PagedListInput
+    public class UserListInput : PagedListInput
     {
-        public GetUsersInput()
+        public UserListInput()
         {
             Sorting = "UserName";
         }

@@ -20,7 +20,7 @@ namespace Kodkod.Application.Tests
         [Fact]
         public async Task TestGetUsers()
         {
-            var getUsersInput = new GetUsersInput();
+            var getUsersInput = new UserListInput();
             var usersList = await _userAppService.GetUsersAsync(getUsersInput);
             Assert.True(usersList.Items.Count >= 0);
 

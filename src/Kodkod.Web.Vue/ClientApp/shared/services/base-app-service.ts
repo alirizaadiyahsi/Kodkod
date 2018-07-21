@@ -21,7 +21,7 @@ export default class BaseAppService {
     }
 
     private static request<T>(method: string, url: string, data: Object | string = ""): Promise<IRestResponse<T>> {
-        let isJsonResponse: boolean = false;
+        let isJsonResponse = false;
         let isBadRequest = false;
         let body = data === "" ? null : data;
         let headers: { [key: string]: string } = {

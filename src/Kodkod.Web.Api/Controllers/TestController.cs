@@ -30,7 +30,7 @@ namespace Kodkod.Web.Api.Controllers
         [Authorize(Policy = PermissionConsts.ApiUserPermissionName)]
         public async Task<IPagedList<UserListDto>> GetUsers()
         {
-            return await _userAppService.GetUsersAsync(new GetUsersInput());
+            return await _userAppService.GetUsersAsync(new UserListInput());
         }
 
         [HttpGet("[action]/{username}")]

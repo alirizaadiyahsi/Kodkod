@@ -25,7 +25,7 @@ namespace Kodkod.Application.Users
             _mapper = mapper;
         }
 
-        public async Task<IPagedList<UserListDto>> GetUsersAsync(GetUsersInput input)
+        public async Task<IPagedList<UserListDto>> GetUsersAsync(UserListInput input)
         {
             var query = _userRepository.GetAll(
                     !input.Filter.IsNullOrEmpty(),
