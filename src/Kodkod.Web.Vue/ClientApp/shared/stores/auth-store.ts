@@ -1,15 +1,15 @@
-﻿export default class Auth {
+﻿export default class AuthStore {
     static storageKey: string = "token";
 
     static getToken() {
-        return window.localStorage.getItem(Auth.storageKey);
+        return window.localStorage.getItem(AuthStore.storageKey);
     }
 
     static setToken(token: string) {
-        window.localStorage.setItem(Auth.storageKey, token);
+        window.localStorage.setItem(AuthStore.storageKey, token);
     }
 
     static removeToken(): void {
-        window.localStorage.removeItem(Auth.storageKey);
+        window.localStorage.removeItem(AuthStore.storageKey);
     }
 }
