@@ -260,4 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 
-/src/Kodkod.Web.Api/Logs/Logs.txt
+/src/Kodkod.Web.Api/Logs/
