@@ -11,8 +11,8 @@ export default class UserListComponent extends Vue {
     userAppService = new UserAppService();
 
     mounted() {
-        let userListInput: IUserListInput = {
-
+        const userListInput: IUserListInput = {
+            
         };
 
         this.userAppService.getAll(userListInput).then((response) => {
