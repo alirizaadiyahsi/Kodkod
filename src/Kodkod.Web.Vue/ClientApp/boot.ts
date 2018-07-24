@@ -1,18 +1,10 @@
 import './assets/sass/site.css';
 import 'bootstrap';
+import router from './router';
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
-
-const routes = [
-    { path: '/', component: require('./app/views/home/home.vue.html').default },
-    { path: '/counter', component: require('./app/views/counter/counter.vue.html').default },
-    { path: '/fetchdata', component: require('./app/views/fetchdata/fetchdata.vue.html').default },
-    { path: '/user-list', component: require('./app/views/users/user-list.vue.html').default }
-];
 
 let vue = new Vue({
     el: '#app-root',
-    router: new VueRouter({ mode: 'history', routes: routes }),
-    render: h => h(require('./app/components/app/app.vue.html').default)
+    router: router,
+    render: h => h(require('./main.vue.html').default)
 });
