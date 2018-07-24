@@ -21,10 +21,9 @@ export default class BaseAppService {
     }
 
     private static request<T>(method: string, url: string, data: Object | string = ""): Promise<IRestResponse<T>> {
-        let isJsonResponse = false;
         let isBadRequest = false;
         let body = data === "" ? null : data;
-        let headers: { [key: string]: string } = {
+        const headers: { [key: string]: string } = {
             'Authorization': `Bearer ${AuthStore.getToken()}`
         };
 
@@ -40,27 +39,24 @@ export default class BaseAppService {
             }) as any)
             .then((response) => {
                 if (response.status === 401) {
-                    // Unauthorized; redirect to sign-in
                     AuthStore.removeToken();
-                    window.location.replace(`/?expired=1`);
                 }
 
                 isBadRequest = !response.status.toString().startsWith("2");
-
-                let responseContentType = response.headers.get("content-type");
+                const responseContentType = response.headers.get("content-type");
                 if (responseContentType && responseContentType.indexOf("application/json") !== -1) {
-                    isJsonResponse = true;
                     return response.json();
                 } else {
                     return response.text();
                 }
             })
             .then((responseContent: any) => {
-                let response: IRestResponse<T> = {
+                const response: IRestResponse<T> = {
                     isError: isBadRequest,
                     errorContent: isBadRequest ? responseContent : null,
                     content: isBadRequest ? null : responseContent
                 };
+
                 return response;
             });
     }
