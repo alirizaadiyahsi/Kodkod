@@ -1,0 +1,22 @@
+﻿<template>
+    <div class="login-form">
+        <form v-on:submit.prevent="onSubmit">
+            <h2 class="text-center">Log in</h2>
+            <div v-if="error.length" class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            <div class="form-group">
+                <input type="text" v-model="username" class="form-control" placeholder="Username" required="required">
+            </div>
+            <div class="form-group">
+                <input type="password" v-model="password" class="form-control" placeholder="Password" required="required">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>     
+        </form>
+        <p class="text-center"><router-link to="/account/register">Register</router-link></p>
+    </div>
+</template>
+
+<script src="./login.ts"></script>

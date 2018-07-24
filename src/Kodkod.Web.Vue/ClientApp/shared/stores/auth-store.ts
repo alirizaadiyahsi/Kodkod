@@ -12,4 +12,8 @@
     static removeToken(): void {
         window.localStorage.removeItem(AuthStore.storageKey);
     }
+
+    static isSignedInIn(): boolean {
+        return !!AuthStore.getToken();
+    }
 }

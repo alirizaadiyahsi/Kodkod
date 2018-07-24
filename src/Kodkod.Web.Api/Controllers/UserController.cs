@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kodkod.Web.Api.Controllers
 {
+    //todo: return ok result
     //todo: comment out AuthorizedController after implementation of vue login
     public class UserController : BaseController//AuthorizedController
     {
