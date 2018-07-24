@@ -39,15 +39,16 @@ export default class BaseAppService {
                 body: body
             }) as any)
             .then((response) => {
+                
                 if (response.status === 401) {
                     // Unauthorized; redirect to sign-in
                     AuthStore.removeToken();
-                    //window.location.replace(`/?expired=1`);
                 }
 
                 isBadRequest = !response.status.toString().startsWith("2");
 
                 const responseContentType = response.headers.get("content-type");
+                
                 if (responseContentType && responseContentType.indexOf("application/json") !== -1) {
                     return response.json();
                 } else {
@@ -55,6 +56,7 @@ export default class BaseAppService {
                 }
             })
             .then((responseContent: any) => {
+                console.log(responseContent);
                 const response: IRestResponse<T> = {
                     isError: isBadRequest,
                     errorContent: isBadRequest ? responseContent : null,
