@@ -35,7 +35,7 @@ namespace Kodkod.Web.Api.Controllers
             {
                 return BadRequest(new
                 {
-                    ErrorMessage = "The user name or password is incorrect. Try again."
+                    ErrorMessage = "The user name or password is incorrect."
                 });
             }
 
