@@ -28,6 +28,7 @@ export default class BaseAppService {
         };
 
         if (data) {
+            headers['Content-Type'] = 'application/json';
             body = JSON.stringify(data);
         }
 
@@ -38,15 +39,18 @@ export default class BaseAppService {
                 body: body
             }) as any)
             .then((response) => {
-                isBadRequest = !response.status.toString().startsWith("2");
-                console.log(response);
+                isBadRequest = !response.ok;
+                if (response.status === 401) {
+                    AuthStore.removeToken();
+                    return { errorMessage: "Unauthorized request" };
+                }
+
                 return response.json();
             })
             .then((responseContent: any) => {
-                console.log(responseContent);
                 const response: IRestResponse<T> = {
                     isError: isBadRequest,
-                    errorContent: isBadRequest ? responseContent : null,
+                    errorMessage: isBadRequest ? responseContent.errorMessage : null,
                     content: isBadRequest ? null : responseContent
                 };
 

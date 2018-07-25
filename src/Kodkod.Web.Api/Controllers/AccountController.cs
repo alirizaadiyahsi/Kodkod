@@ -28,17 +28,15 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<ActionResult<OkObjectResult>> Login([FromBody]LoginViewModel loginViewModel)
+        public async Task<ActionResult<LoginResult>> Login([FromBody]LoginViewModel loginViewModel)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
             var userToVerify = await GetClaimsIdentity(loginViewModel.UserName, loginViewModel.Password);
             if (userToVerify == null)
             {
-                return Unauthorized();
+                return BadRequest(new
+                {
+                    ErrorMessage = "The user name or password is incorrect. Try again."
+                });
             }
 
             var token = new JwtSecurityToken
@@ -46,12 +44,12 @@ namespace Kodkod.Web.Api.Controllers
                 issuer: _jwtTokenConfiguration.Issuer,
                 audience: _jwtTokenConfiguration.Audience,
                 claims: userToVerify.Claims,
-                expires:_jwtTokenConfiguration.EndDate ,
-                notBefore:_jwtTokenConfiguration.StartDate ,
+                expires: _jwtTokenConfiguration.EndDate,
+                notBefore: _jwtTokenConfiguration.StartDate,
                 signingCredentials: _jwtTokenConfiguration.SigningCredentials
             );
 
-            return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
+            return Ok(new LoginResult { Token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
 
         [HttpPost("[action]")]

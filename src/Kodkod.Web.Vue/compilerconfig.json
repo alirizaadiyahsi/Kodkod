@@ -6,5 +6,9 @@
   {
     "outputFile": "ClientApp/components/navmenu/navmenu.css",
     "inputFile": "ClientApp/components/navmenu/navmenu.scss"
+  },
+  {
+    "outputFile": "ClientApp/account/views/login/login.css",
+    "inputFile": "ClientApp/account/views/login/login.scss"
   }
 ]

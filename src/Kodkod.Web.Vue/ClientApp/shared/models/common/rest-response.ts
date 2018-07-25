@@ -1,5 +1,5 @@
 ﻿interface IRestResponse<T> {
     isError?: boolean;
-    errorContent?: IErrorContent,
+    errorMessage: string,
     content?: T
 };
