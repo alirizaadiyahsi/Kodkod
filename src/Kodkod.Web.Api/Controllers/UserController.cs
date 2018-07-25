@@ -20,9 +20,9 @@ namespace Kodkod.Web.Api.Controllers
         //todo: comment out [Authorize(Policy = PermissionConsts.ApiUserPermissionName)] after implementation of vue login
         [HttpGet("[action]")]
         //[Authorize(Policy = PermissionConsts.ApiUserPermissionName)]
-        public async Task<IPagedList<UserListDto>> Users(UserListInput input)
+        public async Task<ActionResult<IPagedList<UserListDto>>> Users(UserListInput input)
         {
-            return await _userAppService.GetUsersAsync(input);
-        }   
+            return Ok(await _userAppService.GetUsersAsync(input));
+        }
     }
 }

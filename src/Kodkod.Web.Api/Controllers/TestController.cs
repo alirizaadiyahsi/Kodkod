@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kodkod.Web.Api.Controllers
 {
+    //todo: change all actions to return ok result
     public class TestController : BaseController
     {
         private readonly IUserAppService _userAppService;
@@ -28,32 +29,33 @@ namespace Kodkod.Web.Api.Controllers
 
         [HttpGet("[action]")]
         [Authorize(Policy = PermissionConsts.ApiUserPermissionName)]
-        public async Task<IPagedList<UserListDto>> GetUsers()
+        public async Task<ActionResult<IPagedList<UserListDto>>> GetUsers()
         {
-            return await _userAppService.GetUsersAsync(new UserListInput());
+            return Ok(await _userAppService.GetUsersAsync(new UserListInput()));
         }
 
         [HttpGet("[action]/{username}")]
         [Authorize(Policy = PermissionConsts.ApiUserPermissionName)]
-        public User GetUser(string userName)
+        public ActionResult<User> GetUser(string userName)
         {
-            return new User
+            return Ok(new User
             {
                 Id = Guid.NewGuid(),
                 UserName = userName
-            };
+            });
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public ActionResult<IEnumerable<WeatherForecast>> WeatherForecasts()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+
+            return Ok(Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
-            });
-        }       
+            }));
+        }
     }
 }

@@ -38,19 +38,12 @@ export default class BaseAppService {
                 body: body
             }) as any)
             .then((response) => {
-                if (response.status === 401) {
-                    AuthStore.removeToken();
-                }
-
                 isBadRequest = !response.status.toString().startsWith("2");
-                const responseContentType = response.headers.get("content-type");
-                if (responseContentType && responseContentType.indexOf("application/json") !== -1) {
-                    return response.json();
-                } else {
-                    return response.text();
-                }
+                console.log(response);
+                return response.json();
             })
             .then((responseContent: any) => {
+                console.log(responseContent);
                 const response: IRestResponse<T> = {
                     isError: isBadRequest,
                     errorContent: isBadRequest ? responseContent : null,
