@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using Kodkod.Application.Dto;
 using Kodkod.Core.Users;
 using Kodkod.Web.Api.ViewModels;
 using Kodkod.Web.Core.Authentication;
@@ -33,9 +35,11 @@ namespace Kodkod.Web.Api.Controllers
             var userToVerify = await GetClaimsIdentity(loginViewModel.UserName, loginViewModel.Password);
             if (userToVerify == null)
             {
-                return BadRequest(new
+                //The user name or password is incorrect.
+
+                return BadRequest(new ErrorResult
                 {
-                    ErrorMessage = "The user name or password is incorrect."
+                    Errors = new List<NameValueDto> { new NameValueDto { Name = "ErrorMessage", Value = "The user name or password is incorrect." } }
                 });
             }
 
@@ -53,17 +57,15 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<ActionResult<OkObjectResult>> Register([FromBody]RegisterViewModel model)
+        public async Task<ActionResult<RegisterResult>> Register([FromBody]RegisterViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var user = await _userManager.FindByEmailAsync(model.Email);
             if (user != null)
             {
-                return new BadRequestObjectResult(ErrorHelper.AddErrorToModelState("EmailAlreadyExist", "This email already exists!", ModelState));
+                return BadRequest(new ErrorResult
+                {
+                    Errors = ErrorHelper.AddErrorToModelState("EmailAlreadyExist", "This email already exists!")
+                });
             }
 
             var applicationUser = new User
@@ -77,10 +79,13 @@ namespace Kodkod.Web.Api.Controllers
 
             if (!result.Succeeded)
             {
-                return new BadRequestObjectResult(ErrorHelper.AddErrorsToModelState(result, ModelState));
+                return BadRequest(new ErrorResult
+                {
+                    Errors = ErrorHelper.AddErrorsToModelState(result)
+                });
             }
 
-            return new OkObjectResult("Account created");
+            return new RegisterResult { ResultMessage = "Account created!" };
         }
 
         private async Task<ClaimsIdentity> GetClaimsIdentity(string userName, string password)

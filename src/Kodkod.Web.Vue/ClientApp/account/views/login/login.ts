@@ -7,7 +7,7 @@ export default class LoginComponent extends Vue {
 
     username = "";
     password = "";
-    error: string = "";
+    errors: IErrorResponse[] = [];
 
     onSubmit() {
         const accountAppService = new AccountAppService();
@@ -17,7 +17,7 @@ export default class LoginComponent extends Vue {
             if (!response.isError) {
                 this.$router.push({ path: '/admin/home' });
             } else {
-                this.error = response.errorMessage;
+                this.errors = response.errors;
             }
         });
     }

@@ -1,25 +1,20 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Kodkod.Application.Dto;
+using Microsoft.AspNetCore.Identity;
 
 namespace Kodkod.Web.Core.Helpers
 {
     public static class ErrorHelper
     {
-        public static ModelStateDictionary AddErrorsToModelState(IdentityResult identityResult, ModelStateDictionary modelState)
+        public static List<NameValueDto> AddErrorsToModelState(IdentityResult identityResult)
         {
-            foreach (var e in identityResult.Errors)
-            {
-                modelState.TryAddModelError(e.Code, e.Description);
-            }
-
-            return modelState;
+            return identityResult.Errors.Select(e => new NameValueDto {Name = e.Code, Value = e.Description}).ToList();
         }
 
-        public static ModelStateDictionary AddErrorToModelState(string key, string description, ModelStateDictionary modelState)
+        public static List<NameValueDto> AddErrorToModelState(string key, string description)
         {
-            modelState.TryAddModelError(key, description);
-
-            return modelState;
+            return new List<NameValueDto> { new NameValueDto { Name = key, Value = description } };
         }
     }
 }

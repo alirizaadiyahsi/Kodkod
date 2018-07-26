@@ -44,13 +44,14 @@ export default class BaseAppService {
                     AuthStore.removeToken();
                     return { errorMessage: "Unauthorized request" };
                 }
-
+                console.log(response);
                 return response.json();
             })
             .then((responseContent: any) => {
+                console.log(responseContent);
                 const response: IRestResponse<T> = {
                     isError: isBadRequest,
-                    errorMessage: isBadRequest ? responseContent.errorMessage : null,
+                    errors: isBadRequest ? responseContent.errors : null,
                     content: isBadRequest ? null : responseContent
                 };
 

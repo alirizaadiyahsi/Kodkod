@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Kodkod.Web.Core.Controllers
 {
-    [Authorize(Policy = PermissionConsts.ApiUserPermissionName)]
+    [Authorize(Policy = PermissionConsts.LoggedInUser_Name)]
     public class AuthorizedController : BaseController
     {
 

@@ -100,7 +100,7 @@ namespace Kodkod.EntityFramework
                 }).ToList();
 
             var apiUserPermission = PermissionConsts.AllPermissions()
-                .FirstOrDefault(p => p.Name == PermissionConsts.ApiUserPermissionName);
+                .FirstOrDefault(p => p.Name == PermissionConsts.LoggedInUser_Name);
 
             if (apiUserPermission != null)
             {
