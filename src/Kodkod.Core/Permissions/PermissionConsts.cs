@@ -20,7 +20,7 @@ namespace Kodkod.Core.Permissions
         {
             DisplayName = "Admin access",
             Name = Name_AdminAccess,
-            Id = new Guid("28126FFD-51C2-4201-939C-B64E3DF43B9D")
+            Id = new Guid("78B36CD0-080C-4812-84E3-2458CE916509")
         };
 
         private static readonly Permission Permission_UserList = new Permission
