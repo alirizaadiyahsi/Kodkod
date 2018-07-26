@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Kodkod.Web.Api.Controllers
 {
-    public class UserController : BaseController//AuthorizedController
+    [Authorize(Policy = PermissionConsts.Admin_UserList_Name)]
+    public class UserController : AuthorizedController
     {
         private readonly IUserAppService _userAppService;
 
@@ -19,8 +20,7 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpGet("[action]")]
-        [Authorize(Policy = PermissionConsts.Admin_UserList_Name)]
-        public async Task<ActionResult<IPagedList<UserListDto>>> Users(UserListInput input)
+                public async Task<ActionResult<IPagedList<UserListDto>>> Users(UserListInput input)
         {
             return Ok(await _userAppService.GetUsersAsync(input));
         }

@@ -28,14 +28,14 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpGet("[action]")]
-        [Authorize(Policy = PermissionConsts.LoggedInUser_Name)]
+        [Authorize(Policy = PermissionConsts.Admin_UserList_Name)]
         public async Task<ActionResult<IPagedList<UserListDto>>> GetUsers()
         {
             return Ok(await _userAppService.GetUsersAsync(new UserListInput()));
         }
 
         [HttpGet("[action]/{username}")]
-        [Authorize(Policy = PermissionConsts.LoggedInUser_Name)]
+        [Authorize(Policy = PermissionConsts.Admin_UserList_Name)]
         public ActionResult<User> GetUser(string userName)
         {
             return Ok(new User
@@ -46,6 +46,7 @@ namespace Kodkod.Web.Api.Controllers
         }
 
         [HttpGet("[action]")]
+        [Authorize(Policy = PermissionConsts.ApiUser_Name)]
         public ActionResult<IEnumerable<WeatherForecast>> WeatherForecasts()
         {
             var rng = new Random();
