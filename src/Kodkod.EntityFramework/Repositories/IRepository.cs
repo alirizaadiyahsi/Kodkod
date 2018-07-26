@@ -23,5 +23,7 @@ namespace Kodkod.EntityFramework.Repositories
             CancellationToken cancellationToken = default(CancellationToken));
 
         Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken));
+
+        void Delete(IEnumerable<TEntity> entities);
     }
 }

@@ -70,5 +70,7 @@ namespace Kodkod.EntityFramework.Repositories
         {
             return DbSet.AddAsync(entity, cancellationToken);
         }
+
+        public void Delete(IEnumerable<TEntity> entities) => DbSet.RemoveRange(entities);
     }
 }
