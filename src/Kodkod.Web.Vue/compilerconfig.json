@@ -10,5 +10,9 @@
   {
     "outputFile": "ClientApp/account/views/login/login.css",
     "inputFile": "ClientApp/account/views/login/login.scss"
+  },
+  {
+    "outputFile": "ClientApp/account/views/register/register.css",
+    "inputFile": "ClientApp/account/views/register/register.scss"
   }
 ]

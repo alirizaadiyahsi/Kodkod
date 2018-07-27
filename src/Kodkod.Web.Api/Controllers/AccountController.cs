@@ -85,7 +85,7 @@ namespace Kodkod.Web.Api.Controllers
                 });
             }
 
-            return new RegisterResult { ResultMessage = "Account created!" };
+            return new RegisterResult { ResultMessage = "Your account has been successfully created." };
         }
 
         private async Task<ClaimsIdentity> GetClaimsIdentity(string userName, string password)

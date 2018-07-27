@@ -16,4 +16,11 @@ export default class AccountAppService extends BaseAppService {
     logOut(): void {
         AuthStore.removeToken();
     }
+
+    register(registerViewModel: IRegisterViewModel) {
+        return this.post<IRegisterResult>('/api/account/register', registerViewModel)
+            .then((response) => {
+                return response;
+            });
+    }
 }
