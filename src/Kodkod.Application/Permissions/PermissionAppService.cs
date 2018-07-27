@@ -86,7 +86,9 @@ namespace Kodkod.Application.Permissions
 
         public async Task InitializePermissions(List<Permission> permissions)
         {
+            _rolePermissionRepository.Delete(_rolePermissionRepository.GetAll(true, rp => rp.Role.Name == RoleConsts.AdminRoleName));
             _permissionRepository.Delete(_permissionRepository.GetAll());
+
             foreach (var permission in permissions)
             {
                 await _permissionRepository.InsertAsync(permission);

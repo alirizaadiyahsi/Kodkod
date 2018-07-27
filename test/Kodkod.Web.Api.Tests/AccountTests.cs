@@ -4,11 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using Kodkod.Application.Users.Dto;
-using Kodkod.Utilities.PagedList;
 using Kodkod.Web.Api.ViewModels;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Kodkod.Web.Api.Tests
@@ -18,7 +14,7 @@ namespace Kodkod.Web.Api.Tests
         [Fact]
         public async Task TestUnAuthorizedAccess()
         {
-            var responseGetUsers = await Client.GetAsync("/api/test/GetUsers");
+            var responseGetUsers = await Client.GetAsync("/api/test/Users");
             Assert.Equal(HttpStatusCode.Unauthorized, responseGetUsers.StatusCode);
         }
 

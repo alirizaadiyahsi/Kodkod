@@ -32,6 +32,7 @@ namespace Kodkod.Web.Api
                 var host = BuildWebHost(args);
                 using (var scope = host.Services.CreateScope())
                 {
+                    //todo: there is a bug here
                     var permissionAppService = scope.ServiceProvider.GetRequiredService<IPermissionAppService>();
                     permissionAppService.InitializePermissions(PermissionConsts.AllPermissions());
                 }

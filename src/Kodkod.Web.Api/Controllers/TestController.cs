@@ -28,14 +28,14 @@ namespace Kodkod.Web.Api.Controllers
 
         [HttpGet("[action]")]
         [Authorize(Policy = PermissionConsts.Name_UserList)]
-        public async Task<ActionResult<IPagedList<UserListDto>>> GetUsers()
+        public async Task<ActionResult<IPagedList<UserListDto>>> Users()
         {
             return Ok(await _userAppService.GetUsersAsync(new UserListInput()));
         }
 
         [HttpGet("[action]/{username}")]
         [Authorize(Policy = PermissionConsts.Name_UserList)]
-        public ActionResult<User> GetUser(string userName)
+        public ActionResult<User> Users(string userName)
         {
             return Ok(new User
             {
