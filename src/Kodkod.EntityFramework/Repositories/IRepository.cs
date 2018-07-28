@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Kodkod.Core.Permissions;
 
 namespace Kodkod.EntityFramework.Repositories
 {
@@ -25,5 +26,9 @@ namespace Kodkod.EntityFramework.Repositories
         Task InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken));
 
         void Delete(IEnumerable<TEntity> entities);
+
+        void Insert(TEntity entity);
+
+        TEntity GetFirstOrDefault(Expression<Func<TEntity, bool>> predicate = null, bool disableTracking = false);
     }
 }

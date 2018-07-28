@@ -8,7 +8,7 @@ namespace Kodkod.EntityFramework
         public static IServiceCollection AddKodkodEntityFramework(this IServiceCollection services)
         {
             //todo: add conventional registrar
-            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<KodkodDbContext>();
 
             return services;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Kodkod.Core.Permissions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Kodkod.EntityFramework.Repositories
@@ -72,5 +73,28 @@ namespace Kodkod.EntityFramework.Repositories
         }
 
         public void Delete(IEnumerable<TEntity> entities) => DbSet.RemoveRange(entities);
+
+        public void Insert(TEntity entity)
+        {
+            DbSet.Add(entity);
+        }
+
+        public TEntity GetFirstOrDefault(
+            Expression<Func<TEntity, bool>> predicate = null,
+            bool disableTracking = false)
+        {
+            IQueryable<TEntity> query = DbSet;
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            return query.FirstOrDefault();
+        }
     }
 }

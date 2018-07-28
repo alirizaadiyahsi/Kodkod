@@ -21,7 +21,7 @@ namespace Kodkod.Application.Tests
             var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
             var roleRepository = new Repository<Role>(KodkodInMemoryContext);
             var rolePermissionRepository = new Repository<RolePermission>(KodkodInMemoryContext);
-            _permissionAppService = new PermissionAppService(userRepository, permissionRepository, roleRepository, rolePermissionRepository, Mapper);
+            _permissionAppService = new PermissionAppService(userRepository, permissionRepository, roleRepository, rolePermissionRepository, Mapper,KodkodInMemoryContext);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Kodkod.Application.Tests
         public async Task TestIsPermissionGrantedForUser()
         {
             var isPermissionGranted =
-                await _permissionAppService.IsPermissionGrantedForUserAsync(ContextUser, ApiUserPermission);
+                await _permissionAppService.IsPermissionGrantedForUserAsync(ContextUser, PermissionConsts.Permission_ApiAccess);
             Assert.True(isPermissionGranted);
         }
 
@@ -57,13 +57,12 @@ namespace Kodkod.Application.Tests
             var permissions = PermissionConsts.AllPermissions();
             permissions.Add(testPermission);
 
-            await _permissionAppService.InitializePermissions(permissions);
-            await KodkodInMemoryContext.SaveChangesAsync();
+            _permissionAppService.InitializePermissions(permissions);
 
             var initializedPermission = KodkodInMemoryContext.Permissions.FirstOrDefault(p => p.Id == testPermission.Id);
             Assert.NotNull(initializedPermission);
 
-            var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForRoleAsync(AdminRole, testPermission);
+            var isPermissionGranted = await _permissionAppService.IsPermissionGrantedForRoleAsync(RoleConsts.AdminRole, testPermission);
             Assert.True(isPermissionGranted);
         }
     }

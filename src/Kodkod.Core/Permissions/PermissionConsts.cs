@@ -5,25 +5,25 @@ namespace Kodkod.Core.Permissions
 {
     public class PermissionConsts
     {
-        public const string Name_ApiAccess = "ApiUser";
-        public const string Name_AdminAccess = "Admin";
+        public const string Name_ApiAccess = "ApiAccess";
+        public const string Name_AdminAccess = "AdminAccess";
         public const string Name_UserList = "UserList";
 
-        private static readonly Permission Permission_ApiAccess = new Permission
+        public static readonly Permission Permission_ApiAccess = new Permission
         {
             DisplayName = "Api access",
             Name = Name_ApiAccess,
             Id = new Guid("28126FFD-51C2-4201-939C-B64E3DF43B9D")
         };
 
-        private static readonly Permission Permission_AdminAccess = new Permission
+        public static readonly Permission Permission_AdminAccess = new Permission
         {
             DisplayName = "Admin access",
             Name = Name_AdminAccess,
             Id = new Guid("78B36CD0-080C-4812-84E3-2458CE916509")
         };
 
-        private static readonly Permission Permission_UserList = new Permission
+        public static readonly Permission Permission_UserList = new Permission
         {
             DisplayName = "User list",
             Name = Name_UserList,

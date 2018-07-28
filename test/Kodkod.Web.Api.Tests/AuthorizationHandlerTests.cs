@@ -20,11 +20,11 @@ namespace Kodkod.Web.Api.Tests
             var permissionRepository = new Repository<Permission>(KodkodInMemoryContext);
             var roleRepository = new Repository<Role>(KodkodInMemoryContext);
             var rolePermissionRepository = new Repository<RolePermission>(KodkodInMemoryContext);
-            var permissionAppService = new PermissionAppService(userRepository, permissionRepository, roleRepository, rolePermissionRepository, Mapper);
+            var permissionAppService = new PermissionAppService(userRepository, permissionRepository, roleRepository, rolePermissionRepository, Mapper, KodkodInMemoryContext);
 
             var requirements = new List<PermissionRequirement>
             {
-                new PermissionRequirement(ApiUserPermission)
+                new PermissionRequirement(PermissionConsts.Permission_ApiAccess)
             };
             var authorizationHandlerContext = new AuthorizationHandlerContext(requirements, ContextUser, null);
             var permissionHandler = new PermissionHandler(permissionAppService);

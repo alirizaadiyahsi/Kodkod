@@ -1,6 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
+﻿using System.Linq;
 using Kodkod.Core.Permissions;
 using Kodkod.Core.Roles;
 using Kodkod.Core.Users;
@@ -9,53 +7,13 @@ namespace Kodkod.EntityFramework
 {
     public class SeedData
     {
-        #region private fiels
-        private static readonly User AdminUser = new User
-        {
-            Id = Guid.NewGuid(),
-            UserName = UserConsts.AdminUserName,
-            Email = UserConsts.AdminEmail,
-            EmailConfirmed = true,
-            NormalizedEmail = UserConsts.AdminEmail.ToUpper(CultureInfo.InvariantCulture),
-            NormalizedUserName = UserConsts.AdminUserName.ToUpper(CultureInfo.InvariantCulture),
-            AccessFailedCount = 5,
-            PasswordHash = UserConsts.PasswordHashFor123Qwe
-        };
-
-        private static readonly User ApiUser = new User
-        {
-            Id = Guid.NewGuid(),
-            UserName = UserConsts.ApiUserName,
-            Email = UserConsts.ApiEmail,
-            EmailConfirmed = true,
-            NormalizedEmail = UserConsts.ApiEmail.ToUpper(CultureInfo.InvariantCulture),
-            NormalizedUserName =UserConsts.ApiUserName.ToUpper(CultureInfo.InvariantCulture),
-            AccessFailedCount = 5,
-            PasswordHash = UserConsts.PasswordHashFor123Qwe
-        };
-
-        private static readonly Role AdminRole = new Role
-        {
-            Id = Guid.NewGuid(),
-            Name = RoleConsts.AdminRoleName,
-            NormalizedName = RoleConsts.AdminRoleName.ToUpper(CultureInfo.InvariantCulture)
-        };
-
-        private static readonly Role ApiUserRole = new Role
-        {
-            Id = Guid.NewGuid(),
-            Name = RoleConsts.ApiUserRoleName,
-            NormalizedName = RoleConsts.ApiUserRoleName.ToUpper(CultureInfo.InvariantCulture)
-        };
-        #endregion
-
         #region BuildData
         public static User[] BuildApplicationUsers()
         {
             return new[]
             {
-                AdminUser,
-                ApiUser
+                UserConsts.AdminUser,
+                UserConsts.ApiUser
             };
         }
 
@@ -63,8 +21,8 @@ namespace Kodkod.EntityFramework
         {
             return new[]
             {
-                AdminRole,
-                ApiUserRole
+                RoleConsts.AdminRole,
+                RoleConsts.ApiUserRole
             };
         }
 
@@ -74,13 +32,13 @@ namespace Kodkod.EntityFramework
             {
                 new UserRole
                 {
-                    RoleId = AdminRole.Id,
-                    UserId = AdminUser.Id
+                    RoleId = RoleConsts.AdminRole.Id,
+                    UserId = UserConsts.AdminUser.Id
                 },
                 new UserRole
                 {
-                    RoleId = ApiUserRole.Id,
-                    UserId = ApiUser.Id
+                    RoleId = RoleConsts.ApiUserRole.Id,
+                    UserId = UserConsts.ApiUser.Id
                 }
             };
         }
@@ -96,7 +54,7 @@ namespace Kodkod.EntityFramework
                 new RolePermission
                 {
                     PermissionId = p.Id,
-                    RoleId = AdminRole.Id
+                    RoleId = RoleConsts.AdminRole.Id
                 }).ToList();
 
             var apiUserPermission = PermissionConsts.AllPermissions()
@@ -107,7 +65,7 @@ namespace Kodkod.EntityFramework
                 rolePermissions.Add(new RolePermission
                 {
                     PermissionId = apiUserPermission.Id,
-                    RoleId = ApiUserRole.Id
+                    RoleId = RoleConsts.ApiUserRole.Id
                 });
             }
 

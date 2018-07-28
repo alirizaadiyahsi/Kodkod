@@ -28,6 +28,12 @@ namespace Kodkod.EntityFramework
                 .ToTable("Permission")
                 .HasData(SeedData.BuildPermissions());
 
+            modelBuilder.Entity<Role>().ToTable("Role")
+                .HasData(SeedData.BuildApplicationRoles());
+
+            modelBuilder.Entity<User>().ToTable("User")
+                .HasData(SeedData.BuildApplicationUsers());
+
             modelBuilder.Entity((Action<EntityTypeBuilder<RolePermission>>)(b =>
             {
                 b.ToTable("RolePermission");
@@ -43,12 +49,6 @@ namespace Kodkod.EntityFramework
 
                 b.HasData(SeedData.BuildRolePermissions());
             }));
-
-            modelBuilder.Entity<User>().ToTable("User")
-                .HasData(SeedData.BuildApplicationUsers());
-
-            modelBuilder.Entity<Role>().ToTable("Role")
-                .HasData(SeedData.BuildApplicationRoles());
 
             modelBuilder.Entity((Action<EntityTypeBuilder<UserRole>>) (b =>
             {

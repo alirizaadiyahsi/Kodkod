@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kodkod.EntityFramework.Migrations
 {
-    public partial class Initial : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -193,15 +193,20 @@ namespace Kodkod.EntityFramework.Migrations
             migrationBuilder.InsertData(
                 table: "Permission",
                 columns: new[] { "Id", "DisplayName", "Name" },
-                values: new object[] { new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d"), "Api user", "ApiUser" });
+                values: new object[,]
+                {
+                    { new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d"), "Api access", "ApiAccess" },
+                    { new Guid("78b36cd0-080c-4812-84e3-2458ce916509"), "Admin access", "AdminAccess" },
+                    { new Guid("86d804bd-d022-49a5-821a-d2240478aac4"), "User list", "UserList" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Role",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a"), "256b525e-8270-43b2-8c91-198525c7c570", "Admin", "ADMIN" },
-                    { new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba"), "4930fe25-5a59-4d0c-80f2-0794b394482a", "ApiUserRole", "APIUSERROLE" }
+                    { new Guid("f22bce18-06ec-474a-b9af-a9de2a7b8263"), "71c9dcfb-e4c0-45e6-83e7-c164208f77e6", "Admin", "ADMIN" },
+                    { new Guid("11d14a89-3a93-4d39-a94f-82b823f0d4ce"), "ed761017-9a17-4f0c-a225-2b746ac9f72a", "ApiUserRole", "APIUSERROLE" }
                 });
 
             migrationBuilder.InsertData(
@@ -209,8 +214,8 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("dcb3c3ef-3f50-408b-a102-b11247d1ac46"), 5, "df51880c-f05b-41fa-bc5f-3ea42c82734b", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "admin" },
-                    { new Guid("35d57db6-8073-4102-bef8-bfe53cc71617"), 5, "15ec2e38-dc40-4caf-84e2-e863e71b41b7", "apiuser@mail.com", true, false, null, "APIUSER@MAIL.COM", "APIUSER", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "apiuser" }
+                    { new Guid("c41a7761-6645-4e2c-b99d-f9e767b9ac77"), 5, "f689572f-5a2d-4b85-bda2-222c2ebde561", "admin@mail.com", true, false, null, "ADMIN@MAIL.COM", "ADMIN", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "admin" },
+                    { new Guid("065e903e-6f7b-42b8-b807-0c4197f9d1bc"), 5, "a4006b33-0629-4882-9d00-0559790c3155", "apiuser@mail.com", true, false, null, "APIUSER@MAIL.COM", "APIUSER", "AM4OLBpptxBYmM79lGOX9egzZk3vIQU3d/gFCJzaBjAPXzYIK3tQ2N7X4fcrHtElTw==", null, false, null, false, "apiuser" }
                 });
 
             migrationBuilder.InsertData(
@@ -218,8 +223,10 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "RoleId", "PermissionId" },
                 values: new object[,]
                 {
-                    { new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") },
-                    { new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") }
+                    { new Guid("f22bce18-06ec-474a-b9af-a9de2a7b8263"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") },
+                    { new Guid("f22bce18-06ec-474a-b9af-a9de2a7b8263"), new Guid("78b36cd0-080c-4812-84e3-2458ce916509") },
+                    { new Guid("f22bce18-06ec-474a-b9af-a9de2a7b8263"), new Guid("86d804bd-d022-49a5-821a-d2240478aac4") },
+                    { new Guid("11d14a89-3a93-4d39-a94f-82b823f0d4ce"), new Guid("28126ffd-51c2-4201-939c-b64e3df43b9d") }
                 });
 
             migrationBuilder.InsertData(
@@ -227,8 +234,8 @@ namespace Kodkod.EntityFramework.Migrations
                 columns: new[] { "UserId", "RoleId" },
                 values: new object[,]
                 {
-                    { new Guid("dcb3c3ef-3f50-408b-a102-b11247d1ac46"), new Guid("40ea6687-1cba-4c6a-b8c7-6b115e19e88a") },
-                    { new Guid("35d57db6-8073-4102-bef8-bfe53cc71617"), new Guid("6b800819-5de2-48ce-ab19-7b45cf3867ba") }
+                    { new Guid("c41a7761-6645-4e2c-b99d-f9e767b9ac77"), new Guid("f22bce18-06ec-474a-b9af-a9de2a7b8263") },
+                    { new Guid("065e903e-6f7b-42b8-b807-0c4197f9d1bc"), new Guid("11d14a89-3a93-4d39-a94f-82b823f0d4ce") }
                 });
 
             migrationBuilder.CreateIndex(

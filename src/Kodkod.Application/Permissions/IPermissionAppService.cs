@@ -16,6 +16,6 @@ namespace Kodkod.Application.Permissions
 
         Task<bool> IsPermissionGrantedForRoleAsync(Role role, Permission permission);
 
-        Task InitializePermissions(List<Permission> permissions);
+        void InitializePermissions(List<Permission> permissions);
     }
 }
