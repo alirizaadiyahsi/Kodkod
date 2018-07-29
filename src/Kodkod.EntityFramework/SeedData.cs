@@ -57,17 +57,11 @@ namespace Kodkod.EntityFramework
                     RoleId = RoleConsts.AdminRole.Id
                 }).ToList();
 
-            var apiUserPermission = PermissionConsts.AllPermissions()
-                .FirstOrDefault(p => p.Name == PermissionConsts.Name_ApiAccess);
-
-            if (apiUserPermission != null)
+            rolePermissions.Add(new RolePermission
             {
-                rolePermissions.Add(new RolePermission
-                {
-                    PermissionId = apiUserPermission.Id,
-                    RoleId = RoleConsts.ApiUserRole.Id
-                });
-            }
+                PermissionId = PermissionConsts.Permission_ApiAccess.Id,
+                RoleId = RoleConsts.ApiUserRole.Id
+            });
 
             return rolePermissions.ToArray();
         }

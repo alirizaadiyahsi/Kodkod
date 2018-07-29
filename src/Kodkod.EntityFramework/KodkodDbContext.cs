@@ -50,25 +50,25 @@ namespace Kodkod.EntityFramework
                 b.HasData(SeedData.BuildRolePermissions());
             }));
 
-            modelBuilder.Entity((Action<EntityTypeBuilder<UserRole>>) (b =>
-            {
-                b.ToTable("UserRole");
+            modelBuilder.Entity((Action<EntityTypeBuilder<UserRole>>)(b =>
+           {
+               b.ToTable("UserRole");
 
-                b.HasOne(ur => ur.User)
-                    .WithMany(u => u.UserRoles)
-                    .HasForeignKey(ur => ur.UserId);
+               b.HasOne(ur => ur.User)
+                   .WithMany(u => u.UserRoles)
+                   .HasForeignKey(ur => ur.UserId);
 
 
-                b.HasOne(ur => ur.User)
-                    .WithMany(u => u.UserRoles)
-                    .HasForeignKey(ur => ur.UserId);
+               b.HasOne(ur => ur.User)
+                   .WithMany(u => u.UserRoles)
+                   .HasForeignKey(ur => ur.UserId);
 
-                b.HasOne(ur => ur.Role)
-                    .WithMany(r => r.UserRoles)
-                    .HasForeignKey(ur => ur.RoleId);
+               b.HasOne(ur => ur.Role)
+                   .WithMany(r => r.UserRoles)
+                   .HasForeignKey(ur => ur.RoleId);
 
-                b.HasData(SeedData.BuildApplicationUserRoles());
-            }));
+               b.HasData(SeedData.BuildApplicationUserRoles());
+           }));
 
             modelBuilder.Entity<UserClaim>().ToTable("UserClaim");
             modelBuilder.Entity<UserLogin>().ToTable("UserLogin");

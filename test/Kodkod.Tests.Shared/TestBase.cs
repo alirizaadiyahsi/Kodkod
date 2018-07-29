@@ -93,6 +93,7 @@ namespace Kodkod.Tests.Shared
             var optionsBuilder = new DbContextOptionsBuilder<KodkodDbContext>();
             optionsBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
             optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.EnableSensitiveDataLogging();
 
             var inMemoryContext = new KodkodDbContext(optionsBuilder.Options);
 
