@@ -1,18 +1,8 @@
-﻿@media (max-width: 767px) {
+﻿body {
+  margin-top: 50px; }
+
+@media (max-width: 767px) {
   /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
   body {
     padding-top: 50px; } }
-
-.login-form, .register-form {
-  width: 360px;
-  margin: 50px auto; }
-
-.login-form form, .register-form form {
-  margin-bottom: 15px;
-  background: #f7f7f7;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  padding: 30px; }
-
-.login-form form h2, .register-form form h2 {
-  padding-bottom: 20px; }
 

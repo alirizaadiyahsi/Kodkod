@@ -13,7 +13,7 @@
 /* Keep the nav menu independent of scrolling and on top of other items */
 .main-nav {
     position: fixed;
-    top: 50px;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 1;
