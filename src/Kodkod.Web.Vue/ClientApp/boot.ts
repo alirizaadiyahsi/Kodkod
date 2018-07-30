@@ -1,5 +1,5 @@
 import './assets/sass/site.css';
-import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 import router from './router';
 import Vue from 'vue';
 
