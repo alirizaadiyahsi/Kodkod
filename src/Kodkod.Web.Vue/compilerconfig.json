@@ -14,5 +14,13 @@
   {
     "outputFile": "ClientApp/account/views/register/register.css",
     "inputFile": "ClientApp/account/views/register/register.scss"
+  },
+  {
+    "outputFile": "ClientApp/admin/components/nav-menu/nav-menu.css",
+    "inputFile": "ClientApp/admin/components/nav-menu/nav-menu.scss"
+  },
+  {
+    "outputFile": "ClientApp/admin/components/top-menu/top-menu.css",
+    "inputFile": "ClientApp/admin/components/top-menu/top-menu.scss"
   }
 ]

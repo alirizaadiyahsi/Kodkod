@@ -3,7 +3,8 @@ import { Component } from 'vue-property-decorator';
 
 @Component({
     components: {
-        MenuComponent: require('./components/nav-menu/nav-menu.vue.html').default
+        NavMenuComponent: require('./components/nav-menu/nav-menu.vue.html').default,
+        TopMenuComponent: require('./components/top-menu/top-menu.vue.html').default
     }
 })
 export default class AdminLayoutComponent extends Vue {
